@@ -1,5 +1,5 @@
-\documentclass{iopconfser}
-\usepackage{fancyhdr}
+\documentclass[withindex,glossary, techreport]{cam-thesis}
+\usepackage[numbers]{natbib}
 \usepackage{url}
 \usepackage{multicol}
 \usepackage{booktabs}
@@ -12,43 +12,35 @@
 \usepackage{float}
 \usepackage{breqn}
 
-
+% see 
+% https://www.cst.cam.ac.uk/teaching/masters/projects/acs/guidelines
 
 \begin{document}
 
-\title{Filter Wheel Design for Optimal Color Reconstruction}
-
-\author{Anonymous Authors}
-%\author{K D Fram$^{1}$, R K Mantiuk$^{1}$ and G D Finlayson$^{2}$}
-
-%\affil{$^1$Computer Science, University of Cambridge, Cambridge, UK}
-%\affil{$^2$Computing Sciences, University of East Anglia, Norwich, UK}
-
-%\email{kdf25@cam.ac.uk}
-
-%\begin{center}
-%    \centering
-%    \includegraphics[width=\linewidth]{media/front_page_plot2.png}
-    %\captionof{figure}{}
-%\end{center}
 
 \input{sections/0_abstract.tex}
 \begin{multicols}{2}
+\setcounter{chapter}{1}
 \input{sections/1_intro.tex}
+\setcounter{chapter}{2}
 \input{sections/2_related_work.tex}
+\setcounter{chapter}{3}
 \input{sections/3_method.tex}
+\setcounter{chapter}{4}
 \input{sections/4_evaluation.tex}
+\setcounter{chapter}{5}
 \input{sections/5_conclusion.tex}
 \end{multicols}
 
 \newpage
 
 \addcontentsline{toc}{section}{References}
-\fancyfoot[C]{Page \thepage\ of \pageref{endOfDoc}}
+
 \bibliography{document.bib} 
 \bibliographystyle{ieeetr}
-%\newpage
-%\input{sections/6_appendix.tex}
+\newpage
+\setcounter{chapter}{6}
+\input{sections/6_appendix.tex}
 
 \end{document}
 

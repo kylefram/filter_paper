@@ -49,11 +49,21 @@ L.~T. Sharpe, A.~Stockman, W.~Jagla, and H.~J{\"a}gle, ``A luminous efficiency f
 \bibitem{von1927gebiet}
 R.~Von~Luther, ``Aus dem gebiet der farbreizmetrik,'' {\em Zeitschrift fur Technishe Physik}, vol.~12, pp.~540--558, 1927.
 
-\bibitem{morales2020multispectral}
-A.~Morales, R.~Guerra, P.~Horstrand, M.~Diaz, A.~Jimenez, J.~Melian, S.~Lopez, and J.~F. Lopez, ``A multispectral camera development: From the prototype assembly until its use in a uav system,'' {\em Sensors}, vol.~20, no.~21, p.~6129, 2020.
+\bibitem{USGSLandsat1}
+{U.S. Geological Survey}, ``Landsat 1.'' \url{https://www.usgs.gov/landsat-missions/landsat-1}, 2022.
+\newblock Accessed: 2025-05-20.
 
-\bibitem{lapray2014multispectral}
-P.-J. Lapray, X.~Wang, J.-B. Thomas, and P.~Gouton, ``Multispectral filter arrays: Recent advances and practical implementation,'' {\em Sensors}, vol.~14, no.~11, pp.~21626--21659, 2014.
+\bibitem{551700}
+P.~Vora and H.~Trussell, ``Mathematical methods for the design of color scanning filters,'' {\em IEEE Transactions on Image Processing}, vol.~6, no.~2, pp.~312--320, 1997.
+
+\bibitem{vrhel1995design}
+M.~J. Vrhel, H.~J. Trussell, and J.~Bosch, ``Design and realization of optimal color filters for multi-illuminant color correction,'' {\em Journal of Electronic Imaging}, vol.~4, no.~1, pp.~6--14, 1995.
+
+\bibitem{1673444}
+D.-Y. Ng and J.~Allebach, ``A subspace matching color filter design methodology for a multispectral imaging system,'' {\em IEEE Transactions on Image Processing}, vol.~15, no.~9, pp.~2631--2643, 2006.
+
+\bibitem{finlayson2020designing}
+G.~D. Finlayson and Y.~Zhu, ``Designing color filters that make cameras more colorimetric,'' {\em IEEE Transactions on Image Processing}, vol.~30, pp.~853--867, 2020.
 
 \bibitem{gao2024color}
 H.~Gao, R.~K. Mantiuk, and G.~D. Finlayson, ``Color-accurate camera capture with multispectral illumination and multiple exposures,'' in {\em Computer Graphics Forum}, vol.~43, p.~e15252, Wiley Online Library, 2024.
@@ -61,8 +71,23 @@ H.~Gao, R.~K. Mantiuk, and G.~D. Finlayson, ``Color-accurate camera capture with
 \bibitem{ives1915transformation}
 H.~E. Ives, ``The transformation of color-mixture equations from one system to another,'' {\em Journal of the Franklin Institute}, vol.~180, no.~6, pp.~673--701, 1915.
 
-\bibitem{finlayson2020designing}
-G.~D. Finlayson and Y.~Zhu, ``Designing color filters that make cameras more colorimetric,'' {\em IEEE Transactions on Image Processing}, vol.~30, pp.~853--867, 2020.
+\bibitem{hanji2020noise}
+P.~Hanji, F.~Zhong, and R.~K. Mantiuk, ``Noise-aware merging of high dynamic range image stacks without camera calibration,'' in {\em European Conference on Computer Vision}, pp.~376--391, Springer, 2020.
+
+\bibitem{akyuz2007noise}
+A.~O. Aky{\"u}z and E.~Reinhard, ``Noise reduction in high dynamic range imaging,'' {\em Journal of Visual Communication and Image Representation}, vol.~18, no.~5, pp.~366--376, 2007.
+
+\bibitem{mann1994beingundigital}
+S.~Mann and R.~Picard, ``Beingundigital’with digital cameras,'' {\em MIT Media Lab Perceptual}, vol.~1, no.~2, p.~3, 1994.
+
+\bibitem{sidiropoulos1994optimal}
+N.~D. Sidiropoulos, J.~S. Baras, and C.~A. Berenstein, ``Optimal filtering of digital binary images corrupted by union/intersection noise,'' {\em IEEE transactions on image processing}, vol.~3, no.~4, pp.~382--403, 1994.
+
+\bibitem{lapray2014multispectral}
+P.-J. Lapray, X.~Wang, J.-B. Thomas, and P.~Gouton, ``Multispectral filter arrays: Recent advances and practical implementation,'' {\em Sensors}, vol.~14, no.~11, pp.~21626--21659, 2014.
+
+\bibitem{morales2020multispectral}
+A.~Morales, R.~Guerra, P.~Horstrand, M.~Diaz, A.~Jimenez, J.~Melian, S.~Lopez, and J.~F. Lopez, ``A multispectral camera development: From the prototype assembly until its use in a uav system,'' {\em Sensors}, vol.~20, no.~21, p.~6129, 2020.
 
 \bibitem{arducam_ov9281}
 {Arducam}, ``1mp ov9281/ov9282 global shutter camera,'' n.d.
@@ -71,6 +96,24 @@ G.~D. Finlayson and Y.~Zhu, ``Designing color filters that make cameras more col
 \bibitem{coligh_ircut_650nm}
 {Coligh}, ``Shortpass filter ir cut 650nm,'' n.d.
 \newblock Accessed: 2026-04-13.
+
+\bibitem{UtopiaCamLiliput}
+{Utopia Camera Services}, ``{IANIRO LILIPUT 300/650w - 650/300W Open Face Tungsten Light}.'' \url{https://utopiacam.com/en/shop/liliput-300650w/}, n.d.
+\newblock Accessed: 2026-05-15.
+
+\bibitem{CVRL}
+A.~Stockman and L.~T. Sharpe, ``Colour \& vision research laboratory (cvrl).'' \url{http://www.cvrl.org/}, n.d.
+\newblock Accessed: 2025-05-11.
+
+\bibitem{Pascale2006RGBCO}
+D.~Pascale, ``Rgb coordinates of the macbeth colorchecker,'' 2006.
+
+\bibitem{yasuma2010generalized}
+F.~Yasuma, T.~Mitsunaga, D.~Iso, and S.~K. Nayar, ``Generalized assorted pixel camera: postcapture control of resolution, dynamic range, and spectrum,'' {\em IEEE transactions on image processing}, vol.~19, no.~9, pp.~2241--2253, 2010.
+
+\bibitem{ThouslitePMCC}
+{Thousand Lights Lighting (Changzhou) Limited}, ``Preferred memory colour chart ({PMCC}).'' \url{https://thouslite.com/product_detail/1827.html}, 2023.
+\newblock Accessed: 2025-05-15.
 
 \bibitem{greville1960some}
 T.~N. Greville, ``Some applications of the pseudoinverse of a matrix,'' {\em SIAM review}, vol.~2, no.~1, pp.~15--22, 1960.
@@ -86,9 +129,6 @@ S.~G. Mallat and Z.~Zhang, ``Matching pursuits with time-frequency dictionaries,
 
 \bibitem{farnand2003using}
 S.~P. Farnand, ``Using [delta] e metrics for measuring color difference in hard copy pictorial images,'' in {\em Color Imaging VIII: Processing, Hardcopy, and Applications}, vol.~5008, pp.~109--118, SPIE, 2003.
-
-\bibitem{Pascale2006RGBCO}
-D.~Pascale, ``Rgb coordinates of the macbeth colorchecker,'' 2006.
 
 \bibitem{lindstrom2008delta}
 P.~Lindstr{\"o}m, ``Delta e blues: The science of color perception.,'' {\em Seybold Report: Analyzing Publishing Technologies}, vol.~8, no.~3, 2008.

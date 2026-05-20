@@ -12,13 +12,32 @@ Here, we simulate image capture through a set of colored filters and then combin
 Prior work has been limited by computational resources, and generally relies on heuristic measures to select filters \cite{Filterselection, vrhel1994filter}.
 We provide a minimal error reconstruction for the set of Rosco Supergel \cite{rosco_mycolor} filters.
 
-Further, we provide a framework for filter selection for any target spectral response function. 
+We construct a simulated camera using a Python-based infrastructure. 
+This consists of an image input, a transmission function, and a luminance, which produces an output as if our RaspberryPi camera captured the image.
+Additionally, the simulation includes modules to perform the filter selection task under different conditions and compare results of filter selection methodologies.
+This comparison relies upon a loss metric defined to guide the filter selection, and a $\Delta E_{2000}$ measure to compare reconstruction results of filter selection. 
+Additionally, we output spectral image simulations for a qualitative comparison of our images. 
+
+We are able to consider a larger set of filters as well as a layering of multiple filters in series by deploying our filter selection method and simulated camera on multiple GPUs and parallelizing our search. 
+Further, we examine the reconstruction quality as a function of $k$ filters included in our filter wheel, as well as the tradeoff between reconstruction quality and filter selection runtime of various heuristic filter selection algorithms. 
+
+Next, we provide a framework for filter selection for any target spectral response function. 
 By generalizing our target function, we allow for applications beyond RGB reconstruction, such as hyperspectral and multispectral imaging, or even non-imaging applications such as spectral sensing.
 Additionally, we explore the performance of our system under different human eye color matching functions, such as CIE 1931 \cite{1931TrOS...33...73S} and $V^{*}(\lambda)$ \cite{sharpe2005luminous}. 
 In the analysis of human eye color matching functions, we approach Luther Condition Compliance, which is the condition that a camera's spectral sensitivity functions are a linear transformation of the human eye's color matching functions \cite{von1927gebiet}.
 
-Finally, we show that our methodology provides accurate reconstruction by evaluating the 24 Macbeth Color Checker patches and computing $\Delta E_{2000}$ under standard illuminant for the CIE 2006 XYZ target functions. 
+We show that our methodology provides accurate reconstruction by evaluating the 24 Macbeth Color Checker patches and computing $\Delta E_{2000}$ under standard illuminant for the CIE 2006 XYZ target functions. 
 We compute the relationship between number of filters $k$ and minimum $\Delta E_{2000}$.
+
+% IF COMPLETE: Real Camera section
+We capture images in a controlled luminance setting using the RaspberryPi camera and report on the results of different $k$ number of filters. 
+We are able to evaluate the simulated selections in a real world environment, albeit a controlled lighting environment, again providing a comprable evaluation versus our simulated spectral dataset provided by the CAVE dataset. 
+The camera captures a scene including a Preferred Memory Color Chart Reader, an improvement on the Macbeth color checker patches, and we use this as a baseline to evaluate the quality of our deployed system. 
+%INCLUDE BIT ABOUT ACTUALLY USING THE CAMERA, IF DONE 
+
+Understanding that camera capture varies significantly in differing lighting conditions, we incorporate a noise model in our framework.
+We develop an addendum to our loss function framework which incorporates camera noise in the reconstruction quality and allows us to vary the filter set based on expected capture noisiness.
+Conceptually, this noise is a function of photonic arrival into our camera sensor, motivating our analysis over varying brightness setups, or equivalently, exposure times. 
 
 
 

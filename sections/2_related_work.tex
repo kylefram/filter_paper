@@ -1,9 +1,25 @@
 \section{Related Work}
+Our work combines concepts from color science, optics, light science, and camera hardware to construct a full camera capture hardware and software stack. 
+We build upon a vast preexisting literature on the multispectral filter wheel schematic, with notable implementations dating back to 1972 and prior with NASA's Landsat 1 \cite{mannheimer1977landsat, USGSLandsat1} multispectral geological imaging system. 
+Advances in camera, microcontroller, and 3D printing technologies enable us to deploy a relatively cheap multispectral filter wheel camera, which we claim can replicate results of state of the art cameras, albeit hindered by slow image capture speeds. 
+Additionally, our platform can be deployed across a range of functional use cases, and while we focus on the replication of the human eye response function, we develop our methodology with the understanding that our platform may be used for other multispectral use cases with a quick replacement of some filters. 
+Therefore, we include a section of broad multispectral imaging applications for which we may deploy our camera. 
+
 \subsection{Filter Wheel Design}
 
-The spinning filter wheel construct provides an inexpensive solution when unconstrained by capture duration, such as in the imaging of  fine art and agriculture. 
-Morales et al. \cite{morales2020multispectral} demonstrate a bandpass filter wheel utilized for precision agriculture applications, and Scutelnic et al. \cite{SCUTELNIC2024e00596} propose a similar filter wheel construct to build a relatively low cost sensor array. 
-Lapray et al. \cite{lapray2014multispectral} provide an overview of multispectral imaging technologies as well as their costs, providing a benchmark for our work. 
+The spinning filter wheel construct provides an inexpensive solution when unconstrained by capture duration, such as in the imaging of fine art and agriculture. 
+Hardeberg \cite{Filterselection} devises and deploys a multispectral filter wheel apparatus, including a section on filter selection methodology. 
+This work also provides a benchmark for our system's $Delta E_{2000}$ and error results, for which we will elaborate upon in section 3. 
+
+\subsection{Filter Design}
+
+High-quality filter-based multispectral imaging systems rely upon a works in filter technologies and their respective quality and transmission metrics such as those derived by Vora, Trussell, and Vrhel \cite{vrhel1994filter,551700, vrhel1995design}. 
+Ng. and Allebach \cite{1673444} develop sufficient and necessary conditions for recovering accurate measurements of spectral reflectances and tristimulus values using a set of filters and the protocol for design of these filters.  
+Further advances in filter design include those done by Finlayson et al. \cite{finlayson2020designing}. 
+Another evaluation 
+
+\subsection{Spectral Reconstruction}
+
 
 \subsection{Image Response}
 Much of the existing literature on simulation of color matching functions relates to the CIE XYZ models of the human eye. 
@@ -12,41 +28,19 @@ This method achieves optimality only when we approach Luther Condition compliant
 We follow the work of Finlayson and Zhu \cite{finlayson2020designing} in their analysis of Luther-condition compliant filters. 
 However, rather than designing a specialized filter, we investigate whether we can approach Luther compliance by adding incrementally more generic filters to our filter wheel. 
 
-%%%% Alternate Math - Graham
-In our model we have a single grey-scale camera (only a brightness channel). Thus, our estimated new camera sensitivities are a function of the intrinsic sensitivities of this single channel camera multiplied by the filter transmittances.
-Let ${f}_k(\lambda)$ and $\boldsymbol{M}_c$ respectively denote $k$ filter functions multiplied by the camera sensor response and the $c$'th row of a $3 \times k$ matrix that linearly combines these filter functions (e.g. to best approximate the XYZ color matching functions). 
-Then the filtered color response, ${\rho}_{c,k}$ is written as:
+\subsection{Noise Model}
+While most of our laboratory experiments are done using D65 lighting, we design the system to be robust to other lighting environments.
+To this end, we must define the effect of camera noise as a function of lighting and exposure time, for which we rely upon work by Hanji et al \cite{hanji2020noise} to derive a simple Poisson noise estimator.
+In general, high dynamic range image systems \cite{akyuz2007noise, mann1994beingundigital, sidiropoulos1994optimal} have well defined noise estimation systems for multiple exposure image capture systems, providing a useful benchmark for our work. 
+Additionally, Sidiropoulos \cite{sidiropoulos1994optimal} specifically studies the effect of filtering systems and their noisiness with regards to multiple exposures. 
 
-%SUPERGEL PHOTO
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/measure2labeled.jpeg}
-    \caption{Filter measurement setup with spectrophotometer and Rosco Supergel filters.}
-\end{figure}
-
-\begin{equation}
-{\rho}_{c,k}=\int_\omega \mathbf{M}_c{f}_k(\lambda)E(\lambda)S(\lambda)d\lambda
-\end{equation}
-
-%The function $\rho'_c(\lambda)$ denotes a single estimated camera sensor where $c\in \{R,G,B\}$, $\rho'_c(\lambda)=\mathbf{M}_c\underline{f}(\lambda)$, where ${M}_c$ denotes the corresponding row of $\mathbf{M}$.
-In the optimizations that follow, we will solve for the R, G and B sensors that best approximate the actual X, Y and Z color matching function sensitivities, respectively referred to as $X_c \in \{X,Y,Z\}$.
-
-%%%%%% end of alternate math 
-
-%We define our camera's response for color channel $c\in \{R,G,B\}$ as the integral dot product between the corresponding row of $\boldsymbol{M}$ (defined $M_c$) and our selected filters' transmission functions $\underline{f}(\lambda)$.
-%Decomposing our camera's sensitivity function over the $c$'th color channel $Q_c(\lambda)$ we have: 
-%\begin{equation}
-  %  \rho_{c} = \int_{\omega} M_c\underline{f}(\lambda)E(\lambda)S(\lambda) d\lambda
-  %  \label{eq:2}
-%\end{equation}
-%And we define the integrand $\rho'_c$ as:
-%\begin{equation}
- %   \rho'_{c}(\lambda) = M_c\underline{f}(\lambda)E(\lambda)S(\lambda)
- %   \label{eq:3}
-%\end{equation}
+\subsection{Multispectral Imaging Applications}
+Lapray et al. \cite{lapray2014multispectral} provide an overview of multispectral imaging technologies as well as their costs, providing a cost benchmark for our work. 
+Morales et al. \cite{morales2020multispectral} demonstrate a bandpass filter wheel utilized for precision agriculture applications, and Scutelnic et al. \cite{SCUTELNIC2024e00596} propose a similar filter wheel construct to build a relatively low cost sensor array. 
 
 
-%\subsection{Following Work}
+\subsection{Following Work}
 
-%In the following section, we describe our methodology, from data collection to mathematical formalization to designing an optimized filter selection procedure. 
-%Next, we evaluate the performance of our procedure in context of our loss function as well as $\Delta E_{2000}$, for the CIE 1931 and CIE 2006 XYZ standard observers. 
-%We conclude with a discussion on the tradeoff between timing and performance for various use cases. 
+In the remaining sections of this paper, we describe our methodology, from data collection to mathematical formalization to designing an optimized filter selection procedure. 
+Next, we evaluate the performance of our procedure in context of our loss function as well as $\Delta E_{2000}$, for the CIE 1931 and CIE 2006 XYZ standard observers. 
+We conclude with a discussion on the tradeoff between timing and performance for various use cases. 

@@ -5,45 +5,45 @@ The style file: ieeetr.bst
 Database file #1: document.bib
 Warning--empty booktitle in Filterselection
 Warning--empty booktitle in Pascale2006RGBCO
-You've used 30 entries,
+You've used 42 entries,
             1876 wiz_defined-function locations,
-            672 strings with 8857 characters,
-and the built_in function-call counts, 8198 in all, are:
-= -- 837
-> -- 278
+            741 strings with 10841 characters,
+and the built_in function-call counts, 11349 in all, are:
+= -- 1172
+> -- 377
 < -- 0
-+ -- 107
-- -- 77
-* -- 557
-:= -- 1135
-add.period$ -- 33
-call.type$ -- 30
-change.case$ -- 30
++ -- 145
+- -- 103
+* -- 766
+:= -- 1563
+add.period$ -- 49
+call.type$ -- 42
+change.case$ -- 42
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 439
-empty$ -- 779
-format.name$ -- 77
-if$ -- 2028
+cite$ -- 44
+duplicate$ -- 589
+empty$ -- 1088
+format.name$ -- 103
+if$ -- 2819
 int.to.chr$ -- 0
-int.to.str$ -- 30
-missing$ -- 27
-newline$ -- 96
-num.names$ -- 30
-pop$ -- 95
+int.to.str$ -- 42
+missing$ -- 35
+newline$ -- 136
+num.names$ -- 42
+pop$ -- 133
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 320
+skip$ -- 440
 stack$ -- 0
-substring$ -- 545
-swap$ -- 195
+substring$ -- 766
+swap$ -- 261
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 83
-width$ -- 32
-write$ -- 303
+while$ -- 115
+width$ -- 44
+write$ -- 430
 (There were 2 warnings)

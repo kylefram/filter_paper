@@ -1,4 +1,63 @@
-\begin{abstract}\newline
+
+\begin{titlepage}
+
+    % 1. The Logo
+    \begin{flushleft}
+        \includegraphics[width=6cm]{media/CST.jpg} 
+    \end{flushleft}
+
+    % Vertical spacing to push the next text down
+    \vspace{3cm}
+
+    % 2. The Right-Aligned Course Name
+    \begin{flushright}
+        \color{darkgray}
+        \textbf{
+        \fontsize{20}{24}\selectfont % Custom large font size
+        Cambridge University MPhil Advanced Computer Science\\[0.2cm] % The \\[0.2cm] adds a little space between lines
+        \Large}
+    \end{flushright}
+
+    % Vertical spacing
+    \vspace{2.5cm}
+
+    \begin{flushleft}
+        \fontsize{24}{20}\selectfont
+        {Filter Wheel Design for Optimal Color Reconstruction}
+        % {Generative 3D Reconstruction of Sparse 2D Views Using Gaussian Splatting}
+    \end{flushleft}
+
+    % Vertical spacing
+    \vspace{1cm}
+
+    \begin{center}
+        \centering
+        \includegraphics[width=\linewidth]{media/front_page_plot2.png}
+        %\captionof{figure}{}
+    \end{center}
+
+    % 4. Author and Group Info
+    \begin{flushleft}
+        \color{black}
+        \normalsize
+        \textbf{Authors:}\\
+        Kyle Fram
+    \end{flushleft}
+
+    % Fill the rest of the page so the title page ends here
+    \vfill
+
+\end{titlepage}
+
+\thispagestyle{plain} 
+
+\begin{center}
+    \vspace*{0.3cm} 
+    {\Large \bfseries Abstract}
+    \vspace{0.25cm}
+\end{center}
+
+\begin{abstract}
 Spectral sensitivity functions of cameras with a fixed set of color filters often result in color measurements that do not match those captured by the human eye. 
 This can lead to inaccurate color reproduction in images, especially under certain lighting conditions.
 One solution to this problem is to use a filter wheel with a set of filters that can be combined to reconstruct specific color matching functions. 
