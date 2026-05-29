@@ -43,8 +43,9 @@ M.~J. Vrhel and H.~J. Trussell, ``Filter considerations in color correction,'' {
 \bibitem{1931TrOS...33...73S}
 T.~{Smith} and J.~{Guild}, ``{The C.I.E. colorimetric standards and their use},'' {\em Transactions of the Optical Society}, vol.~33, pp.~73--134, Jan. 1931.
 
-\bibitem{sharpe2005luminous}
-L.~T. Sharpe, A.~Stockman, W.~Jagla, and H.~J{\"a}gle, ``A luminous efficiency function, v*($\lambda$), for daylight adaptation,'' {\em Journal of vision}, vol.~5, no.~11, pp.~3--3, 2005.
+\bibitem{STOCKMAN201987}
+A.~Stockman, ``Cone fundamentals and cie standards,'' {\em Current Opinion in Behavioral Sciences}, vol.~30, pp.~87--93, 2019.
+\newblock Visual perception.
 
 \bibitem{von1927gebiet}
 R.~Von~Luther, ``Aus dem gebiet der farbreizmetrik,'' {\em Zeitschrift fur Technishe Physik}, vol.~12, pp.~540--558, 1927.
@@ -52,6 +53,33 @@ R.~Von~Luther, ``Aus dem gebiet der farbreizmetrik,'' {\em Zeitschrift fur Techn
 \bibitem{USGSLandsat1}
 {U.S. Geological Survey}, ``Landsat 1.'' \url{https://www.usgs.gov/landsat-missions/landsat-1}, 2022.
 \newblock Accessed: 2025-05-20.
+
+\bibitem{USGS2012MSS}
+{U.S. Geological Survey}, ``Landsat 1-5 multispectral scanner ({MSS}) image assessment system ({IAS}) radiometric algorithm description document ({ADD}),'' Technical Report LS-IAS-07, European Space Agency (ESA) Earth Online, 2012.
+\newblock Accessed: 2025-05-20.
+
+\bibitem{konig1998practice}
+F.~K{\"o}nig and W.~Praefcke, ``Practice of multispectral image acquisition,'' in {\em Electronic Imaging: Processing, Printing, and Publishing in Color}, vol.~3409, pp.~34--41, SPIE, 1998.
+
+\bibitem{greville1960some}
+T.~N. Greville, ``Some applications of the pseudoinverse of a matrix,'' {\em SIAM review}, vol.~2, no.~1, pp.~15--22, 1960.
+
+\bibitem{BEUTLER1965451}
+F.~J. Beutler, ``The operator theory of the pseudo-inverse i. bounded operators,'' {\em Journal of Mathematical Analysis and Applications}, vol.~10, no.~3, pp.~451--470, 1965.
+
+\bibitem{macausland2014moore}
+R.~MacAusland, ``The moore-penrose inverse and least squares,'' {\em Math 420: Advanced Topics in Linear Algebra}, vol.~551, pp.~1--10, 2014.
+
+\bibitem{mallat1993matching}
+S.~G. Mallat and Z.~Zhang, ``Matching pursuits with time-frequency dictionaries,'' {\em IEEE Transactions on signal processing}, vol.~41, no.~12, pp.~3397--3415, 1993.
+
+\bibitem{LAKSHMI2025297}
+M.~V. Lakshmi and J.~R. Winkler, ``Numerical properties of solutions of lasso regression,'' {\em Applied Numerical Mathematics}, vol.~208, pp.~297--309, 2025.
+\newblock Special Volume on Numerical Analysis and Scientific Computation with Applications.
+
+\bibitem{MEHTA20191}
+P.~Mehta, M.~Bukov, C.-H. Wang, A.~G. Day, C.~Richardson, C.~K. Fisher, and D.~J. Schwab, ``A high-bias, low-variance introduction to machine learning for physicists,'' {\em Physics Reports}, vol.~810, pp.~1--124, 2019.
+\newblock A high-bias, low-variance introduction to Machine Learning for physicists.
 
 \bibitem{551700}
 P.~Vora and H.~Trussell, ``Mathematical methods for the design of color scanning filters,'' {\em IEEE Transactions on Image Processing}, vol.~6, no.~2, pp.~312--320, 1997.
@@ -89,6 +117,55 @@ P.-J. Lapray, X.~Wang, J.-B. Thomas, and P.~Gouton, ``Multispectral filter array
 \bibitem{morales2020multispectral}
 A.~Morales, R.~Guerra, P.~Horstrand, M.~Diaz, A.~Jimenez, J.~Melian, S.~Lopez, and J.~F. Lopez, ``A multispectral camera development: From the prototype assembly until its use in a uav system,'' {\em Sensors}, vol.~20, no.~21, p.~6129, 2020.
 
+\bibitem{martinez1993high}
+K.~Martinez, J.~Cupitt, and D.~R. Saunders, ``High-resolution colorimetric imaging of paintings,'' in {\em Cameras, Scanners, and Image Acquisition Systems}, vol.~1901, pp.~25--36, SPIE, 1993.
+
+\bibitem{yokoyama1997new}
+Y.~Yokoyama, N.~Tsumura, H.~Haneishi, Y.~Miyake, J.~Hayashi, and M.~Saito, ``A new color management system based on human perception and its application to recording and reproduction of art paintings,'' in {\em Color and Imaging Conference}, vol.~5, pp.~169--172, Society of Imaging Science and Technology, 1997.
+
+\bibitem{eoPortalHISUI}
+{eoPortal Directory}, ``Iss utilization: {HISUI} (hyperspectral imager suite),'' 2017.
+\newblock Last updated: September 15, 2017; Accessed: 2026-05-21.
+
+\bibitem{Hunt18082018}
+E.~R.~H. Jr. and C.~S.~T. Daughtry, ``What good are unmanned aircraft systems for agricultural remote sensing and precision agriculture?,'' {\em International Journal of Remote Sensing}, vol.~39, no.~15-16, pp.~5345--5376, 2018.
+
+\bibitem{jimaging4120141}
+S.~Cadd, B.~Li, P.~Beveridge, W.~T. OHare, and M.~Islam, ``Age determination of blood-stained fingerprints using visible wavelength reflectance hyperspectral imaging,'' {\em Journal of Imaging}, vol.~4, no.~12, 2018.
+
+\bibitem{CADD2016181}
+S.~Cadd, B.~Li, P.~Beveridge, W.~T. OHare, A.~Campbell, and M.~Islam, ``The non-contact detection and identification of blood stained fingerprints using visible wavelength reflectance hyperspectral imaging: Part 1,'' {\em Science \& Justice}, vol.~56, no.~3, pp.~181--190, 2016.
+
+\bibitem{ALMEIDA2017628}
+M.~R. Almeida, L.~P.~L. Logrado, J.~J. Zacca, D.~N. Correa, and R.~J. Poppi, ``Raman hyperspectral imaging in conjunction with independent component analysis as a forensic tool for explosive analysis: The case of an atm explosion,'' {\em Talanta}, vol.~174, pp.~628--632, 2017.
+
+\bibitem{yasuma2010generalized}
+F.~Yasuma, T.~Mitsunaga, D.~Iso, and S.~K. Nayar, ``Generalized assorted pixel camera: postcapture control of resolution, dynamic range, and spectrum,'' {\em IEEE transactions on image processing}, vol.~19, no.~9, pp.~2241--2253, 2010.
+
+\bibitem{CVRL}
+A.~Stockman and L.~T. Sharpe, ``Colour \& vision research laboratory (cvrl).'' \url{http://www.cvrl.org/}, n.d.
+\newblock Accessed: 2025-05-11.
+
+\bibitem{Pascale2006RGBCO}
+D.~Pascale, ``Rgb coordinates of the macbeth colorchecker,'' 2006.
+
+\bibitem{XRiteColorChecker}
+{X-Rite}, ``Colorchecker classic.''
+\newblock Accessed: 2026-05-21.
+
+\bibitem{McCamy1976}
+C.~S. McCamy, H.~Marcus, and J.~G. Davidson, ``A color-rendition chart,'' {\em Journal of Applied Photographic Engineering}, vol.~2, no.~3, pp.~95--99, 1976.
+
+\bibitem{lindstrom2008delta}
+P.~Lindstr{\"o}m, ``Delta e blues: The science of color perception.,'' {\em Seybold Report: Analyzing Publishing Technologies}, vol.~8, no.~3, 2008.
+
+\bibitem{luo2024new}
+M.~R. Luo, ``The new preferred memory color (pmc) chart,'' {\em Color Research \& Application}, vol.~49, no.~6, pp.~564--576, 2024.
+
+\bibitem{ThouslitePMCC}
+{Thousand Lights Lighting (Changzhou) Limited}, ``Preferred memory colour chart ({PMCC}).'' \url{https://thouslite.com/product_detail/1827.html}, 2023.
+\newblock Accessed: 2025-05-15.
+
 \bibitem{arducam_ov9281}
 {Arducam}, ``1mp ov9281/ov9282 global shutter camera,'' n.d.
 \newblock Accessed: 2026-04-13.
@@ -101,36 +178,29 @@ A.~Morales, R.~Guerra, P.~Horstrand, M.~Diaz, A.~Jimenez, J.~Melian, S.~Lopez, a
 {Utopia Camera Services}, ``{IANIRO LILIPUT 300/650w - 650/300W Open Face Tungsten Light}.'' \url{https://utopiacam.com/en/shop/liliput-300650w/}, n.d.
 \newblock Accessed: 2026-05-15.
 
-\bibitem{CVRL}
-A.~Stockman and L.~T. Sharpe, ``Colour \& vision research laboratory (cvrl).'' \url{http://www.cvrl.org/}, n.d.
-\newblock Accessed: 2025-05-11.
+\bibitem{Thompson2022}
+J.~Thompson, ``Arducam case and mount for {USB} camera module.'' \url{https://www.printables.com/model/141039-arducam-case-and-mount-for-usb-camera-module}, 2022.
+\newblock Accessed: 2026-05-29.
 
-\bibitem{Pascale2006RGBCO}
-D.~Pascale, ``Rgb coordinates of the macbeth colorchecker,'' 2006.
+\bibitem{Stamos2024}
+Stamos, ``Raspberry {Pi} 5 case.'' \url{https://www.printables.com/model/742926-raspberry-pi-5-case}, 2024.
+\newblock Accessed: 2026-05-29.
 
-\bibitem{yasuma2010generalized}
-F.~Yasuma, T.~Mitsunaga, D.~Iso, and S.~K. Nayar, ``Generalized assorted pixel camera: postcapture control of resolution, dynamic range, and spectrum,'' {\em IEEE transactions on image processing}, vol.~19, no.~9, pp.~2241--2253, 2010.
+\bibitem{Baxcor2022}
+Baxcor, ``{MG996R} servo model.'' \url{https://www.printables.com/model/326713-mg996r-servo-model}, 2022.
+\newblock Accessed: 2026-05-29.
 
-\bibitem{ThouslitePMCC}
-{Thousand Lights Lighting (Changzhou) Limited}, ``Preferred memory colour chart ({PMCC}).'' \url{https://thouslite.com/product_detail/1827.html}, 2023.
-\newblock Accessed: 2025-05-15.
+\bibitem{PrusaMK4S}
+{Prusa Research}, ``Original {Prusa} {MK4S},'' 2024.
+\newblock Accessed: 2026-05-29.
 
-\bibitem{greville1960some}
-T.~N. Greville, ``Some applications of the pseudoinverse of a matrix,'' {\em SIAM review}, vol.~2, no.~1, pp.~15--22, 1960.
+\bibitem{Kopovaetal2024}
+B.~Kopov\'{a}, M.~Bake\v{s}, M.~\v{C}\'{i}\v{z}ek, A.~Hork\'{y}, J.~Dvo\v{r}\'{a}k, K.~R\'{a}\v{z}, and Z.~Chval, ``Development and production of a children’s upper-limb cycling adapter using 3d printing,'' {\em Materials}, vol.~17, no.~19, p.~4731, 2024.
 
-\bibitem{BEUTLER1965451}
-F.~J. Beutler, ``The operator theory of the pseudo-inverse i. bounded operators,'' {\em Journal of Mathematical Analysis and Applications}, vol.~10, no.~3, pp.~451--470, 1965.
-
-\bibitem{macausland2014moore}
-R.~MacAusland, ``The moore-penrose inverse and least squares,'' {\em Math 420: Advanced Topics in Linear Algebra}, vol.~551, pp.~1--10, 2014.
-
-\bibitem{mallat1993matching}
-S.~G. Mallat and Z.~Zhang, ``Matching pursuits with time-frequency dictionaries,'' {\em IEEE Transactions on signal processing}, vol.~41, no.~12, pp.~3397--3415, 1993.
+\bibitem{Zeidanetal2024}
+A.~M. Zeidan, Z.~Xu, L.~Leung, C.~Byrne, S.~Sabu, Y.~Zhou, C.~A. Rinaldi, J.~Whitaker, S.~E. Williams, J.~Behar, A.~Arujuna, R.~J. Housden, and K.~Rhode, ``An anthropomorphic phantom for atrial transseptal puncture simulation training,'' {\em 3D Printing in Medicine}, vol.~10, 2024.
 
 \bibitem{farnand2003using}
 S.~P. Farnand, ``Using [delta] e metrics for measuring color difference in hard copy pictorial images,'' in {\em Color Imaging VIII: Processing, Hardcopy, and Applications}, vol.~5008, pp.~109--118, SPIE, 2003.
-
-\bibitem{lindstrom2008delta}
-P.~Lindstr{\"o}m, ``Delta e blues: The science of color perception.,'' {\em Seybold Report: Analyzing Publishing Technologies}, vol.~8, no.~3, 2008.
 
 \end{thebibliography}

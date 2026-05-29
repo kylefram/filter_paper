@@ -1,5 +1,5 @@
 
-\section{Appendix}
+\chapter{Appendix}
 
 We include the timing records of our filter selection. 
 Both routines were run on NVIDIA GPU environment with the Brute Force run pruned to cosine similarity of .95 and able to utilize 8 GPUs. 
@@ -51,7 +51,7 @@ Conversely, the PCA algorithm used one GPU for calculation and 8 GPUs only for t
 
 \end{table}
 \newpage
-We also include the full loss and $\Delta E_{2000}$ results. 
+We also include the full loss and $\Delta E_{00}$ results. 
 Note that 'Brute Force with Augmentation' considers additional filters to only the top result at $k_1$, and hence can have worse MSE than the PCA solution, which maximizes for orthogonality among filters. 
 
 \begin{table}[htbp]

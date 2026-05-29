@@ -3,47 +3,51 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: ieeetr.bst
 Database file #1: document.bib
+Warning--entry type for "XRiteColorChecker" isn't style-file defined
+--line 178 of file document.bib
+Warning--entry type for "eoPortalHISUI" isn't style-file defined
+--line 417 of file document.bib
 Warning--empty booktitle in Filterselection
 Warning--empty booktitle in Pascale2006RGBCO
-You've used 42 entries,
+You've used 62 entries,
             1876 wiz_defined-function locations,
-            741 strings with 10841 characters,
-and the built_in function-call counts, 11349 in all, are:
-= -- 1172
-> -- 377
-< -- 0
-+ -- 145
-- -- 103
-* -- 766
-:= -- 1563
-add.period$ -- 49
-call.type$ -- 42
-change.case$ -- 42
+            870 strings with 14891 characters,
+and the built_in function-call counts, 16524 in all, are:
+= -- 1677
+> -- 606
+< -- 1
++ -- 231
+- -- 169
+* -- 1126
+:= -- 2309
+add.period$ -- 78
+call.type$ -- 62
+change.case$ -- 62
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 589
-empty$ -- 1088
-format.name$ -- 103
-if$ -- 2819
+cite$ -- 64
+duplicate$ -- 828
+empty$ -- 1578
+format.name$ -- 169
+if$ -- 4087
 int.to.chr$ -- 0
-int.to.str$ -- 42
-missing$ -- 35
-newline$ -- 136
-num.names$ -- 42
-pop$ -- 133
+int.to.str$ -- 62
+missing$ -- 48
+newline$ -- 206
+num.names$ -- 62
+pop$ -- 204
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 440
+skip$ -- 614
 stack$ -- 0
-substring$ -- 766
-swap$ -- 261
-text.length$ -- 0
+substring$ -- 1056
+swap$ -- 357
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 115
-width$ -- 44
-write$ -- 430
-(There were 2 warnings)
+while$ -- 161
+width$ -- 64
+write$ -- 639
+(There were 4 warnings)

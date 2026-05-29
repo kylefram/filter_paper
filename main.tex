@@ -1,11 +1,15 @@
 \documentclass[withindex,glossary, techreport]{cam-thesis}
 \usepackage[numbers]{natbib}
 \usepackage{url}
-\usepackage{multicol}
+%\usepackage{multicol}
 \usepackage{booktabs}
+\usepackage{amssymb}
 \usepackage{amsmath}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \usepackage{caption}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{xcolor}
@@ -19,18 +23,11 @@
 
 
 \input{sections/0_abstract.tex}
-\begin{multicols}{2}
-\setcounter{chapter}{1}
 \input{sections/1_intro.tex}
-\setcounter{chapter}{2}
 \input{sections/2_related_work.tex}
-\setcounter{chapter}{3}
 \input{sections/3_method.tex}
-\setcounter{chapter}{4}
 \input{sections/4_evaluation.tex}
-\setcounter{chapter}{5}
 \input{sections/5_conclusion.tex}
-\end{multicols}
 
 \newpage
 

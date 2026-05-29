@@ -1,44 +1,24 @@
-\section{Method}
-
+\chapter{Method}
 The following section outlines the structure of the project, from theoretical formulation, to data acquisition, to lab testing, to deployment. 
 The camera pipeline is first developed in a simulated environment, with spectral transmission functions acquired from producer specifications and camera sensitivity functions acquired in the same way. 
 Thus, a full simulation of our camera can be deployed on multispectral image sets and tested in our filter selection harness.
 Later, measurements of a subset of filters are taken in the lab, a measurement of camera spectral sensitivity function is also done in the same controlled lighting environment as the filter measurements, and captures are taken of a Preferred Memory Color Chart (PMCC) for quantitative analysis. 
 
-\subsection{Mathematical Framework}
-
-%%%% Alternate Math - Graham
-In our model we have a single grey-scale camera (only a brightness channel). Thus, our estimated new camera sensitivities are a function of the intrinsic sensitivities of this single channel camera multiplied by the filter transmittances.
-Let ${f}_k(\lambda)$ and $\boldsymbol{M}_c$ respectively denote $k$ filter functions multiplied by the camera sensor response and the $c$'th row of a $3 \times k$ matrix that linearly combines these filter functions (e.g. to best approximate the XYZ color matching functions). 
-Then the filtered color response, ${\rho}_{c,k}$ is written as:
-
-
+\section{Mathematical Framework}
+In our model, we have a single grey-scale camera (only a brightness channel). Thus, our estimated new camera sensitivities are a function of the intrinsic sensitivities of this single-channel camera multiplied by the filter transmittance.
+Let $f_i(\lambda)$ respectively denote the $i$'th filter's spectral transmission function, and let $m_{c,i}$ denote the transformation weights for combining the $i$'th filter into color channel $c$ (e.g. to best approximate the XYZ color matching functions). 
+Then the effective spectral camera sensitivity function $\theta_c$ can be written as:
 \begin{equation}
-{\rho}_{c,k}=\int_\omega \mathbf{M}_c{f}_k(\lambda)E(\lambda)S(\lambda)d\lambda
+\theta_{c}(\lambda)= \sum_{i \in I} m_{c,i}{f}_i(\lambda)\sigma(\lambda)
 \end{equation}
+where $I$ denotes the set of $k$ indices from our set of $N$ filters and $\sigma(\lambda)$ denotes the sensor's spectral sensitivity function.
 
-Where $E(\lambda)$ is the spectral reflectance function and $S(\lambda)$ is the camera spectral sensitivity function. 
-
-%The function $\rho'_c(\lambda)$ denotes a single estimated camera sensor where $c\in \{R,G,B\}$, $\rho'_c(\lambda)=\mathbf{M}_c\underline{f}(\lambda)$, where ${M}_c$ denotes the corresponding row of $\mathbf{M}$.
-In the optimizations that follow, we will solve for the R, G and B sensors that best approximate the actual X, Y and Z color matching function sensitivities, respectively referred to as $X_c \in \{X,Y,Z\}$.
-
-%%%%%% end of alternate math 
-
-%We define our camera's response for color channel $c\in \{R,G,B\}$ as the integral dot product between the corresponding row of $\boldsymbol{M}$ (defined $M_c$) and our selected filters' transmission functions $\underline{f}(\lambda)$.
-%Decomposing our camera's sensitivity function over the $c$'th color channel $Q_c(\lambda)$ we have: 
-%\begin{equation}
-  %  \rho_{c} = \int_{\omega} M_c\underline{f}(\lambda)E(\lambda)S(\lambda) d\lambda
-  %  \label{eq:2}
-%\end{equation}
-%And we define the integrand $\rho'_c$ as:
-%\begin{equation}
- %   \rho'_{c}(\lambda) = M_c\underline{f}(\lambda)E(\lambda)S(\lambda)
- %   \label{eq:3}
-%\end{equation}
+In the optimizations that follow, we will solve for the R, G and B sensors that best approximate the actual X, Y and Z color matching function sensitivities, respectively referred to as $x_c \in \{X,Y,Z\}$.
 
 
 
-\subsection{Data Collection}
+
+\section{Data Collection}
 The aim of our method is to capture multiple images through different color filters and then combine them to match the colors of an image of a scene captured with respect to the CIE XYZ color matching functions (CMFs). 
 We will choose filters drawn from a set of Rosco Supergel filters that we measure in our lab. 
 We model our camera's and optional NOIR filter's spectral response function as per the manufacturer's specifications \cite{arducam_ov9281, coligh_ircut_650nm}
@@ -48,33 +28,42 @@ First, we gather a set of 494 filters from the Rosco Supergel MyColor tool \cite
 Rosco provides a specification sheet and spectral response function for each filter in the MyColor catalog.
 
 \begin{figure}[H]
+\centering
+
+\begin{subfigure}{.49\linewidth}
+    \centering
     \includegraphics[width=\linewidth]{media/E036_Spec.jpg}
-    \caption{Specification Sheet for Filter 'E036'}
-\end{figure}
-
-We utilize a web scraping script to pull the spec sheets of all 494 filters from the MyColor tool and approximate the spectral response functions from the chart. 
-We compute a transmission function estimate from the attached spec sheet for each filter, and save the transmittance at each discrete wavelength $\lambda$ within $\omega$ denoted as $\omega_d = \{400,401,...750\}$
-
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/E036.png}
-    \caption{Spectral transmission function for $\lambda \in \omega_d$ for MyColor tool filter 'E306'}
+    \caption{Example filter specification sheet from MyColor}
+\end{subfigure}%
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/RaspberryPi_trans.png}
+    \caption{Monochrome camera transmission function for $\lambda \in [400,1000]$}
+\end{subfigure}
+\caption{Scraped and measured spectral transmission functions}
+%TOO SMALL???
 \end{figure}
 
 We utilize a similar approach for our simulated camera, acquired from Arducam \cite{arducam_ov9281}. 
 The various specification sheets generally provide full cover over $\omega_d$. 
-
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/RaspberryPi_trans.png}
-    \caption{Monochrome camera transmission function for $\lambda \in [400,1000]$}
-\end{figure}
 
 The simulated set of 494 filters from the MyColor tool cover a large space, useful for finding a best-case-scenario when nearly unconstrained by transmission function. 
 In reality, we have a set of 119 filters to choose from, which will be sufficient for practical results.
 We use a dark room, Lilliput lamp \cite{UtopiaCamLiliput}, and a spectrophotometer to measure the transmission functions of our set of filters. 
 
 \begin{figure}[H]
+\centering
+\begin{subfigure}{.45\linewidth}[H]
+    \centering
     \includegraphics[width=\linewidth]{media/Gels.jpeg}
-    \caption{Set of 119 Supergel Filters with \#02 on stage}
+    \caption{Set of 119 Supergel filters with \#02 on stage}
+\end{subfigure}%
+\begin{subfigure}{.45\linewidth}[H]
+    \centering
+    \includegraphics[width=\linewidth]{media/measure2labeled.jpeg}
+    \caption{Filter measurement setup with spectrophotometer and Supergel filters}
+\end{subfigure}%
+\caption{Filter set, Spectrophotometer setup and measurement workflow}
 \end{figure}
 
 We set up a stage consisting of an overhead illuminant, a reflective surface placed at a 45º angle, and a spectrophotometer pointed at the stage. 
@@ -82,134 +71,127 @@ The stage is placed at a 45º angle to the lamp above, with the spectrophotomete
 The spectrophotometer takes a luminance reading at each wavelength from 350-1000, as well as a measurement of $x$ and $y$, from which the XYZ color coordinates may be derived. 
 For this case, we are interested in calculating the transmission function of each filter, so we care about the luminance reading, but further applications of the spectrophotometer, specifically the $x$ and $y$ reading will be discussed below. 
 
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/304.png}
-    \caption{Measurement of Supergel filter \#304 for $\lambda \in \omega_d$}
-\end{figure}
-
 Brightness in the room was controlled by covering the walls with black felt and ensuring that the computer monitor was pointed away from the stage. 
 The spectrophotometer is equipped with a laser to ensure accuracy in measurement, and each filter was placed flush against the stage for measurement. 
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/measure2labeled.jpeg}
-    \caption{Filter measurement setup with spectrophotometer and Rosco Supergel filters.}
-\end{figure}
-
-The stage and illuminant can be seen on the left below, with the control panel and transmission function readout on the right. 
-The results of each scan are saved into a $.mat$ file at 1 nanometer increments, along with a few calibration runs with no filter present.
-
-\begin{figure}[H]
+    \centering
     \includegraphics[width=\linewidth]{media/Measure3.jpeg}
-    \caption{Computer readout of spectrophotometer measurement in dark room}
+    \caption{Computer readout of spectrophotometer measurement session}
 \end{figure}
+
+The stage and illuminant can be seen on the left above, with the control panel and transmission function readout on the right. 
+The results of each scan are saved into a $.mat$ file at 1 nanometer increments, along with a few calibration runs with no filter present.
 
 For our target functions, we utilize the UCL Color \& Vision Research Laboratory repository of cone and rod sensitivity functions \cite{CVRL}, including CIE XYZ 1931 and CIE 2006 LMS functions (transformed to XYZ for consistency).
 
-We also benchmark our performance by computing $\Delta E_{2000}$ using the RGB coordinates of the Macbeth ColorChecker as per Pascale \cite{Pascale2006RGBCO}. 
+We also benchmark our performance by computing $\Delta E_{00}$ using the RGB coordinates of the Macbeth ColorChecker as per Pascale \cite{Pascale2006RGBCO}. 
 For a demonstration of color reconstruction across scenes, we utilize the CAVE dataset from Yasuma et al. \cite{yasuma2010generalized}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/Cave_DataCollection.png}
-    \caption{Example of a simulated reconstruction from the CAVE dataset for $k=2$ filters}
+\centering
+
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/Spectrophotometer2.jpeg}
+    \caption{Items staged for color capture, including a PMCC}
+\end{subfigure}%
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/spectralLab.jpeg}
+    \caption{Lab setup for multispectral imaging with illuminant}
+\end{subfigure}
+\caption{Simulation dataset and laboratory replication setup.}
 \end{figure}
 
 Next, we replicate the above simulated spectral reconstruction in the lab, capturing a scene including one Preferred Memory Color Chart \cite{ThouslitePMCC} under the same Lilliput illuminant \cite{UtopiaCamLiliput}.
-
-
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/spectralLab.jpeg}
-    \caption{Lab setup for multispectral imaging with illuminant}
-\end{figure}
 
 To this end, each filter was placed in front of the camera, mounted onto a tripod and aimed at a scene including objects of different reflectances and colors. 
 Additionally, the PMCC was placed at the front of the scene for easy quantitative color analysis. 
 The camera was kept in place such that we could pick one pixel per capture for which to measure each color patch under each respective filter. 
 
 \begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
     \includegraphics[width=\linewidth]{media/398.jpg}
-    \caption{Capture of filter \#398 from monochrome camera, including PMCC in the foreground}
-\end{figure}
-
-Other items were placed in frame as well for qualitative reivew, a subset are shown in detail. 
-
-\begin{figure}[H]
+    \caption{Capture of filter \#398, including PMCC in the foreground}
+\end{subfigure}%
+\begin{subfigure}{.49\linewidth}
+    \centering
     \includegraphics[width=\linewidth]{media/items.jpeg}
     \caption{Subset of items staged for color capture}
+\end{subfigure}
+\caption{Example captures used for qualitative evaluation.}
 \end{figure}
 
 Ground truth measurements were taken with the same spectrophotometer as above, under consistent angular setup and the same lighting. 
 Each panel of the SPD was captured in order to compute absolute colorimetric difference between spectral reconstruction and ground truth. 
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/Spectrophotometer2.jpeg}
-    \caption{Items staged for color capture, including a PMC}
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/colorcheck_render.png}
+    \caption{X-rite 'Macbeth' color Checker}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/PMCC_online.png}
+    \caption{Preferred Memory Color Chart}
+\end{subfigure}
+\caption{2 different types of color checkers}
 \end{figure}
 
 A render of the readings taken with the spectrophotometer is shown, providing a human-eye check that our readings were taken correctly. 
 The white patch provided a white point and other patches were rendered after normalizing to this white, taking the illuminant as D65.
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/colorcheck_render.png}
-    \caption{Render of Spectrophotometer Readings}
-\end{figure}
 
-We plot the color patches on the standard XYZ gamut for illustration.
+We plot the color patches on the standard 1931 XYZ color gamut for illustration.
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{media/colorcheck_chromacity.png}
-    \caption{Distribution of patch locations on the CIE 1931 Color Gamut}
+\centering
+\includegraphics[width=.6\linewidth]{media/colorcheck_chromacity.png}
+\caption{Distribution of patch locations on the CIE 1931 color gamut}
 \end{figure}
 
 
-\subsection{Problem Formulation}
+\section{Problem Formulation}
 
-For approximations of XYZ, we follow the work of Hardeberg \cite{Filterselection} in adopting MSE between target and simulation over the visible spectrum as the loss function and minimizing loss via search for an optimal $\boldsymbol{M}$.
-%Abstractly, we denote the loss function $L(\boldsymbol{x}(\lambda),\boldsymbol{y}(\lambda))$ for arbitrary target $\boldsymbol{x}(\lambda)$ to be approximated by the estimation (i.e. combination of filter wheel sensitivities) as $\boldsymbol{y}(\lambda)$ (to be solved for) defined over the domain $\lambda \in \omega$. 
+For approximations of XYZ, we follow the work of Hardeberg \cite{Filterselection} in adopting MSE loss between target and simulation over the visible spectrum as the loss function and minimizing loss via search for an optimal $\boldsymbol{M}$, the $3 \times k$ matrix of $m_{c,i}$ transformation weights. For each color channel $c$ we have MSE loss $L_c$ as:
 
 \begin{equation}
-    L({X_c}(\lambda),{\rho}_{c,k}(\lambda)) = \int_{\omega}\|{X_c}(\lambda)-{\rho}_{c,k}(\lambda)\| d\lambda
+    L_c = \int_{\omega}\|{x_c}(\lambda)-\theta_c(\lambda)\|_2 d\lambda
     \label{eq:5}
 \end{equation}
 
-%% Kyle, why not put x rather than t
-%%% - KYLE: this statement is redundant and adds confusion, likely easier to omit.
-%%%We take $t \in \{X,Y,Z\}$ as our target color matching functions and 
-%% Kyle added y(\lambda)=
-%%%$y(\lambda)=\rho'_c(\lambda)$ with $c\in \{R,G,B\}$ as our simulated functions. 
-We consider loss from all color channels equally. Given that we are limited by 1 nanometer steps in measurement, we discretize over $\omega$, taking $\omega_d = \{400,401...750\}$. We sum MSE over $\omega_d$ to compute our total error, and then sum over each response function:
+Given that we are limited by 1 nanometer steps in measurement, we discretize over $\omega$, taking $\omega_d = \{400,401...750\}$, and functions having arguments in brackets representing functions, for example $\theta_c[\lambda]$, evaluated over discrete domain. We take $MSE$ loss over $\omega_d$ to compute our total loss per color channel:
 
 \begin{equation}
-    L_d({X_c}(\lambda),\rho_{c,k}(\lambda)) = \sum_{\lambda \in \omega_d}\|{X_c}(\lambda)-{\rho}_{c,k}(\lambda)\|
+    L_c = \frac{1}{| \omega_d |}\sum_{\lambda \in \omega_d}\|{x_c}[\lambda]-\theta_{c}[\lambda]\|_2
     \label{eq:6}
 \end{equation}
 
-We minimize loss by selection of $k$ representing our $N$ `active' filters (which incorporate the intrinsic sensitivity of a grey-scale sensor) each having transmission functions ${f}_k(\lambda)$ (thus comprising a $k$ length vector of functions), and $\boldsymbol{M}$, a $3\times k$ color correction matrix. 
-We also define $\underline{X}(\lambda)$ as the $X,Y,$ and $Z$ functions, and $\underline{\rho}$ as the corresponding simulated response functions, with $\underline{f}(\lambda)$ as the stacked $f_k(\lambda)$ functions. 
+We consider loss from all color channels equally, and minimize $\sum_c L_c$ by choosing $\boldsymbol{M}$ for a set of $I$ `active' filters, each having transmission functions $f_i[\lambda]$ over $\omega_d$, thus comprising a $k$ length vector of functions.
+Omitting the constant $\frac{1}{|\omega_d|}$, we have for each set of filters $I$:
 
 \begin{equation}
-    \argmin_{\mathbf{M}} \sum_{\{X,Y,Z\}} L_d(\underline{X}(\lambda),\underline{\rho}(\lambda))
+    \argmin_{\mathbf{M}} \sum_c \sum_{\lambda \in \omega_d}\|{x_c}[\lambda]-\sum_{i \in I}m_{c,i}{f}_i[\lambda]\sigma[\lambda]\|_2
     \label{eq:7}
 \end{equation}
 
+We define $\boldsymbol{F}$ as the stacked and discretized $k\times 351$ matrix of $f_i[\lambda]\sigma[\lambda]$ measured at each $\lambda \in \omega_d$. 
+And the discretized set of $3 \times 351$ XYZ functions as $\mathbf{X}$. 
 
-%In this case, the optimal weights can be found using the pseudo-inverse \cite{greville1960some, BEUTLER1965451, macausland2014moore}.
-We define $\boldsymbol{F}$ as the $k\times 351$ matrix $\underline{f}(\lambda)E(\lambda)S(\lambda)$ at each $\lambda \in \omega_d$. 
-And the discrete set of $3 \times 351$ XYZ functions as $\mathbf{X}$. 
-If we find a good minimization according to our loss function, then
-
-\begin{equation}
-    \boldsymbol{X} = \boldsymbol{M}\boldsymbol{F}
-\end{equation}  
-
-Using a least-squares loss we can solve for $\boldsymbol{M}$, in closed form, using the Moore-Penrose pseudo-inverse \cite{greville1960some, BEUTLER1965451}, denoted $A^+$ for a matrix $A$. 
-The unique $351 \times k$ Moore-Penrose pseudo-inverse solution $\boldsymbol{F}^+$ has the desirable property that while we may not exactly satisfy the Luther condition, it provides the closest possible approximation for a given filter set $k$ \cite{macausland2014moore}:
+When using a least-squares loss $L_d$, we can solve for $\boldsymbol{M}$, in closed form, using the Moore-Penrose pseudo-inverse \cite{greville1960some, BEUTLER1965451}, denoted $A^+$ for a matrix $A$. 
+The unique $351 \times k$ Moore-Penrose pseudo-inverse solution $\boldsymbol{F}^+$ has the desirable property that while we may not exactly satisfy the Luther condition, it provides the closest possible approximation for a given set of filter indices $I$ \cite{macausland2014moore}:
 \begin{equation}
     \boldsymbol{M} \approx \boldsymbol{X}\boldsymbol{F}^+
 \end{equation} 
 
-As a point of detail we must alter this optimization if any of our filters have 0 transmission in a part of the assumed wavelength interval. 
-The NOIR filter only has nonzero transmittance in [400,650] nanometers. 
-So, when this filter is used we can only optimize within this wavelength interval.
-%Note that for algorithmic stability of the pseudoinverse, we must truncate to $\lambda \in \{400,401...650\}$ when using the $NOIR$ filter. 
+%Kyle: either expand the pseudo inverse or give a reference
+Finally, as a point of detail we must alter this optimization if any of our filters have 0 transmission in a part of the assumed wavelength interval. 
+The IR-cut filter only has nonzero transmittance in [400,650] nanometers. 
+So, when this filter is used we can only optimize within this wavelength interval, and thus we redefine $\omega_d = \{400,401,...650\}$.%Note that for algorithmic stability of the pseudoinverse, we must truncate to $\lambda \in \{400,401...650\}$ when using the $NOIR$ filter. 
 
 Further, we consider applications using loss functions $L$ and their respective $L_d$ which may not be the MSE loss. 
 We consider SMAPE and log-loss functions amongst others, for which analytical solutions do not necessarily exist. 
@@ -229,37 +211,121 @@ Thus, our photonic camera noise, V(R(p)) is a linear function of exposure time.
 We provide a study in reconstruction quality as a function of 'shutter speed,' which refers to the duration of capture per filter. 
 This is again implemented by defining $L = MSE + V(R(p))$, which can be achieved with a few steps of gradient descent from the MSE pseudoinverse solution. 
 
-\subsection{Filter Selection}
+\section{Mathematical Terms}
 
-While the number of filters $M$ may be large, we ideally would posit a filter wheel with fewer filters.
+Table~\ref{tab:math-terms} summarizes the key mathematical symbols, functions, and expressions used in the problem formulation above.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{0.20\linewidth}p{0.80\linewidth}@{}}
+Expression & Definition \\
+\midrule
+$\lambda$ & Wavelength (in nanometers). \\
+$\omega$ & Continuous wavelength interval of interest ($[400,750]$~nm). \\
+$\omega_d$ & Discrete wavelength set, ($\{400,401,...750\}$). \\
+$c$ & Color channel for the reconstructed sensors; $c\in\{R,G,B\}$ \\
+$i$ & Filter index (one filter from the candidate set). \\
+$I$ & Set of selected (active) filter indices, with $|I|=k$. \\
+$k$ & Number of selected filters. \\
+$x_c(\lambda)$ & Target CMF for channel $c$, continuous form. \\
+$x_c[\lambda]$ & Target CMF for channel $c$, discrete form. \\
+$f_i(\lambda)$ & Spectral transmission of filter $i$, continuous. \\
+$f_i[\lambda]$ & Spectral transmission of filter $i$, discrete. \\
+$\sigma(\lambda)$ & Camera sensor spectral sensitivity; continuous. \\
+$\sigma[\lambda]$ & Camera sensor spectral sensitivity, discrete. \\
+$m_{c,i}$ & Transformation weight for filter $i$ in reconstruction of channel $c$.\\
+$\boldsymbol{M}$ & $3\times k$ matrix of weights $m_{c,i}$ (color-correction matrix). \\
+$\theta_c(\lambda)$ & Effective reconstructed spectral sensitivity of channel $c$, continuous. \\
+$\theta_c[\lambda]$ & Effective reconstructed spectral sensitivity of channel $c$, discrete. \\
+$L_c$ & Loss for channel $c$.\\
+$\boldsymbol{A}^+$ & Moore-Penrose pseudo-inverse of matrix $\boldsymbol{A}$. \\
+$\boldsymbol{F}$ & Stacked, discretized filter-sensor matrix ($k\times 351$) with rows $f_i[\lambda]\sigma[\lambda]$ over $\omega_d$. \\
+$\boldsymbol{F}^+$ & Pseudo-inverse of $\boldsymbol{F}$ used for least-squares fitting. \\
+$\mathbf{X}$ & Discretized target CMFs as a $3\times 351$ matrix over $\omega_d$. \\
+$g$ & Sensor gain. \\
+$t$ & Sensor exposure time. \\
+$Pois(x)$ & Poisson model with parameter $x$ \\
+$R(p)$ & Poisson process representing photon arrival frequency\\
+$E(R(p))$ & Mean of the registered photon count at pixel $p$. \\
+$V(R(p))$ & Variance (noise) of the registered photon count at pixel $p$. \\
+\bottomrule
+\end{tabular}
+\newline
+\caption{Summary of mathematical terms.}
+\label{tab:math-terms}
+\end{table}
+\section{Filter Selection}
+
+While the number of filters $N$ may be large, we ideally would posit a filter wheel with fewer filters.
 Some works, such as Finlayson and Zhu \cite{finlayson2020designing} aim to construct optimized filters for camera and illumination spectifics. 
 However, off-the-shelf gel filters provide a cost effective tool, if a good selection can be made. 
-We take $k$, the number of filters chosen from the $M$ sized universe, as well as $L$, the loss function as per the above.
+We take $k$, the number of filters chosen from the $N$ sized universe, as well as $L_d$, the discretized loss function as per the above.
 
 The problem of filter selection and $\boldsymbol{M}$ computation are closely related. 
-For non-brute force methods of filter selection, we effectively 'guess' the combination that might produce the best MSE after choosing $M$.
-This lends itself to either exclusion or inclusion algorithms, the former we refer to as LASSO, the latter as PCA, 
+For non-brute force methods of filter selection, we effectively 'guess' the combination that might produce the best MSE after choosing $k$.
+This lends itself to either exclusion or inclusion algorithms, the former we refer to as LASSO, the latter as PCA. 
 
 
-\subsubsection{Brute Force Search}
-In the naive solution, we find the optimal filter combination for every subset of $k$ filters (where $k$ is small) drawn from the $M$ filter set by selecting the combination with the lowest loss, considering all combinations of filters (there are nearly 10,000,000 of these for $k=5$). 
+\subsection{Brute Force Search}
+In the naive solution, we find the optimal filter combination for every subset of $k$ filters (where $k$ is small) drawn from the $N$ filter set by selecting the combination with the lowest loss, considering all combinations of filters (there are nearly 10,000,000 of these for $k=5$ in the full Rosco Supergel set). 
 In Figure 2 we plot the errors across all sets of 5 filters (multiplied by the camera sensitivity) from the worst to best performing quintuple. 
 We compute the Moore-Penrose pseudo-inverse for each set of filters. 
 Our implementation is parallelized over 8 NVIDIA L4 GPUs, with a combined pool of up to 192GB VRAM, enabling us to compute brute force searches of $k=5$ in approximately 7 minutes. 
 %% Kyle N=5?
 
-\begin{center}
-    \label{fig:errors}
-    \centering
-    \includegraphics[width=\linewidth]{media/all_errors.png}
-    \captionof{figure}{MSE Error distribution across all filter combinations for k=5}
-\end{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\linewidth]{media/all_errors.png}
+\caption{MSE error distribution across all filter combinations for $k=5$}
+\label{fig:errors}
+\end{figure}
+
 
 As the search space experiences combinatoric explosion with $N$, we cannot feasibly consider all combinations for large $N$.
 To alleviate this issue, we introduce a 'prune' factor which removes filters based on a cosine similarity metric. 
 Given that our brute force method aims to provide a ground truth in which to compare performance of other filter selection algorithms, we allow the pruning of filters in the same way for other algorithms. 
 
-\subsubsection{PCA Analysis}
+\subsection{PCA Analysis}
+
+To find an approximate high-performing set of $k$ filters without brute force search, we use a greedy selection scheme closely related to Matching Pursuit \cite{mallat1993matching}. The method uses a low-dimensional subspace induced by the target functions and iteratively selects filters whose projections onto this subspace are large and as mutually ``orthogonal'' as possible.
+
+Let $\mathbf{X}\in\mathbb{R}^{3\times d}$ denote the discretized target CMFs over $\omega_d$ (with $d=|\omega_d|$) and let $\mathbf{F}\in\mathbb{R}^{N\times d}$ denote the candidate filter-sensor rows, i.e. row $i$ is $f_i[\lambda]\,\sigma[\lambda]$. We form a truncated basis for the target subspace via an SVD of $\mathbf{X}^\top$ and then greedily select $k$ rows of $\mathbf{F}$ using orthogonalized residual norms.
+
+\begingroup
+\setlength{\textfloatsep}{6pt}
+\setlength{\floatsep}{6pt}
+\setlength{\intextsep}{6pt}
+\begin{algorithm}[H]
+\caption{PCA / Matching-Pursuit filter selection and weight estimation}
+\label{alg:pca-selection}
+\begin{algorithmic}[1]
+\Require Target matrix $\mathbf{X}\in\mathbb{R}^{3\times d}$; candidate rows $\mathbf{F}\in\mathbb{R}^{N\times d}$; number of selected filters $k$.
+\Ensure Selected indices $I\subset\{1,\dots,N\}$ with $|I|=k$ and weights $\boldsymbol{M}\in\mathbb{R}^{3\times k}$.
+\State Compute thin SVD: $\mathbf{X}^\top = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^\top$.
+\State Set $r\leftarrow \min(3,k)$ and $\mathbf{U}_r \leftarrow \mathbf{U}(:,1\!:\!r)$.
+\State Project candidates into target subspace: $\mathbf{G} \leftarrow \mathbf{F}\,\mathbf{U}_r$ \Comment{$\mathbf{G}\in\mathbb{R}^{N\times r}$}
+\State Initialize $I\leftarrow \emptyset$ and orthonormal basis $\mathbf{Q}\leftarrow [\ ]$.
+\For{$t=1$ to $k$}
+    \If{$t=1$}
+        \State $i^\star \leftarrow \arg\max_i \|\mathbf{G}_{i,:}\|_2$.
+        \State $\mathbf{q} \leftarrow \mathbf{G}_{i^\star,:}/\|\mathbf{G}_{i^\star,:}\|_2$.
+    \Else
+        \State Compute projection onto current span: $\widehat{\mathbf{G}} \leftarrow (\mathbf{G}\mathbf{Q})\mathbf{Q}^\top$.
+        \State Orthogonal component: $\mathbf{G}_\perp \leftarrow \mathbf{G} - \widehat{\mathbf{G}}$.
+        \State Set scores $s_i\leftarrow \|\mathbf{G}_{\perp,i,:}\|_2$ and force $s_i=-\infty$ for $i\in I$.
+        \State $i^\star \leftarrow \arg\max_i s_i$.
+        \State $\mathbf{q} \leftarrow \mathbf{G}_{\perp,i^\star,:}/\|\mathbf{G}_{\perp,i^\star,:}\|_2$.
+    \EndIf
+    \State $I \leftarrow I\cup\{i^\star\}$; $\mathbf{Q} \leftarrow [\mathbf{Q}\ \mathbf{q}]$.
+\EndFor
+\State Form selected row-matrix $\mathbf{F}_I\in\mathbb{R}^{k\times d}$ by stacking rows $i\in I$.
+\State Least-squares weights (MSE): $\boldsymbol{M} \leftarrow \mathbf{X}\,\mathbf{F}_I^{+}$.
+\State \textbf{Optional:} if using a non-MSE loss $L_d$, refine $\boldsymbol{M}$ via gradient descent initialized at $\mathbf{X}\mathbf{F}_I^{+}$.
+\end{algorithmic}
+\end{algorithm}
+\endgroup
+
+In our implementation, the optional refinement step is applied when the loss is not purely MSE (e.g., SMAPE or noise-aware variants): we treat $\boldsymbol{M}$ as a learnable parameter, initialize it from the pseudo-inverse solution, and take a small number of Adam steps to reduce $L_d$.
 
 To find the optimal filter combination
 %for each $N$ 
@@ -274,20 +340,58 @@ This method is comparatively fast, able to compute the $k=5$ case in 19 seconds 
 This method also scales well, with $k=8$ runtime at only 20 seconds. 
 
 We show the relative timings for Brute Force and PCA algorithms below. 
-\begin{center}
-    \centering
-    \includegraphics[width=1.05\linewidth]{media/timing_comparison.png}
-    \captionof{figure}{Timing Comparison between PCA and Brute Force Selection Methods}
-\end{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{media/timing_comparison.png}
+\caption{Timing comparison between PCA and brute force selection methods}
+\end{figure}
 
 However, we note the improved MSE result for the brute force selection methodology.
-\begin{center}
-    \centering
-    \includegraphics[width=1\linewidth]{media/mse_comparison_exact_paths.png}
-    \captionof{figure}{MSE Comparison between PCA and Brute Force Selection Methods, $k_2=0$}
-\end{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{media/mse_comparison_exact_paths.png}
+\caption{MSE comparison between PCA and brute force selection methods ($k_2=0$)}
+\end{figure}
 
-\subsubsection{PCA Analysis with Macbeth Target}
+\subsection{PCA Analysis with Macbeth Target}
+
+For $k>3$, the original PCA Matching-Pursuit procedure can become weakly constrained because the target space induced directly by $\mathbf{X}\in\mathbb{R}^{3\times d}$ is only three-dimensional. To provide a richer objective, we instead construct a higher-dimensional target subspace using the Macbeth / X-Rite ColorChecker patch reflectances. Intuitively, this biases filter selection toward spanning the diversity of common surface reflectances, which often improves performance at larger $k$.
+
+Let $\mathbf{R}\in\mathbb{R}^{P\times d}$ be a matrix of $P$ Macbeth patch reflectance spectra sampled on the same grid $\omega_d$ (with $P=24$ for a standard chart). We compute a thin SVD of $\mathbf{R}^\top$ and keep the top $r=\min(P,k)$ components to obtain a basis $\mathbf{U}_r\in\mathbb{R}^{d\times r}$. As before, we project candidate filters into this basis and greedily select indices by maximizing the norm of the component orthogonal to the span of previously selected projections.
+
+\begingroup
+\setlength{\textfloatsep}{6pt}
+\setlength{\floatsep}{6pt}
+\setlength{\intextsep}{6pt}
+\begin{algorithm}[H]
+\caption{PCA / Matching-Pursuit selection using Macbeth patch subspace}
+\label{alg:pca-macbeth-selection}
+\begin{algorithmic}[1]
+\Require Macbeth reflectance matrix $\mathbf{R}\in\mathbb{R}^{P\times d}$; candidate rows $\mathbf{F}\in\mathbb{R}^{N\times d}$; desired number of filters $k$; target CMFs $\mathbf{X}\in\mathbb{R}^{3\times d}$.
+\Ensure Selected indices $I\subset\{1,\dots,N\}$ with $|I|=k$ and weights $\boldsymbol{M}\in\mathbb{R}^{3\times k}$.
+\State Compute thin SVD of Macbeth basis: $\mathbf{R}^\top = \mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^\top$.
+\State Set $r\leftarrow \min(P,k)$ and $\mathbf{U}_r \leftarrow \mathbf{U}(:,1\!:\!r)$.
+\State Project candidates: $\mathbf{G} \leftarrow \mathbf{F}\,\mathbf{U}_r$ \Comment{$\mathbf{G}\in\mathbb{R}^{N\times r}$}
+\State Initialize $I\leftarrow \emptyset$ and orthonormal basis $\mathbf{Q}\leftarrow [\ ]$.
+\For{$t=1$ to $k$}
+    \If{$t=1$}
+        \State $i^\star \leftarrow \arg\max_i \|\mathbf{G}_{i,:}\|_2$.
+        \State $\mathbf{q} \leftarrow \mathbf{G}_{i^\star,:}/\|\mathbf{G}_{i^\star,:}\|_2$.
+    \Else
+        \State $\widehat{\mathbf{G}} \leftarrow (\mathbf{G}\mathbf{Q})\mathbf{Q}^\top$.
+        \State $\mathbf{G}_\perp \leftarrow \mathbf{G} - \widehat{\mathbf{G}}$.
+        \State $s_i\leftarrow \|\mathbf{G}_{\perp,i,:}\|_2$ and force $s_i=-\infty$ for $i\in I$.
+        \State $i^\star \leftarrow \arg\max_i s_i$.
+        \State $\mathbf{q} \leftarrow \mathbf{G}_{\perp,i^\star,:}/\|\mathbf{G}_{\perp,i^\star,:}\|_2$.
+    \EndIf
+    \State $I \leftarrow I\cup\{i^\star\}$; $\mathbf{Q} \leftarrow [\mathbf{Q}\ \mathbf{q}]$.
+\EndFor
+\State Form selected matrix $\mathbf{F}_I\in\mathbb{R}^{k\times d}$ by stacking rows $i\in I$.
+\State Fit weights to the original CMFs (MSE): $\boldsymbol{M} \leftarrow \mathbf{X}\,\mathbf{F}_I^{+}$.
+\State \textbf{Optional:} refine $\boldsymbol{M}$ with gradient descent for non-MSE losses.
+\end{algorithmic}
+\end{algorithm}
+\endgroup
 
 In the original PCA Matching Pursuit as outlined above, we have an underdefined problem for $k>3$, as our 3 dimensional target space may be nearly spanned by the projection of the first 3 filters. 
 One way to mitigate this issue is to project our space onto that as defined by the Macbeth Color Checker patches. 
@@ -295,16 +399,46 @@ Using this methodology, we define a higher-dimensional space and thus a lower in
 However, we will observe that this technique only accurately reproduces human eye color matching functions such as the CIE XYZ family of functions, and fails to generalize to other applications. 
 That being understood, this method is able to achieve better metrics at high $k$. 
 For practical purposes, the difference is immaterial due to the cost of increasing $k$ above 10 or so, in terms of size of components and the capture time increase inherent to adding additional filters. 
-\begin{center}
-    \centering
-    \includegraphics[width=1\linewidth]{media/placeholder.jpg}
-    \captionof{figure}{Placeholder for comparison of MSE/DeltaE at high $k$}
-\end{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{media/placeholder.jpg}
+\caption{Placeholder: comparison of MSE/$\Delta E$ at high $k$}
+\end{figure}
 
-\subsubsection{LASSO Selection}
-This method performs 'dropout' from a matrix $\boldsymbol{M}$ defined as the entire universe of filters. 
-It then iteratively tunes the values of said matrix, dropping out columns with a low norm such that the filter is not meaningfully used in reconstruction.
-The loop runs until only $k$ filters remain.
+\subsection{LASSO Selection}
+To obtain a sparse (small-$k$) filter set without explicitly searching combinations, we also evaluate a LASSO-style selection procedure. Here we optimize a full weight matrix over the entire candidate set and use an $\ell_{2,1}$-type regularizer (group sparsity) to drive many filter-columns to near-zero magnitude.
+
+Let $\mathbf{F}\in\mathbb{R}^{K\times d}$ denote the candidate filter-sensor rows and let $\mathbf{X}\in\mathbb{R}^{3\times d}$ denote the discretized target CMFs. We solve for a dense weight matrix $\boldsymbol{M}\in\mathbb{R}^{3\times K}$ by minimizing
+\begin{equation}
+    \min_{\boldsymbol{M}} \; L_d\!\left(\boldsymbol{M}\mathbf{F},\;\mathbf{X}\right) + \lambda \sum_{j=1}^{K}\left\|\boldsymbol{m}_{:,j}\right\|_2,
+    \label{eq:lasso-group}
+\end{equation}
+where $\boldsymbol{m}_{:,j}$ is the $j$th column of $\boldsymbol{M}$. The second term promotes column-wise sparsity: when a column norm becomes small, the corresponding filter contributes negligibly to reconstruction.
+
+After optimization, we rank filters by their column norms $\|\boldsymbol{m}_{:,j}\|_2$ and keep the top $k$ filters. Finally, we refit weights on the selected subset via a pseudo-inverse (least squares) to obtain the final $\boldsymbol{M}\in\mathbb{R}^{3\times k}$ used for evaluation.
+
+\begingroup
+\setlength{\textfloatsep}{6pt}
+\setlength{\floatsep}{6pt}
+\setlength{\intextsep}{6pt}
+\begin{algorithm}[H]
+\caption{LASSO / group-sparse filter selection}
+\label{alg:lasso-selection}
+\begin{algorithmic}[1]
+\Require Target $\mathbf{X}\in\mathbb{R}^{3\times d}$; candidates $\mathbf{F}\in\mathbb{R}^{K\times d}$; desired number of filters $k$; regularization weight $\lambda$.
+\Ensure Selected indices $I$ and final weights $\boldsymbol{M}_{I}\in\mathbb{R}^{3\times k}$.
+\State Initialize $\boldsymbol{M}\leftarrow \mathbf{X}\,\mathbf{F}^{+}$ \Comment{Pseudo-inverse warm start}
+\For{$t=1$ to $T$}
+    \State $\widehat{\mathbf{X}} \leftarrow \boldsymbol{M}\mathbf{F}$
+    \State $\mathcal{L} \leftarrow L_d(\widehat{\mathbf{X}},\mathbf{X}) + \lambda \sum_{j=1}^{K}\|\boldsymbol{m}_{:,j}\|_2$
+    \State Update $\boldsymbol{M}$ by one Adam step on $\mathcal{L}$
+\EndFor
+\State Compute column norms $n_j\leftarrow \|\boldsymbol{m}_{:,j}\|_2$ for $j=1,\dots,K$
+\State Select $I\leftarrow$ indices of the top-$k$ values of $n_j$
+\State Form $\mathbf{F}_{I}\in\mathbb{R}^{k\times d}$ and refit $\boldsymbol{M}_{I} \leftarrow \mathbf{X}\,\mathbf{F}_{I}^{+}$
+\end{algorithmic}
+\end{algorithm}
+\endgroup
 
 \begin{center}
     \centering
@@ -312,7 +446,7 @@ The loop runs until only $k$ filters remain.
     \captionof{figure}{Placeholder for LASSO}
 \end{center}
 
-\subsubsection{Brute Force Search Augmented PCA} 
+\subsection{Brute Force Search Augmented PCA} 
 
 $\;$\newline While brute force methods guarantee minimum possible error by investigating the entire search space, large $k$ implementations render this technique impractical. 
 Additionally, our PCA method outlined above cannot always identify the optimal filter set, and has a nonnegligible MSE shortfall vs. exhaustive search for all $k>1$.
@@ -325,12 +459,17 @@ Further, for $k_2<4$, the added time from the exhaustive search step is between 
 %A full performance overview is included in the Appendix (\ref{tab:timing_comparison}).
 \begin{center}
     \centering
-    \includegraphics[width=\linewidth]{media/mse_comparison_exact_paths_n2_2.png}
+    \includegraphics[width=.5\linewidth]{media/mse_comparison_exact_paths_n2_2.png}
     \captionof{figure}{MSE Comparison between PCA and Brute Force Selection Methods, $k_2=2$}
 \end{center}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\linewidth]{media/mse_comparison_exact_paths_n2_2.png}
+\caption{MSE comparison between PCA and brute force selection methods ($k_2=2$)}
+\end{figure}
 
-One challenging problem introduced by the extra choice of $k_2$ is an explosion of state space. 
-Whereas in the original problem, we have a reliably monotonically decreasing relationship between MSE and $k$ in the brute force case (if the 'best' filter would decrease MSE, a weight of 0 would be applied), the introduction of the brute force rounds requires us to intellegently choose $k_2$. 
+One challenging problem introduced by the extra choice of $k_2$ is an explosion of state space and a violation of certain earlier assumptions regarding brute force superiority. 
+Whereas in the original problem, we have a monotonically decreasing relationship between MSE and $k$ in the brute force case (if the 'best' filter would decrease MSE, a weight of 0 would be applied), the introduction of the brute force rounds requires us to intellegently choose $k_2$. 
 Then, under practical considerations in a filter wheel of limited $k$, the choice of $k_1$ vs. $k_2$ becomes a difficult to define and hard to optimize tradeoff.
 In fact, certain artifacts emerge in the comparison between brute force and heuristic algorithmms with $k_2>1$, such as improved MSE performance for the PCA algorithm at $k=2$ as shown above. 
 
@@ -338,3 +477,61 @@ Presumably a brute force algorithm would necessarily find the global minimum MSE
 Therefore, any brute force solution with $k_2>0$ should be considered with caution. 
 There is value in augmenting a brute force solution, as runtime is greatly reduced, but we find that the effect of mixing search algorithms at an intermediate value provides an efficient yet accurate middle ground for practical values of $k$.
 
+
+\section{Physical Camera}
+
+\subsection{3D Printed Housing}
+
+We construct a 3D printed housing to arrange the camera components such that the RaspberryPi may control the servo motor as well as the camera capture.
+Designs for individual components such as RaspberryPi and Camera housings are available freely at Printables.com \cite{Thompson2022, Stamos2024, Baxcor2022}, with recommended print settings. 
+Additionally, the Prusa MK4S 3D printer \cite{PrusaMK4S, Kopovaetal2024, Zeidanetal2024} uses fused filament fabrication to construct high-quality plastic structures. 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/3dprint2.jpeg}
+    \caption{Servo Motor case during printing}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/Octoprint.png}
+    \caption{Live webcam UI of print status}
+\end{subfigure}
+\caption{3D Printed Case}
+\end{figure}
+
+Additionally, the PrusaSlicer software provides the ability to merge components, for example the camera stand onto the RaspberryPi case or the Servo motor holder onto a RaspberryPi baseplate. 
+The software proceeds to optimize the print for structural stability while minimizing filament. 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/prusa1.png}
+    \caption{RaspberryPi and Camera Housing}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/prusa2.png}
+\end{subfigure}
+\caption{3D Print Model (Screenshots of PrusaSlicer software)}
+\end{figure}
+
+The final product contains a central housing to contain the RaspberryPi microcontroller, with a camera stand atop facing the servo motor with attached filter wheel. 
+When capturing photos, we 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Camera from side angle}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Camera from front angle}
+\end{subfigure}
+\caption{3D Printed Camera}
+\end{figure}

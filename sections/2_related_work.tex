@@ -1,46 +1,116 @@
-\section{Related Work}
+\chapter{Related Work}
 Our work combines concepts from color science, optics, light science, and camera hardware to construct a full camera capture hardware and software stack. 
 We build upon a vast preexisting literature on the multispectral filter wheel schematic, with notable implementations dating back to 1972 and prior with NASA's Landsat 1 \cite{mannheimer1977landsat, USGSLandsat1} multispectral geological imaging system. 
 Advances in camera, microcontroller, and 3D printing technologies enable us to deploy a relatively cheap multispectral filter wheel camera, which we claim can replicate results of state of the art cameras, albeit hindered by slow image capture speeds. 
 Additionally, our platform can be deployed across a range of functional use cases, and while we focus on the replication of the human eye response function, we develop our methodology with the understanding that our platform may be used for other multispectral use cases with a quick replacement of some filters. 
 Therefore, we include a section of broad multispectral imaging applications for which we may deploy our camera. 
 
-\subsection{Filter Wheel Design}
+\section{Filter Wheel Design}
 
 The spinning filter wheel construct provides an inexpensive solution when unconstrained by capture duration, such as in the imaging of fine art and agriculture. 
-Hardeberg \cite{Filterselection} devises and deploys a multispectral filter wheel apparatus, including a section on filter selection methodology. 
-This work also provides a benchmark for our system's $Delta E_{2000}$ and error results, for which we will elaborate upon in section 3. 
+Initial formulations used bandpass filters, an oscillating scan mirror, and a spinning filter wheel for satellite-mounted geological surveys \cite{USGS2012MSS}.
+Koenig and Praefcke \cite{konig1998practice} design an early prototype of a multispectral scanner based on a filter wheel, and compare the performance of varied reconstruction methodologies.  
 
-\subsection{Filter Design}
+Hardeberg \cite{Filterselection} devises and deploys a multispectral filter wheel apparatus, including a section on filter selection methodology. 
+This work also provides a benchmark for our system's $\Delta E_{00}$ and error results, for which we will elaborate upon in section 3. 
+
+\section{Filter Selection}
+While nearly all the multispectral image acquisiton works referenced in this section mention their filter selection methodologies, we attempt to improve upon those by borrowing a few novel techniques borrowed from other applications. 
+As we will discuss in section 3.3.4, we must apply a weighting factor to each filter in the reconstruction of each target function. 
+Under certain conditions and decisions regarding loss functions which we will elaborate in section 3.3.4.1, the pseudoinverse \cite{greville1960some, BEUTLER1965451, macausland2014moore} provides a stable, and in fact verifiably optimal set of weights. 
+We utilize the above result as a branching start point for solutions under different conditions, specifically in our analysis of heuristic algorithms to find optimal weights such as Matching Pursuit based solutions \cite{mallat1993matching} or LASSO based solutions \cite{LAKSHMI2025297, MEHTA20191}.
+
+\section{Filter Transmission Function Evaluation}
 
 High-quality filter-based multispectral imaging systems rely upon a works in filter technologies and their respective quality and transmission metrics such as those derived by Vora, Trussell, and Vrhel \cite{vrhel1994filter,551700, vrhel1995design}. 
 Ng. and Allebach \cite{1673444} develop sufficient and necessary conditions for recovering accurate measurements of spectral reflectances and tristimulus values using a set of filters and the protocol for design of these filters.  
 Further advances in filter design include those done by Finlayson et al. \cite{finlayson2020designing}. 
 Another evaluation 
 
-\subsection{Spectral Reconstruction}
-
-
-\subsection{Image Response}
+\section{Image Response}
 Much of the existing literature on simulation of color matching functions relates to the CIE XYZ models of the human eye. 
 We follow the work of Gao et al. \cite{gao2024color} in matching our simulated camera's spectral sensitivity function to the human eye by optimizing for a color correction matrix $\boldsymbol{M}$ best matching the set of filtered camera sensitivities to the XYZ color matching functions. 
 This method achieves optimality only when we approach Luther Condition compliant capture \cite{ives1915transformation}, specifically that our spectral sensitivity functions be linearly related to our chosen $XYZ$ color matching function. 
 We follow the work of Finlayson and Zhu \cite{finlayson2020designing} in their analysis of Luther-condition compliant filters. 
 However, rather than designing a specialized filter, we investigate whether we can approach Luther compliance by adding incrementally more generic filters to our filter wheel. 
 
-\subsection{Noise Model}
+\section{Noise Model}
 While most of our laboratory experiments are done using D65 lighting, we design the system to be robust to other lighting environments.
 To this end, we must define the effect of camera noise as a function of lighting and exposure time, for which we rely upon work by Hanji et al \cite{hanji2020noise} to derive a simple Poisson noise estimator.
 In general, high dynamic range image systems \cite{akyuz2007noise, mann1994beingundigital, sidiropoulos1994optimal} have well defined noise estimation systems for multiple exposure image capture systems, providing a useful benchmark for our work. 
 Additionally, Sidiropoulos \cite{sidiropoulos1994optimal} specifically studies the effect of filtering systems and their noisiness with regards to multiple exposures. 
 
-\subsection{Multispectral Imaging Applications}
+\section{Multispectral Imaging Applications}
 Lapray et al. \cite{lapray2014multispectral} provide an overview of multispectral imaging technologies as well as their costs, providing a cost benchmark for our work. 
 Morales et al. \cite{morales2020multispectral} demonstrate a bandpass filter wheel utilized for precision agriculture applications, and Scutelnic et al. \cite{SCUTELNIC2024e00596} propose a similar filter wheel construct to build a relatively low cost sensor array. 
 
+Given the static nature of the subject matter and necessity for accurate spectral readings, multi-filter image acquisition systems are very prevalent in fine art analysis. 
+Early works before 2000 pioneered the technologies such as Martinez et al. \cite{martinez1993high}, devising a scanner with integrated lighting which could be placed above a 1 meter by 1 meter painting, capturing images through a filter wheel under controlled luminance. 
+Yokokama et al. \cite{yokoyama1997new} quantifies the $\Delta E$ performance of a similar system using a color wheel on a tripod instead of a scanner affixed to the painting, finding comprable visual results to the scanner. 
 
-\subsection{Following Work}
+In addition to the satellite-mounted implementations above \cite{mannheimer1977landsat, USGSLandsat1}, multispectral imaging platforms have been deployed for geological surveys such as those enumerated in a survey of multispectral lithological geography \cite{peyghambari2021lithological}.
+Other aerial mounted systems and applications include unmanned aerial vehicle (UAV) mounted agricultural scanning systems which serve to monitor crop growth and pest prevalence \cite{SCUTELNIC2024e00596, lu2020agriculture}
+These applications provide solutions to the low shutter speed of the filter wheel construct, requiring simultaneous capture of each filter in satellite-mounted systems \cite{eoPortalHISUI} or post-capture image correction and synchronization in UAV mounted systems \cite{Hunt18082018}. 
+
+Mariotti et al. \cite{mariotti2023forensics} summarize hyperspectral and multispectral imaging use cases in crime scene analysis from 2011-2021, another example of (hopefully) static scenes appropriate for analysis with our tool and its predecessors \cite{jimaging4120141, CADD2016181, ALMEIDA2017628}.
+
+\section{External Datasets and Tools}
+While the main body of research relies on a usable, portable camera, we utilize some external datasets to inform our development and analysis. 
+
+\subsection{Spectral Reconstruction}
+We utilize the CAVE spectral dataset \cite{yasuma2010generalized} for our simulated spectral reconstructions. 
+This dataset consists of multispectral images including one ground truth capture per scene and 31 captures of reflectance data over 10 nanometer (nm) steps between 400 and 700nm. 
+Subjects include food, human skin and hair, assorted items, and a few 'real and fake' side by side captures of items such as food and models with different reflectance characteristics. 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=.95\linewidth]{media/fakereal.png}
+    \caption{'Fake \& Real' Image from CAVE Dataset}
+\end{subfigure}%
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=.95\linewidth]{media/XYZvSha2006.jpg}
+    \caption{CIE 1931 and S\&S 2006 Spectral Sensitivity Functions}
+\end{subfigure}
+\caption{External datasets used for evaluation and simulation.}
+\end{figure}
+
+
+
+\subsection{XYZ Functions}
+The UCL Computer Vision and Research Laboratory (CVRL) publishes various data sets relevant to color research \cite{CVRL, STOCKMAN201987}. 
+This site serves as a repository for various spectral sensitivity functions of the human eye, from the standard CIE 1931 trichromatic functions, to Stockman \& Sharpe's revised 2000 and 2006 versions, to other useful datasets such as Stiles \& Burch 1995 2º and 10º trichromator measurements. 
+
+\subsection{X-rite/Macbeth Color Checker}
+While not specifically a datasest per se, the X-Rite color checker provides 24 patches for which to create standard color profiles for cameras and displays \cite{Pascale2006RGBCO, XRiteColorChecker, McCamy1976}. 
+This set was developed in 1976 and has been the industry and research standard of color calibration for much of its existence. 
+The evaluation of $\Delta E_{00}$ and the approximate scale we use to evaluate color quality differences has been developed by Lindstrom \cite{lindstrom2008delta}. 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=.95\linewidth]{media/colorchecker-classic_01.png}
+    \caption{X-Rite Color Checker}
+\end{subfigure}%
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=.95\linewidth]{media/PMCC_online.png}
+    \caption{PMCC Grid}
+\end{subfigure}
+\caption{Color chart references used for calibration and evaluation.}
+\end{figure}
+
+\subsection{Preferred Memory Color Checker}
+We also utilize a Preferred Memory Color Checker \cite{luo2024new, ThouslitePMCC} for calibration as well as analysis of our color capture. 
+This improves upon the 24 patches of the Macbeth Color Checker often used by prior works in the space, allowing us to record more accurate $\Delta E_{00}$ values. 
+
+\section{Following Work}
 
 In the remaining sections of this paper, we describe our methodology, from data collection to mathematical formalization to designing an optimized filter selection procedure. 
-Next, we evaluate the performance of our procedure in context of our loss function as well as $\Delta E_{2000}$, for the CIE 1931 and CIE 2006 XYZ standard observers. 
-We conclude with a discussion on the tradeoff between timing and performance for various use cases. 
+Next, we evaluate the performance of our procedure in context of our loss function as well as $\Delta E_{00}$, for the CIE 1931 and CIE 2006 XYZ standard observers. 
+We examine our fully simulated framework, as well as piecewise introducing real-world components, starting with the Rosco Supergel filter set and then moving to cameras and then evaluating the entire physical camera stack. 
+We introduce a noise term to our loss function in order to model the tradeoff between exposure time and capture quality as well as to conceptualize the effect of scene luminance on capture quality. 
+We conclude our filter selection section with a discussion on the tradeoff between timing and performance for various use cases. 
