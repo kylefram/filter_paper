@@ -1,5 +1,7 @@
 
-\chapter{Appendix}
+\section{Appendix}
+
+\subsection{Filter Selection Timing Analysis}
 
 We include the timing records of our filter selection. 
 Both routines were run on NVIDIA GPU environment with the Brute Force run pruned to cosine similarity of .95 and able to utilize 8 GPUs. 
@@ -91,3 +93,142 @@ Note that 'Brute Force with Augmentation' considers additional filters to only t
     \caption{Minimum MSE and $\Delta E$ Comparison: PCA vs. Brute Force, up to $k_1=6$, $k_2=2$}
     \label{tab:mse_deltae_comparison}
 \end{table}
+
+\subsection{Code Snippets}
+We include code snippets from some of the algorithms outlined above and some of the infrastructure necessary for completing this research. 
+The repository is available at this link: \href{https://github.com/kylefram/MultispectralCamera/tree/main}{https://github.com/kylefram/MultispectralCamera/tree/main}
+
+\subsection{CAVE Dataset}
+
+%%% TODO
+%%% CHANGE TO GROUND TRUTH -> OTHERS instead of pairs with ground truths
+
+We include images from the CAVE dataset, rendered under various $k \in \{2,3,4,8\}$ values. 
+We consider the set of simulations including an IR-cut filter, and filters selected with the brute force methodology, having $k_2=0$.
+Because the $k=8$ solution takes some time to brute force, we use a cosine similarity function to prune the filters to a set of 45, which reduces reconstruction quality and increases the differences in $\Delta E_{00}$ across renders. 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/cave_appendix/k2paints.png}
+    \caption{$k=2$, $\Delta E_{00}$=13.17}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/cave_appendix/k3paints.png}
+    \caption{$k=3$, $\Delta E_{00}$=5.45}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/cave_appendix/k4paints.png}
+    \caption{$k=4$, $\Delta E_{00}$=1.93}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/cave_appendix/k8paints.png}
+    \caption{$k=8$, $\Delta E_{00}$=.61}
+\end{subfigure}
+\caption{CAVE Renders of Paints Multispectral Dataset, With Macbeth $\Delta E_{00}$}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/cave_appendix/k2flowers.png}
+    \caption{$k=2$, $\Delta E_{00}$=13.17}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/cave_appendix/k3flowers.png}
+    \caption{$k=3$, $\Delta E_{00}$=5.45}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/cave_appendix/k4flowers.png}
+    \caption{$k=4$, $\Delta E_{00}$=1.93}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/cave_appendix/k8flowers.png}
+    \caption{$k=8$, $\Delta E_{00}$=.61}
+\end{subfigure}
+\caption{CAVE Renders of Flowers Multispectral Dataset, With Macbeth $\Delta E_{00}$}
+\end{figure}
+
+\subsection{Capture Errors}
+
+A few captures in the lab featured artifacts, and a number of filters preserved transmission fairly uniformly across $\omega$ but included 'frost' or 'blur' effects which occasionally performed well in simulations but often added poor elements to reconstructions.
+A number of otherwise good captures included slight lens flare near the top of the capture or just above the car, these were included as they do not affect the measurement of the PMC. 
+These filters numbered $\{0, 1, 100, 101, 104, 121, 122, 124, 125, 126, 127, 160, 61, 63\}$ were excluded from the main simulation set, and another round of simulations were run with the trimmed set. 
+This had negligible effect on the quality of reconstruction. 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/Lab00.jpg}
+    \caption{Filter 00 in RaspberryPi Camera, excluded for artifacts in bottom right}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/Lab104.jpg}
+    \caption{Filter 104 in RaspberryPi Camera, excluded for blur effect}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/Lab47.jpg}
+    \caption{Filter 47 in RaspberryPi Camera}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/Lab336.jpg}
+    \caption{Filter 336 in RaspberryPi Camera}
+\end{subfigure}
+\caption{Monochrome Captures in Lab Environment}
+\end{figure}
+
+For demonstration, we show a reconstruction for the $k=5$ case, where we simulate the optimal reconstruction including an IR-cut camera. 
+However, the lab measurements were taken in the absence of an IR-cut camera, resulting in an ill-fitting reconstruction.
+
+\begin{center}
+    \centering
+    \includegraphics[width=.75\linewidth]{media/k1_5_recon_badNOIR.png}
+    \captionof{figure}{$k_1=5$ Photo Lab Reconstruction with component captures above, incorrect camera configuration}
+\end{center}
+
+
+\subsection{In-Lab Camera Tuning}
+
+%TODO: MOVE TO APPENDIX???
+We demonstrate a poorly tuned simulation, in which we run an optimal filter selection in the presence of an IR-cut filter, but our set of captures does not include this apparatus. 
+This poor example shows a different $k=5$ solution, but with the poor captures included.
+Capture 00 includes a blockage in the bottom right squares in the PMC, and is therefore unfit, while filters 100 and 160 have generally poor  
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/k5_noisy_render.png}
+    \caption{Poor quality $k=5$ reconstruction including unfit filters 00, 100, 160}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/k5_noisy_spectra.png}
+    \caption{Spectral reconstruction for $k=5$ combination with low MSE, poor realized result}
+\end{subfigure}
+\caption{$k=5$ filter combination with poor reconstruction quality}
+\end{figure}
+
+%TODO: if this result doesn't improve, move to appendix and explain
+We also demonstrate a classical camera tuning methodology, where we minimize explicitly the average $\Delta E_{00}$ over the PMC. 
+For $k=3$, we achieve $\Delta E_{00}$ of 12, which is not good and should be investigated for errors in measurement. 
+Either way, we use the simulated results for our main reconstruction efforts. 
+
+%TODO: Improve this reconstruction
+\begin{center}
+    \centering
+    \includegraphics[width=.75\linewidth]{media/OK_recon_with_sources_70_89_388.png}
+    \captionof{figure}{$k=3$ reconstruction with $\Delta E_{00}$ minimization}
+\end{center}

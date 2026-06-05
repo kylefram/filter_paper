@@ -11,38 +11,39 @@ Then, we test the prescribed filters on our physical camera, deployed in a contr
 
 First, we review the results of the simulated camera on a set of 494 filters drawn from the Rosco MyColor tool. 
 This large set of filters allows us to emulate our desired target function effectively, given the flexibility of our options. 
-There is a subtle drawback, which is that we cannot effectively benchmark our filter selection process past $k=3$ due to the computational complexity of selecting $k>3$ filters, with $2.5 \times 10^9$ combinations for the $k=4$ case. 
-However, we notice that even with just $k=3$ filters in use from the MyColor dataset, we are able to effectively attain $\Delta E_{00}$ of 1.07, already nearly 'just noticeable difference' \cite{lindstrom2008delta} across the mean of the 24 color patches.
+There is a subtle drawback, which is that we cannot effectively benchmark our filter selection process past $k=4$ due to the computational complexity of selecting $k>4$ filters, with already $2.5 \times 10^9$ combinations for the $k=4$ case. 
+However, we notice that even with just $k=3$ filters in use from the MyColor dataset, we are able to effectively attain $\Delta E_{00}$ of 1.80, already nearly 'just noticeable difference' \cite{lindstrom2008delta} across the mean of the 24 color patches.
+Of course, for a three dimensional target function, an improvement in reconstruction quality over the first 3 filters is fairly trivial, but the speed at which we can attain high quality reconstructions is impressive. 
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/scraped_k3_nDeltaEChart.png}
-    \caption{Best $\Delta E_{00}$ for each number of scraped filters $k < 4$}
+    \includegraphics[width=\linewidth]{media/scraped_k4_nDeltaEChart.png}
+    \caption{Mean $\Delta E_{00}$ of best combination for each number of scraped filters $k < 5$}
 \end{subfigure}%
 \begin{subfigure}{.49\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/scraped_k3_front_page_right.png}
     \caption{Transmission functions for optimal MyColor $k=3$ solution}
 \end{subfigure}
-\caption{MyColor $k=3$ performance and selected filters.}
+\caption{MyColor $k<5$ performance and selected filters.}
 \end{figure}
 
-Indeed, we can visually inspect the transmission functions and the $\boldsymbol{M}$ matrix to see that our functions share approximate modes with the XYZ functions, given that the right tails will be neutralized above 650nm by the presence of our NOIR filter. 
+Indeed, we can visually inspect the transmission functions above to see that our functions share approximate modes with the XYZ functions, given that the right tails will be neutralized above 650nm by the presence of our NOIR filter. 
 %%TODO - INCLUDE M MATRIX
 
 Their transformations after multiplication by $\boldsymbol{M}$ are shown below, including a simulated NOIR filter which cuts off most transmission above 650nm. 
-These are overlaid 
+These are overlaid on the CIE 2006 XYZ (from LMS) functions.
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}{.49\linewidth}
+\begin{subfigure}{.55\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/scraped_k3_spectra.png}
     \caption{Transformed transmission functions with CIE 2006 XYZ spectral response functions}
 \end{subfigure}%
-\begin{subfigure}{.49\linewidth}
+\begin{subfigure}{.44\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/scraped_gamut_k3.png}
     \caption{Best filters from MyColor at $k=3$ on the color gamut}
@@ -54,16 +55,16 @@ Additionally, we can view the filters' dominant wavelength overlaid onto the CIE
 While we primarily utilize the New CIE 2006 LMS functions and their respective XYZ transformations (denoted CIE 2006), a significiant body of research exists referring to the 1931 XYZ functions which provide helpful benchmarks for our performance. 
 Further, the CIE 1931 Color Gamut diagram provides a natural and familiar demonstration of color within the CIE x and CIE y coordinates.  
 
-More rigorous analysis requires the use of $\Delta E_{00}$ calculations using a color checker, and in this case, our mean $\Delta E_{00}$ across 24 patches reached the value of 1.07.
+More rigorous analysis requires the use of $\Delta E_{00}$ calculations using a color checker, and in this case, our mean $\Delta E_{00}$ across 24 patches reached the value of 1.80.
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}{.49\linewidth}
+\begin{subfigure}{.4\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/scraped_k3_macbeth.png}
     \caption{Macbeth Color Checker for $k=3$ with MyColor filters}
 \end{subfigure}%
-\begin{subfigure}{.49\linewidth}
+\begin{subfigure}{.45\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/scraped_k1scaled_deltaE.png}
     \caption{$\Delta E_{00}$ for $k \in \{3...8\}$ and $k_1 \in \{0,1,2\}$}
@@ -71,127 +72,224 @@ More rigorous analysis requires the use of $\Delta E_{00}$ calculations using a 
 \caption{MyColor evaluation on a color checker and scaling to larger $k$.}
 \end{figure}
 
-While $\Delta E_{00}$ of 1.07 is sufficient for human-centered applications in controlled lighting, we can improve upon this result and strive for lower MSE results.
+While $\Delta E_{00}$ of 1.80 is sufficient for human-centered applications in controlled lighting, we can improve upon this result and strive for lower MSE results.
 With the full set of 494 filters, we are unable to compute a brute-force solution in reasonable time, and must utilize heuristic solutions.
 Fortunately, the heuristic solutions augmented with a few brute force rounds provide effective solutions. 
-We show up to $k=8$ filters' $\Delta E_{00}$ progressions as a function of $k$ below. 
+We show up to $k=8$ filters' $\Delta E_{00}$ progressions as a function of $k$ above. 
 
 This result supports our intuition that we can achieve $\Delta E_{00}$ values comprable with state of the art results using our analysis.
 Importantly, the improvement in $\Delta E_{00}$ largely flattens after $k=5$, providing useful knowledge as to the necessary numbner of filters to attain a high-quality reconstruction.
-We include a rendering from the CAVE dataset reconstructed with the $k_1=4,k_2=1$ solution for an example of a practical simulated filter wheel setup. 
+We include a rendering from the CAVE dataset reconstructed with the $k=5 (k_1=4,k_2=1)$ solution for an example of a practical simulated filter wheel setup. 
+We also provide the $k=2 (k_1=2,k_2=0), \Delta E_{00}=12.77$ solution for comparison.  
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/scraped_cave.png}
-    \caption{CAVE rendering using best $k_1=4,k_2=1$ solution}
+    \includegraphics[width=\linewidth]{media/scraped_tiles_cave_k2.png}
+    \caption{CAVE 'glass tiles' scene with scraped filters, $k=2 (k_1=2,k_2=0)$}
 \end{subfigure}%
 \begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/deltaE_vs_k_mse.png}
-    \caption{Best $\Delta E_{00}$ for each number of filters $k$ (Supergel set)}
+    \includegraphics[width=\linewidth]{media/scraped_tiles_cave_k5.png}
+    \caption{CAVE 'glass tiles' scene with scraped filters $k=5 (k_1=4,k_2=1)$}
 \end{subfigure}
-\caption{Example simulated reconstruction and overall Supergel performance.}
+\caption{Comparison of different CAVE renders with scraped filters}
 \end{figure}
 
-\section{Rosco Supergel Set}
+We caveat these results by reminding that the set of 494 filters provides a large set to choose from, and therefore an 'easier' time to reconstruct our desired target functions subject to our ability to correctly choose filters. 
+In the next section, we explore a similar analysis on a smaller set of filters, searching for an equivalent reconstruction quality and more easily calculating the performance difference against the best possible solution as found by brute force, which we cannot feasibly compute for the $N=494$ sized set of filters. 
 
-\subsection{MSE and $\Delta E_{00}$ Results}
+\section{Rosco Supergel Set in Simulated Camera}
 
-For the 
+In this section, we progressively increase the number of filters $k$ and analyze the reconstruction quality for each. 
+We comment on the increases in reconstruction quality afforded by each incremental extra capture, understanding that each filter increases capture time and possibility of a 'bad capture.'
+Specifically, because  we require a mechanical servo turn between each capture, if an object in our scene moves, or worse, if our camera moves during capture, our reconstruction will be irrecoverably damaged. 
 
-In Figure 6, we show the best $\Delta E_{00}$ of our approximation at each $k$ filter subset of the Rosco Supergel set, where $k\in [1,8]$. For completeness, we use brute force search. 
-%For each number of filters $N$, we compute the minimum $\Delta E_{00}$ across all combinations of $N$ filters from the Rosco Supergel set, and plot the relationship between $N$ and $\Delta E_{00}$.
+To maintain consistency across this demonstration, we run all the simulations in the following section with an IR-cut filter included. 
+Additionally, for the computations of $\Delta E_{00}$, we utilize the python \codeword{color} and \codeword{colour-science} libraries, with the the CIE 1931 or 2015 2 Degree Standard Observer respectively, depending on whether we utilize the CIE 1931 or CIE 2006 XYZ functions. 
+D65 illuminant from the same library is used as well as ColorChecker N Ohta reflectance patches. XYZ responses were converted to CIELAB using the \codeword{color.xyz2lab} function to convert XYZ signals to lab before $\Delta E_{00}$ computation.
 
-We also plot the resultant reconstructed XYZ functions for the best $k-$filter combination of $k\in\{3,4,5,6\}$, see respectively Figures 7, 9, 10 and 12. 
-%In the $k=3$ case, we can see visible artifacts in the transmission functions. 
+\subsection{MSE, $\Delta E_{00}$ and CAVE Results for $k \in \{3,4,5\}$}
 
-%%% GRAHAM GOT TO HERE 19/4/26
+We will provide some filter wheel prescriptions along the various values of $k$ we consider for our filter wheel. 
+In Figure \ref{fig:supergelIntro}, we show the best $\Delta E_{00}$ of our approximation at each $k$ filter subset of the Rosco Supergel set, where $k\in \{1,8\}$. 
+For completeness and surety of optimal combination identification, we use brute force search in this section, thus $k=k_1$ and we omit $k_2$.
+In this section, we continue to use the IR-cut filter and a standard MSE loss for consistency versus the prior section and other works. 
 
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.46\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/deltaE_vs_k_mse.png}
+    \caption{Best $\Delta E_{00}$ for each number of filters $k$}
+\end{subfigure}
+\begin{subfigure}{.53\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/scraped_cave.png}
+    \caption{CAVE rendering using best $k=5$ solution}
+\end{subfigure}%
+\caption{Example simulated reconstruction and overall Supergel set performance.}
+\label{fig:supergelIntro}
+\end{figure}
+
+\subsubsection{Solution for $k=3$}
+
+The best filter combination for $k=3$, clearly a poor spectral fit, see Fig. \ref{fig:k3spectral}, achieves a tolerable mean $\Delta E_{00}$ of 3.77. This is in the just noticeable difference threshold of 2-4 \cite{lindstrom2008delta},
+indicating that the reconstructed colors may be distinguishable from the target colors under certain conditions. 
+The 24 patches above show the original in the top left of each pane and the simulated reconstruction in the bottom right. It is evident there is a visible colour difference.
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.49\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/k3top1_spectra.png}
-    \caption{Camera spectral sensitivity for best XYZ reconstruction ($k=3$)}
+    \caption{Best XYZ reconstruction}
 \end{subfigure}%
 \begin{subfigure}{.49\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/n3MSEMacbeth.png}
-    \caption{Macbeth Color Checker comparison ($k=3$)}
+    \caption{Macbeth Color Checker comparison}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k3_errors.png}
+    \caption{Error distribution across combinations}
+\end{subfigure}%
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k3_cave.png}
+    \caption{CAVE render of combination}
 \end{subfigure}
 \caption{Supergel results for $k=3$.}
+\label{fig:k3spectral}
 \end{figure}
 
-The best filter combination for $k=3$, clearly a poor spectral fit, see Fig. 7, achieves a tolerable mean $\Delta E_{00}$ of 3.77. This is in the just noticeable difference threshold of 2-4 \cite{lindstrom2008delta},
-indicating that the reconstructed colors may be distinguishable from the target colors under certain conditions.
-The 24 patches below show the original in the top left of each pane and the simulated reconstruction in the bottom left. It is evident there is a visible colour difference.
-%\begin{center}
-%    \centering
-%    \includegraphics[width=.5\linewidth]{media/n3MSEbarRank2.png}
-%    \captionof{figure}{Best $\Delta E_{00}$ for each number of filters $N=3$ }
-%\end{center}
+We also include some characteristics of the filters themselves, specifically the 1931 gamut locations and their measured transmission functions. 
 
-We see a noticeable improvement in MSE and in $\Delta E_{00}$ with $k=4$, the latter measuring 1.09, slightly above the 'just noticeable difference' of 1.0 \cite{lindstrom2008delta}. 
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.40\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k3_gamut.png}
+    \caption{Location on CIE 1931 Color Gamut}
+\end{subfigure}%
+\begin{subfigure}{.55\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k3_trans.png}
+    \caption{Transmission functions of selected filters}
+\end{subfigure}
+\caption{$k=3$ Transmission functions and location on gamut}
+\label{fig:k3Transmissions}
+\end{figure}
+
+\subsubsection{Solution for $k=4$}
+
+We see a noticeable improvement in MSE and in $\Delta E_{00}$ with $k=4$, measuring 1.09, slightly above the 'just noticeable difference' of 1.0 \cite{lindstrom2008delta}. 
+The CAVE dataset reconstruction approaches the ground truth reconstruction, although the human eye may observe slight differences in the overall image. 
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/k4top1_spectra.png}
-    \caption{Camera spectral sensitivity for best XYZ reconstruction ($k=4$)}
+    \includegraphics[width=\linewidth]{media/measured_k3_gamut.png}
+    \caption{Best XYZ reconstruction}
 \end{subfigure}%
 \begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/k5top1_spectra.png}
-    \caption{Camera spectral sensitivity for best XYZ reconstruction ($k=5$)}
+    \includegraphics[width=\linewidth]{media/measured_k4_macbeth.png}
+    \caption{Macbeth Color Checker comparison}
 \end{subfigure}
-\caption{Supergel spectral sensitivities for $k=4$ and $k=5$.}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k4_errors.png}
+    \caption{Error distribution across combinations}
+\end{subfigure}%
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k4_cave.png}
+    \caption{CAVE render of combination}
+\end{subfigure}
+\caption{Supergel results for $k=4$.}
+\label{fig:k4spectral}
 \end{figure}
 
-Next, $k=5$ achieves a $\Delta E_{00}$ of 0.35, which is well below the just noticeable difference threshold, indicating that the reconstructed colors are likely indistinguishable from the target colors under typical viewing conditions.
-The following Macbeth color patches display nearly identical hues between target and simulated patches. 
+In comparison to the $k=3$ case, we see relatively little transmission above the 650nm range, yet a reconstruction may struggle to recreate red hues and the 15th Macbeth patch, the dark red patch, has a $\Delta E_{00}$ of about 9, significantly worse than the rest. 
+Conceptually, we can see that the gamut has little coverage over the red corner of the 1931 color gamut.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.40\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k4_gamut.png}
+    \caption{Location on CIE 1931 Color Gamut}
+\end{subfigure}%
+\begin{subfigure}{.55\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k4_transmission.png}
+    \caption{Transmission functions of selected filters}
+\end{subfigure}
+\caption{$k=4$ Transmission functions and location on gamut}
+\label{fig:k4Transmissions}
+\end{figure}
+
+\subsubsection{Solution for $k=5$}
+
+
+For the $k=5$ case, the $\Delta E_{00}$ reaches .35 and clearly improves on the reconstruction of the target curves. 
+Importantly, the worst individual $\Delta E_{00}$ recorded amongst the Macbeth patches are patches 2 and 15, the tan and red patches. 
+The cave reconstruction is quite hard to distinguish from the ground truth. 
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/k6top1_spectra.png}
-    \caption{Camera spectral sensitivity for best XYZ reconstruction ($k=6$)}
+    \includegraphics[width=\linewidth]{media/measured_k5_spectra.png}
+    \caption{Best XYZ reconstruction}
+\end{subfigure}%
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k5_macbeth.png}
+    \caption{Macbeth Color Checker comparison}
 \end{subfigure}
 \begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/k5Macbeth_render_rank_0.png}
-    \caption{Macbeth Color Checker comparison ($k=5$)}
+    \includegraphics[width=\linewidth]{media/measured_k5_errors.png}
+    \caption{Error distribution across combinations}
 \end{subfigure}%
-
-\caption{Supergel results for $k=5$ and $k=6$.}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k5_cave.png}
+    \caption{CAVE dataset rendering}
+\end{subfigure}
+\caption{Supergel results for $k=5$.}
+\label{fig:k5spectral}
 \end{figure}
 
-%The distribution of $\Delta E_{00}$ across the 24 Macbeth Color Checker patches for the best filter combination for $k=10$ shows that all patches achieve a $\Delta E_{00}$ below 0.1.
 
-%\begin{center}
-%    \centering
-%    \includegraphics[width=.5\linewidth]{media/n10MSEbarRank0.png}
-%    \captionof{figure}{Best $\Delta E_{00}$ for each number of filters $N$ }
-%\end{center}
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.40\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k5_gamut.png}
+    \caption{Location on CIE 1931 Color Gamut}
+\end{subfigure}%
+\begin{subfigure}{.55\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/measured_k5_transmission.png}
+    \caption{Transmission functions of selected filters}
+\end{subfigure}
+\caption{$k=5$ Transmission functions and location on gamut}
+\label{fig:k5Transmissions}
+\end{figure}
 
-%In addition, the $3 \times 10$ $\boldsymbol{M}$ matrix for the best $k=10$ reconstruction is shown below.
-%We note that all 10 filters contribute to at least two of the trichromatic values.
-%\begin{center}
-%    \centering
-%    \includegraphics[width=.5\linewidth]{media/n10M.png}
-%    \captionof{figure}{$\boldsymbol{M}$ matrix for $k=10$ reconstruction}
-%\end{center}
-
-Finally, $k=6$ achieves a $\Delta E_{00}$ of 0.39, and there is generally limited further decrease in $\Delta E_{00}$ at $k>6$. Notice here the spectral fit the XYZ CMFs is good.
-
-\section{CAVE Dataset Visualization}
-
-We are curious to see whether 
+Additional captures from the CAVE dataset are included in the appendix. 
 
 \subsection{Noise Model Analysis}
+
+For analysis of the noisiness of our capture, we switch from the MSE loss function to the MSE_noisy loss function, and we compare the results with increments in the photons parameter. 
+For this analysis, we increment along the $k_1$ parameter amongst $k_1 \in \{2,4,6\}$, fixing $k_2=2$. 
+The difference in $\Delta E_{00}$ performance using the noise model is significantly larger due to the worse reconstruction quality attained by adding noise to the loss function.
+Hence, $\Delta E_{00}$ attained with $k=4 (k_1=2,k_2=2)$ filters never decreases past 14. 
 
 \begin{center}
     \centering
@@ -199,37 +297,37 @@ We are curious to see whether
     \captionof{figure}{Best $\Delta E_{00}$ as a function of Photons}
 \end{center}
 
+The noise model is not directly used in our filter selection process, but informs our understanding of filter wheel dynamics and shutter speed. 
+We also recognize the detrimental effect of poor lighting on our captures, and aim to increase exposure time in low-lighting environments.
+
 \section{Physical Camera with Rosco Supergel Set}
 
-For the initial evaluation of our physical camera stack, we test the recommended best performing filter combinations against a multispectral scene including a PMC in a lab environment, using the Rosco Supergel set of filters. 
-A few captures featured artifacts, and a number of filters preserved transmission fairly uniformly across $\omega$ but included 'frost' or 'blur' effects which occasionally performed well in simulations but often added poor elements to reconstructions.
+For the initial evaluation of our physical camera stack, we stage an environment under the same Lilliput \cite{UtopiaCamLiliput} illuminant in a lab environment. 
+We position the illuminant about 2 meters above the scene to tune the intensity of light into the camera aperture, and place our camera (removed from the housing) on a tripod, aimed at the stage. 
+
+\begin{center}
+
+\end{center}
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}{.49\linewidth}
+\begin{subfigure}{.64\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/Lab00.jpg}
-    \caption{Filter 00 in RaspberryPi Camera, including artifacts in bottom right}
-\end{subfigure}
-\begin{subfigure}{.49\linewidth}
+    \includegraphics[width=.55\linewidth]{media/spectralLabMarkup.jpeg}
+    \caption{Camera on tripod in lab, side angle}
+\end{subfigure}%
+\begin{subfigure}{.34\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/Lab104.jpg}
-    \caption{Filter 104 in RaspberryPi Camera, excluded for blur effect}
+    \includegraphics[width=\linewidth]{media/spectralLabMarkupStage.jpeg}
+    \caption{Camera on tripod, rear angle}
 \end{subfigure}
-\begin{subfigure}{.49\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{media/Lab47.jpg}
-    \caption{Filter 47 in RaspberryPi Camera}
-\end{subfigure}
-\begin{subfigure}{.49\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{media/Lab336.jpg}
-    \caption{Filter 336 in RaspberryPi Camera}
-\end{subfigure}
-\caption{Monochrome Captures in Lab Environment}
+\caption{Lab setup for image capture, with deconstructed camera}
+\label{fig:spectralLabMark}
 \end{figure}
 
+Then, we test the recommended best performing filter combinations against a multispectral scene including a PMC in a lab environment, using the Rosco Supergel set of filters. 
 
+We then take the best perscribed reconstructions for the $k_1=4$ and $k_1=5$ reconstructions to test our methodology. 
 
 \begin{center}
     \centering
@@ -237,7 +335,11 @@ A few captures featured artifacts, and a number of filters preserved transmissio
     \captionof{figure}{$k_1=4$ Photo Lab Reconstruction with component captures above}
 \end{center}
 
+Qualitatively, we see that these solutions do not provide perfect reconstructions, and the intensity of some of the hues is dulled. 
+For a more quantitative analysis, we utilize the spectrophotometer in this same lab environment \ref{ref:spectrophotometer} and compute the ground truth $x$ and $y$ values. 
+Then, we can use the same methodology as the simulated pipeline to compute $\Delta E_{00}$. 
 
+Here, we have the solution for the $k_1=5$ 
 
 \begin{center}
     \centering
@@ -245,29 +347,57 @@ A few captures featured artifacts, and a number of filters preserved transmissio
     \captionof{figure}{$k_1=5$ Photo Lab Reconstruction with component captures above}
 \end{center}
 
-For demonstration, we show the reconstruction for the $k=5$ case, where we simulate the optimal reconstruction including an IR-cut camera. 
-However, the lab measurements were taken in the absence of an IR-cut camera, resulting in an ill-fitting reconstruction.
 
-\begin{center}
+
+\section{Physical Camera Photo Results}
+
+We demonstrate use of our physical camera in non-laboratory settings. 
+Here, we have a photo of ____, reconstructed with a filter wheel 
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=.75\linewidth]{media/k1_5_recon_badNOIR.png}
-    \captionof{figure}{$k_1=5$ Photo Lab Reconstruction with component captures above, incorrect camera configuration}
-\end{center}
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Camera and subject taking image of ____}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Reconstruction of ___ image}
+\end{subfigure}
+\caption{$k=4$ real world capture}
+\end{figure}
 
-Another poor example has another $k=5$ solution, but with the poor captures included. 
-
+Another capture is shown below, this time in low lighting environment.
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/k5_noisy_render.png}
-    \caption{Poor quality $k=5$ reconstruction including unfit filters 00, 100, 160}
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Camera and subject taking image of ____}
 \end{subfigure}
 \begin{subfigure}{.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{media/k5_noisy_spectra.png}
-    \caption{Spectral reconstruction for $k=5$ combination with low MSE, poor realized result}
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Reconstruction of ___ image}
 \end{subfigure}
-\caption{$k=5$ filter combination with poor reconstruction quality}
+\caption{$k=4$ real world capture}
+\end{figure}
+
+Here, we use a 6 filter wheel to capture the same environment. 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Camera and subject taking image of ____}
+\end{subfigure}
+\begin{subfigure}{.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Reconstruction of ___ image}
+\end{subfigure}
+\caption{$k=6$ real world capture}
 \end{figure}

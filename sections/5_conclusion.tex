@@ -1,5 +1,27 @@
 \chapter{Conclusion}
-We are able to achieve fairly accurate reconstructions of the XYZ color matching functions with as few as $k=4$ filters, and very high quality reconstructions with $k>5$ filters.
+We are able to achieve fairly accurate reconstructions of the CIE 1931 and 2006 XYZ color matching functions with as few as $k=4$ filters, and very high quality reconstructions with $k>5$ filters.
 This suggests that a filter wheel system with 6 filters could be sufficient for high-quality color reconstruction. 
 However, the system does have drawbacks, such as shutter speed on the order of seconds and the need for a static scene. 
 
+We also find that a hybrid filter selection methodology provides a reasonable middle ground for finding a good combination among a massive search space with a significant cost per combination considered. 
+Especially for non-MSE loss functions, where the computationally more complex gradient descent in addition of the pseudoinverse calculation significantly increases cost per combination, reasonable and efficient filter selection algorithms can provide the difference between an intractable problem, in incorrect filter selection, or a good reconstruction. 
+
+We note that the exposure time and lighting conditions of the camera system have significant effects on the reconstruction quality, such that optimal filter choices for different lighting conditions are not necessarily constant in $k$. 
+Additionally, we demonstrate that higher-$k$ filter wheels can have worse reconstruction in the real world simply due to the challenges inherent to a longer capture time. 
+
+Finally, we deploy the camera in real world environments, demonstrating the high quality reconstructions possible from the filter wheel construct. 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.39\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Camera and subject taking image of ____}
+\end{subfigure}
+\begin{subfigure}{.39\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{media/placeholder.jpg}
+    \caption{Reconstruction of ___ image}
+\end{subfigure}
+\caption{$k=6$ real world capture}
+\end{figure}

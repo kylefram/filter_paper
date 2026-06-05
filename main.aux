@@ -71,14 +71,13 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.8}Following Work}{6}{section.2.8}\protected@file@percent }
 \citation{arducam_ov9281,coligh_ircut_650nm}
 \citation{rosco_mycolor}
+\citation{arducam_ov9281}
 \@writefile{toc}{\contentsline {chapter}{\numberline {3}Method}{7}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Mathematical Framework}{7}{section.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Data Collection}{7}{section.3.2}\protected@file@percent }
-\citation{arducam_ov9281}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Data Collection}{7}{section.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Scraped and measured spectral transmission functions}}{7}{figure.caption.3}\protected@file@percent }
 \citation{UtopiaCamLiliput}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Scraped and measured spectral transmission functions}}{8}{figure.caption.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Filter set, Spectrophotometer setup and measurement workflow}}{8}{figure.caption.4}\protected@file@percent }
 \citation{CVRL}
 \citation{Pascale2006RGBCO}
@@ -86,11 +85,14 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Computer readout of spectrophotometer measurement session}}{9}{figure.caption.5}\protected@file@percent }
 \citation{ThouslitePMCC}
 \citation{UtopiaCamLiliput}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Simulation dataset and laboratory replication setup.}}{10}{figure.caption.6}\protected@file@percent }
+\newlabel{ref:spectrophotometer}{{\caption@xref {??}{ on input line 82}}{10}{Data Collection}{figure.caption.6}{}}
+\newlabel{sub@ref:spectrophotometer}{{}{10}{Data Collection}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Spectrophotometer and laboratory scene setup.}}{10}{figure.caption.6}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Example captures used for qualitative evaluation.}}{10}{figure.caption.7}\protected@file@percent }
-\citation{Filterselection}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces 2 different types of color checkers}}{11}{figure.caption.8}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Distribution of patch locations on the CIE 1931 color gamut}}{11}{figure.caption.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Mathematical Background}{11}{section.3.2}\protected@file@percent }
+\citation{Filterselection}
 \citation{greville1960some,BEUTLER1965451}
 \citation{macausland2014moore}
 \citation{hanji2020noise}
@@ -98,142 +100,52 @@
 \newlabel{eq:5}{{3.2}{12}{Problem Formulation}{equation.3.2}{}}
 \newlabel{eq:6}{{3.3}{12}{Problem Formulation}{equation.3.3}{}}
 \newlabel{eq:7}{{3.4}{12}{Problem Formulation}{equation.3.4}{}}
-\citation{finlayson2020designing}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Mathematical Terms}{13}{section.3.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Summary of mathematical terms.}}{13}{table.caption.10}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Loss Computation with Noise-Weighting Options}}{13}{algorithm.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:math-terms}{{3.1}{13}{Summary of mathematical terms}{table.caption.10}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Filter Selection}{13}{section.3.5}\protected@file@percent }
-\citation{mallat1993matching}
+\newlabel{alg:compute-loss-table}{{1}{13}{Loss Computation with Noise-Weighting Options}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Mathematical Terms}{13}{section.3.4}\protected@file@percent }
+\citation{finlayson2020designing}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Summary of mathematical terms.}}{14}{table.caption.10}\protected@file@percent }
+\newlabel{tab:math-terms}{{3.1}{14}{Summary of mathematical terms}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Filter Selection}{14}{section.3.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Brute Force Search}{14}{subsection.3.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces MSE error distribution across all filter combinations for $k=5$}}{14}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:errors}{{3.8}{14}{MSE error distribution across all filter combinations for $k=5$}{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}PCA Analysis}{14}{subsection.3.5.2}\protected@file@percent }
 \citation{mallat1993matching}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces PCA / Matching-Pursuit filter selection and weight estimation}}{15}{algorithm.1}\protected@file@percent }
-\newlabel{alg:pca-selection}{{1}{15}{PCA / Matching-Pursuit filter selection and weight estimation}{algorithm.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces MSE error distribution across all filter combinations for $k=5$}}{15}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:errors}{{3.8}{15}{MSE error distribution across all filter combinations for $k=5$}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}PCA Analysis}{15}{subsection.3.5.2}\protected@file@percent }
+\citation{mallat1993matching}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces PCA / Matching-Pursuit filter selection and weight estimation}}{16}{algorithm.2}\protected@file@percent }
+\newlabel{alg:pca-selection}{{2}{16}{PCA / Matching-Pursuit filter selection and weight estimation}{algorithm.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Timing comparison between PCA and brute force selection methods}}{16}{figure.caption.12}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces MSE comparison between PCA and brute force selection methods ($k_2=0$)}}{16}{figure.caption.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}PCA Analysis with Macbeth Target}{16}{subsection.3.5.3}\protected@file@percent }
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces PCA / Matching-Pursuit selection using Macbeth patch subspace}}{17}{algorithm.2}\protected@file@percent }
-\newlabel{alg:pca-macbeth-selection}{{2}{17}{PCA / Matching-Pursuit selection using Macbeth patch subspace}{algorithm.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces Placeholder: comparison of MSE/$\Delta E$ at high $k$}}{18}{figure.caption.14}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces MSE comparison between PCA and brute force selection methods ($k_2=0$)}}{17}{figure.caption.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.3}PCA Analysis with Macbeth Target}{17}{subsection.3.5.3}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces PCA / Matching-Pursuit selection using Macbeth patch subspace}}{18}{algorithm.3}\protected@file@percent }
+\newlabel{alg:pca-macbeth-selection}{{3}{18}{PCA / Matching-Pursuit selection using Macbeth patch subspace}{algorithm.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5.4}LASSO Selection}{18}{subsection.3.5.4}\protected@file@percent }
 \newlabel{eq:lasso-group}{{3.8}{18}{LASSO Selection}{equation.3.8}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces LASSO / group-sparse filter selection}}{19}{algorithm.3}\protected@file@percent }
-\newlabel{alg:lasso-selection}{{3}{19}{LASSO / group-sparse filter selection}{algorithm.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces Placeholder for LASSO}}{20}{figure.3.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.5}Brute Force Search Augmented PCA}{20}{subsection.3.5.5}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces LASSO / group-sparse filter selection}}{19}{algorithm.4}\protected@file@percent }
+\newlabel{alg:lasso-selection}{{4}{19}{LASSO / group-sparse filter selection}{algorithm.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.5}Brute Force Search Augmented PCA}{19}{subsection.3.5.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces MSE comparison between PCA and brute force selection methods ($k_2=2$)}}{20}{figure.caption.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.6} Computation}{20}{section.3.6}\protected@file@percent }
 \citation{Thompson2022,Stamos2024,Baxcor2022}
 \citation{PrusaMK4S,Kopovaetal2024,Zeidanetal2024}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces MSE Comparison between PCA and Brute Force Selection Methods, $k_2=2$}}{21}{figure.3.13}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces MSE comparison between PCA and brute force selection methods ($k_2=2$)}}{21}{figure.caption.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Physical Camera}{22}{section.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}3D Printed Housing}{22}{subsection.3.6.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces 3D Printed Case}}{22}{figure.caption.16}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.16}{\ignorespaces 3D Print Model (Screenshots of PrusaSlicer software)}}{22}{figure.caption.17}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.17}{\ignorespaces 3D Printed Camera}}{23}{figure.caption.18}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Evaluation Pipeline: $\Delta E_{00}$ Computation}}{21}{algorithm.5}\protected@file@percent }
+\newlabel{alg:mse-de00-eval}{{5}{21}{Evaluation Pipeline: $\Delta E_{00}$ Computation}{algorithm.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.7}Physical Camera}{21}{section.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7.1}3D Printed Housing}{21}{subsection.3.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces 3D Printed Case}}{21}{figure.caption.15}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces 3D Print Model (Screenshots of PrusaSlicer software)}}{22}{figure.caption.16}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces CAMERA SHUTTER}}{22}{algorithm.6}\protected@file@percent }
+\newlabel{alg:camera control}{{6}{22}{CAMERA SHUTTER}{algorithm.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces 3D Printed Camera}}{22}{figure.caption.17}\protected@file@percent }
 \citation{farnand2003using}
 \citation{Pascale2006RGBCO}
 \citation{lindstrom2008delta}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Evaluation}{24}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Evaluation}{23}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}MyColor Filter Set}{24}{section.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces MyColor $k=3$ performance and selected filters.}}{24}{figure.caption.19}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces MyColor $k=3$ filters in spectral and chromaticity space.}}{25}{figure.caption.20}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces MyColor evaluation on a color checker and scaling to larger $k$.}}{26}{figure.caption.21}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Example simulated reconstruction and overall Supergel performance.}}{26}{figure.caption.22}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Rosco Supergel Set}{26}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}MSE and $\Delta E_{00}$ Results}{26}{subsection.4.2.1}\protected@file@percent }
-\citation{lindstrom2008delta}
-\citation{lindstrom2008delta}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Supergel results for $k=3$.}}{27}{figure.caption.23}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Supergel spectral sensitivities for $k=4$ and $k=5$.}}{27}{figure.caption.24}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Supergel results for $k=5$ and $k=6$.}}{28}{figure.caption.25}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}CAVE Dataset Visualization}{28}{section.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Noise Model Analysis}{28}{subsection.4.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces Best $\Delta E_{00}$ as a function of Photons}}{28}{figure.4.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Physical Camera with Rosco Supergel Set}{29}{section.4.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces Monochrome Captures in Lab Environment}}{29}{figure.caption.26}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces $k_1=4$ Photo Lab Reconstruction with component captures above}}{29}{figure.4.10}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces $k_1=5$ Photo Lab Reconstruction with component captures above}}{30}{figure.4.11}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces $k_1=5$ Photo Lab Reconstruction with component captures above, incorrect camera configuration}}{30}{figure.4.12}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces $k=5$ filter combination with poor reconstruction quality}}{31}{figure.caption.27}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusion}{32}{chapter.5}\protected@file@percent }
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\bibdata{document.bib}
-\bibcite{peyghambari2021lithological}{{1}{}{{}}{{}}}
-\bibcite{ortega2019gastroenterology}{{2}{}{{}}{{}}}
-\bibcite{mariotti2023forensics}{{3}{}{{}}{{}}}
-\bibcite{qin2013foodsafety}{{4}{}{{}}{{}}}
-\bibcite{wu2013foodfundamentals}{{5}{}{{}}{{}}}
-\bibcite{lee2020colorluminance}{{6}{}{{}}{{}}}
-\bibcite{wu2024headneckcancer}{{7}{}{{}}{{}}}
-\bibcite{lu2020agriculture}{{8}{}{{}}{{}}}
-\bibcite{SCUTELNIC2024e00596}{{9}{}{{}}{{}}}
-\bibcite{mannheimer1977landsat}{{10}{}{{}}{{}}}
-\bibcite{Filterselection}{{11}{}{{}}{{}}}
-\bibcite{vrhel1994filter}{{12}{}{{}}{{}}}
-\bibcite{rosco_mycolor}{{13}{}{{}}{{}}}
-\bibcite{1931TrOS...33...73S}{{14}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {section}{References}{33}{section*.28}\protected@file@percent }
-\bibcite{STOCKMAN201987}{{15}{}{{}}{{}}}
-\bibcite{von1927gebiet}{{16}{}{{}}{{}}}
-\bibcite{USGSLandsat1}{{17}{}{{}}{{}}}
-\bibcite{USGS2012MSS}{{18}{}{{}}{{}}}
-\bibcite{konig1998practice}{{19}{}{{}}{{}}}
-\bibcite{greville1960some}{{20}{}{{}}{{}}}
-\bibcite{BEUTLER1965451}{{21}{}{{}}{{}}}
-\bibcite{macausland2014moore}{{22}{}{{}}{{}}}
-\bibcite{mallat1993matching}{{23}{}{{}}{{}}}
-\bibcite{LAKSHMI2025297}{{24}{}{{}}{{}}}
-\bibcite{MEHTA20191}{{25}{}{{}}{{}}}
-\bibcite{551700}{{26}{}{{}}{{}}}
-\bibcite{vrhel1995design}{{27}{}{{}}{{}}}
-\bibcite{1673444}{{28}{}{{}}{{}}}
-\bibcite{finlayson2020designing}{{29}{}{{}}{{}}}
-\bibcite{gao2024color}{{30}{}{{}}{{}}}
-\bibcite{ives1915transformation}{{31}{}{{}}{{}}}
-\bibcite{hanji2020noise}{{32}{}{{}}{{}}}
-\bibcite{akyuz2007noise}{{33}{}{{}}{{}}}
-\bibcite{mann1994beingundigital}{{34}{}{{}}{{}}}
-\bibcite{sidiropoulos1994optimal}{{35}{}{{}}{{}}}
-\bibcite{lapray2014multispectral}{{36}{}{{}}{{}}}
-\bibcite{morales2020multispectral}{{37}{}{{}}{{}}}
-\bibcite{martinez1993high}{{38}{}{{}}{{}}}
-\bibcite{yokoyama1997new}{{39}{}{{}}{{}}}
-\bibcite{eoPortalHISUI}{{40}{}{{}}{{}}}
-\bibcite{Hunt18082018}{{41}{}{{}}{{}}}
-\bibcite{jimaging4120141}{{42}{}{{}}{{}}}
-\bibcite{CADD2016181}{{43}{}{{}}{{}}}
-\bibcite{ALMEIDA2017628}{{44}{}{{}}{{}}}
-\bibcite{yasuma2010generalized}{{45}{}{{}}{{}}}
-\bibcite{CVRL}{{46}{}{{}}{{}}}
-\bibcite{Pascale2006RGBCO}{{47}{}{{}}{{}}}
-\bibcite{XRiteColorChecker}{{48}{}{{}}{{}}}
-\bibcite{McCamy1976}{{49}{}{{}}{{}}}
-\bibcite{lindstrom2008delta}{{50}{}{{}}{{}}}
-\bibcite{luo2024new}{{51}{}{{}}{{}}}
-\bibcite{ThouslitePMCC}{{52}{}{{}}{{}}}
-\bibcite{arducam_ov9281}{{53}{}{{}}{{}}}
-\bibcite{coligh_ircut_650nm}{{54}{}{{}}{{}}}
-\bibcite{UtopiaCamLiliput}{{55}{}{{}}{{}}}
-\bibcite{Thompson2022}{{56}{}{{}}{{}}}
-\bibcite{Stamos2024}{{57}{}{{}}{{}}}
-\bibcite{Baxcor2022}{{58}{}{{}}{{}}}
-\bibcite{PrusaMK4S}{{59}{}{{}}{{}}}
-\bibcite{Kopovaetal2024}{{60}{}{{}}{{}}}
-\bibcite{Zeidanetal2024}{{61}{}{{}}{{}}}
-\bibcite{farnand2003using}{{62}{}{{}}{{}}}
-\bibstyle{ieeetr}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Appendix}{37}{chapter.7}\protected@file@percent }
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Timing Comparison: PCA vs. Brute Force, up to $k_1=8$, $k_2=2$}}{37}{table.caption.30}\protected@file@percent }
-\newlabel{tab:timing_comparison}{{7.1}{37}{Timing Comparison: PCA vs. Brute Force, up to $k_1=8$, $k_2=2$}{table.caption.30}{}}
-\providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{lot}{\contentsline {table}{\numberline {7.2}{\ignorespaces Minimum MSE and $\Delta E$ Comparison: PCA vs. Brute Force, up to $k_1=6$, $k_2=2$}}{38}{table.caption.31}\protected@file@percent }
-\newlabel{tab:mse_deltae_comparison}{{7.2}{38}{Minimum MSE and $\Delta E$ Comparison: PCA vs. Brute Force, up to $k_1=6$, $k_2=2$}{table.caption.31}{}}
-\gdef \@abspage@last{40}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}MyColor Filter Set}{23}{section.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces MyColor $k<5$ performance and selected filters.}}{24}{figure.caption.18}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces MyColor $k=3$ filters in spectral and chromaticity space.}}{24}{figure.caption.19}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces MyColor evaluation on a color checker and sca

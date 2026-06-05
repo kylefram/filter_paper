@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  29 MAY 2026 18:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  5 JUN 2026 17:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -627,24 +627,24 @@ LaTeX Info: Redefining \genfrac on input line 149.
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
  (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count382
@@ -664,13 +664,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2026/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Info: Redefining \microtypecontext on input line 22.
-Package microtype Info: Applying patch `item' on input line 22.
-Package microtype Info: Applying patch `toc' on input line 22.
-Package microtype Info: Applying patch `eqnum' on input line 22.
-Package microtype Info: Applying patch `footnote' on input line 22.
-Package microtype Info: Applying patch `verbatim' on input line 22.
-LaTeX Info: Redefining \microtypesetup on input line 22.
+LaTeX Info: Redefining \microtypecontext on input line 26.
+Package microtype Info: Applying patch `item' on input line 26.
+Package microtype Info: Applying patch `toc' on input line 26.
+Package microtype Info: Applying patch `eqnum' on input line 26.
+Package microtype Info: Applying patch `footnote' on input line 26.
+Package microtype Info: Applying patch `verbatim' on input line 26.
+LaTeX Info: Redefining \microtypesetup on input line 26.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -684,7 +684,7 @@ Package microtype Info: No adjustment of character kerning.
  (/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 22.
+Package hyperref Info: Link coloring OFF on input line 26.
  (./main.out) (./main.out)
 \@outlinefile=\write6
 \openout6 = `main.out'.
@@ -693,7 +693,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (./sections/0_abstract.tex
-<media/CST.jpg, id=152, 185.2521pt x 70.8246pt>
+<media/CST.jpg, id=188, 185.2521pt x 70.8246pt>
 File: media/CST.jpg Graphic file (type jpg)
 <use media/CST.jpg>
 Package pdftex.def Info: media/CST.jpg  used on input line 6.
@@ -707,7 +707,7 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <20> not available
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <24> not available
 (Font)              size <24.88> substituted on input line 26.
 
-<media/front_page_plot2.png, id=153, 1156.32pt x 433.62pt>
+<media/front_page_plot2.png, id=189, 1156.32pt x 433.62pt>
 File: media/front_page_plot2.png Graphic file (type png)
 <use media/front_page_plot2.png>
 Package pdftex.def Info: media/front_page_plot2.png  used on input line 35.
@@ -720,7 +720,7 @@ Package pdftex.def Info: media/front_page_plot2.png  used on input line 35.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69 \end{abstract}
+l.70 \end{abstract}
                     [1]) (./sections/1_intro.tex
 Chapter 1.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
@@ -746,382 +746,262 @@ Chapter 2.
 [3
 
 ] [4]
-<media/fakereal.png, id=283, 513.92pt x 513.92pt>
+<media/fakereal.png, id=319, 513.92pt x 513.92pt>
 File: media/fakereal.png Graphic file (type png)
 <use media/fakereal.png>
 Package pdftex.def Info: media/fakereal.png  used on input line 69.
 (pdftex.def)             Requested size: 211.91782pt x 211.91618pt.
-<media/XYZvSha2006.jpg, id=284, 963.6pt x 580.1675pt>
+<media/XYZvSha2006.jpg, id=320, 963.6pt x 580.1675pt>
 File: media/XYZvSha2006.jpg Graphic file (type jpg)
 <use media/XYZvSha2006.jpg>
 Package pdftex.def Info: media/XYZvSha2006.jpg  used on input line 74.
 (pdftex.def)             Requested size: 211.91782pt x 127.58412pt.
  [5{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./media/fakereal.png> <./media/XYZvSha2006.jpg>]
-<media/colorchecker-classic_01.png, id=308, 702.625pt x 351.3125pt>
+<media/colorchecker-classic_01.png, id=344, 702.625pt x 351.3125pt>
 File: media/colorchecker-classic_01.png Graphic file (type png)
 <use media/colorchecker-classic_01.png>
 Package pdftex.def Info: media/colorchecker-classic_01.png  used on input line 95.
 (pdftex.def)             Requested size: 211.91782pt x 105.95741pt.
-<media/PMCC_online.png, id=309, 963.6pt x 702.625pt>
+<media/PMCC_online.png, id=345, 963.6pt x 702.625pt>
 File: media/PMCC_online.png Graphic file (type png)
 <use media/PMCC_online.png>
 Package pdftex.def Info: media/PMCC_online.png  used on input line 100.
 (pdftex.def)             Requested size: 211.91782pt x 154.51364pt.
 ) (./sections/3_method.tex [6 <./media/colorchecker-classic_01.png> <./media/PMCC_online.png>]
 Chapter 3.
-<media/E036_Spec.jpg, id=325, 715.67375pt x 553.06625pt>
+<media/E036_Spec.jpg, id=361, 715.67375pt x 553.06625pt>
 File: media/E036_Spec.jpg Graphic file (type jpg)
 <use media/E036_Spec.jpg>
-Package pdftex.def Info: media/E036_Spec.jpg  used on input line 35.
+Package pdftex.def Info: media/E036_Spec.jpg  used on input line 21.
 (pdftex.def)             Requested size: 223.07211pt x 172.3855pt.
-<media/RaspberryPi_trans.png, id=326, 803.0pt x 513.92pt>
+<media/RaspberryPi_trans.png, id=362, 803.0pt x 513.92pt>
 File: media/RaspberryPi_trans.png Graphic file (type png)
 <use media/RaspberryPi_trans.png>
-Package pdftex.def Info: media/RaspberryPi_trans.png  used on input line 40.
+Package pdftex.def Info: media/RaspberryPi_trans.png  used on input line 26.
 (pdftex.def)             Requested size: 223.07211pt x 142.7674pt.
 [7
 
-]
-<media/Gels.jpeg, id=340, 728.4816pt x 971.3088pt>
+ <./media/E036_Spec.jpg> <./media/RaspberryPi_trans.png>]
+<media/Gels.jpeg, id=375, 728.4816pt x 971.3088pt>
 File: media/Gels.jpeg Graphic file (type jpg)
 <use media/Gels.jpeg>
-Package pdftex.def Info: media/Gels.jpeg  used on input line 58.
+Package pdftex.def Info: media/Gels.jpeg  used on input line 44.
 (pdftex.def)             Requested size: 204.85846pt x 273.13547pt.
-<media/measure2labeled.jpeg, id=341, 3035.34pt x 4047.12pt>
+<media/measure2labeled.jpeg, id=376, 3035.34pt x 4047.12pt>
 File: media/measure2labeled.jpeg Graphic file (type jpg)
 <use media/measure2labeled.jpeg>
-Package pdftex.def Info: media/measure2labeled.jpeg  used on input line 63.
+Package pdftex.def Info: media/measure2labeled.jpeg  used on input line 49.
 (pdftex.def)             Requested size: 204.85846pt x 273.13794pt.
- [8 <./media/E036_Spec.jpg> <./media/RaspberryPi_trans.png> <./media/Gels.jpeg> <./media/measure2labeled.jpeg>]
-<media/Measure3.jpeg, id=350, 846.2817pt x 394.8351pt>
+<media/Measure3.jpeg, id=377, 846.2817pt x 394.8351pt>
 File: media/Measure3.jpeg Graphic file (type jpg)
 <use media/Measure3.jpeg>
-Package pdftex.def Info: media/Measure3.jpeg  used on input line 79.
+Package pdftex.def Info: media/Measure3.jpeg  used on input line 65.
 (pdftex.def)             Requested size: 455.24411pt x 212.40045pt.
-<media/Spectrophotometer2.jpeg, id=354, 728.4816pt x 971.3088pt>
+ [8 <./media/Gels.jpeg> <./media/measure2labeled.jpeg>]
+<media/Spectrophotometer2.jpeg, id=388, 728.4816pt x 971.3088pt>
 File: media/Spectrophotometer2.jpeg Graphic file (type jpg)
 <use media/Spectrophotometer2.jpeg>
-Package pdftex.def Info: media/Spectrophotometer2.jpeg  used on input line 96.
+Package pdftex.def Info: media/Spectrophotometer2.jpeg  used on input line 83.
 (pdftex.def)             Requested size: 223.07211pt x 297.42702pt.
-<media/spectralLab.jpeg, id=355, 728.4816pt x 971.3088pt>
+<media/spectralLab.jpeg, id=389, 728.4816pt x 971.3088pt>
 File: media/spectralLab.jpeg Graphic file (type jpg)
 <use media/spectralLab.jpeg>
-Package pdftex.def Info: media/spectralLab.jpeg  used on input line 101.
+Package pdftex.def Info: media/spectralLab.jpeg  used on input line 88.
 (pdftex.def)             Requested size: 223.07211pt x 297.42702pt.
  [9 <./media/Measure3.jpeg>]
-<media/398.jpg, id=364, 963.6pt x 542.025pt>
+<media/398.jpg, id=397, 963.6pt x 542.025pt>
 File: media/398.jpg Graphic file (type jpg)
 <use media/398.jpg>
-Package pdftex.def Info: media/398.jpg  used on input line 117.
+Package pdftex.def Info: media/398.jpg  used on input line 104.
 (pdftex.def)             Requested size: 223.07211pt x 125.47365pt.
-<media/items.jpeg, id=365, 971.3088pt x 728.4816pt>
+<media/items.jpeg, id=398, 966.9726pt x 534.798pt>
 File: media/items.jpeg Graphic file (type jpg)
 <use media/items.jpeg>
-Package pdftex.def Info: media/items.jpeg  used on input line 122.
-(pdftex.def)             Requested size: 223.07211pt x 167.30269pt.
- [10 <./media/Spectrophotometer2.jpeg> <./media/spectralLab.jpeg> <./media/398.jpg> <./media/items.jpeg>]
-<media/colorcheck_render.png, id=372, 867.24pt x 578.16pt>
+Package pdftex.def Info: media/items.jpeg  used on input line 109.
+(pdftex.def)             Requested size: 223.07211pt x 123.36816pt.
+<media/colorcheck_render.png, id=399, 867.24pt x 578.16pt>
 File: media/colorcheck_render.png Graphic file (type png)
 <use media/colorcheck_render.png>
-Package pdftex.def Info: media/colorcheck_render.png  used on input line 135.
+Package pdftex.def Info: media/colorcheck_render.png  used on input line 122.
 (pdftex.def)             Requested size: 223.07211pt x 148.71245pt.
 File: media/PMCC_online.png Graphic file (type png)
 <use media/PMCC_online.png>
-Package pdftex.def Info: media/PMCC_online.png  used on input line 140.
+Package pdftex.def Info: media/PMCC_online.png  used on input line 127.
 (pdftex.def)             Requested size: 223.07211pt x 162.65102pt.
-<media/colorcheck_chromacity.png, id=373, 462.528pt x 462.528pt>
+ [10 <./media/Spectrophotometer2.jpeg> <./media/spectralLab.jpeg> <./media/398.jpg> <./media/items.jpeg>]
+<media/colorcheck_chromacity.png, id=406, 462.528pt x 462.528pt>
 File: media/colorcheck_chromacity.png Graphic file (type png)
 <use media/colorcheck_chromacity.png>
-Package pdftex.def Info: media/colorcheck_chromacity.png  used on input line 153.
+Package pdftex.def Info: media/colorcheck_chromacity.png  used on input line 140.
 (pdftex.def)             Requested size: 273.14923pt x 273.16438pt.
- [11 <./media/colorcheck_render.png> <./media/colorcheck_chromacity.png>]
-Overfull \hbox (11.99998pt too wide) in paragraph at lines 220--254
+ [11 <./media/colorcheck_render.png> <./media/colorcheck_chromacity.png>] [12]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 218.
+
+Overfull \hbox (11.99998pt too wide) in paragraph at lines 250--284
  [][]  
  []
 
-[12] [13]
-<media/all_errors.png, id=407, 867.24pt x 433.62pt>
+[13] [14]
+<media/all_errors.png, id=450, 867.24pt x 433.62pt>
 File: media/all_errors.png Graphic file (type png)
 <use media/all_errors.png>
-Package pdftex.def Info: media/all_errors.png  used on input line 278.
+Package pdftex.def Info: media/all_errors.png  used on input line 308.
 (pdftex.def)             Requested size: 318.66948pt x 159.33192pt.
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 299.
- [14 <./media/all_errors.png>]
-<media/timing_comparison.png, id=417, 1011.78pt x 505.89pt>
+ [15 <./media/all_errors.png>]
+<media/timing_comparison.png, id=460, 1011.78pt x 505.89pt>
 File: media/timing_comparison.png Graphic file (type png)
 <use media/timing_comparison.png>
-Package pdftex.def Info: media/timing_comparison.png  used on input line 345.
-(pdftex.def)             Requested size: 455.24411pt x 227.62523pt.
- [15]
-<media/mse_comparison_exact_paths.png, id=424, 867.24pt x 578.16pt>
+Package pdftex.def Info: media/timing_comparison.png  used on input line 375.
+(pdftex.def)             Requested size: 227.62206pt x 113.80489pt.
+<media/mse_comparison_exact_paths.png, id=461, 867.24pt x 578.16pt>
 File: media/mse_comparison_exact_paths.png Graphic file (type png)
 <use media/mse_comparison_exact_paths.png>
-Package pdftex.def Info: media/mse_comparison_exact_paths.png  used on input line 352.
-(pdftex.def)             Requested size: 455.24411pt x 303.49443pt.
- [16 <./media/timing_comparison.png> <./media/mse_comparison_exact_paths.png>]
-<media/placeholder.jpg, id=433, 361.35pt x 361.35pt>
-File: media/placeholder.jpg Graphic file (type jpg)
-<use media/placeholder.jpg>
-Package pdftex.def Info: media/placeholder.jpg  used on input line 404.
-(pdftex.def)             Requested size: 455.24411pt x 455.24828pt.
- [17] [18 <./media/placeholder.jpg>]
-File: media/placeholder.jpg Graphic file (type jpg)
-<use media/placeholder.jpg>
-Package pdftex.def Info: media/placeholder.jpg  used on input line 445.
-(pdftex.def)             Requested size: 455.24411pt x 455.24828pt.
- [19]
-<media/mse_comparison_exact_paths_n2_2.png, id=452, 867.24pt x 578.16pt>
-File: media/mse_comparison_exact_paths_n2_2.png Graphic file (type png)
-<use media/mse_comparison_exact_paths_n2_2.png>
-Package pdftex.def Info: media/mse_comparison_exact_paths_n2_2.png  used on input line 462.
-(pdftex.def)             Requested size: 227.62206pt x 151.74721pt.
- [20]
-File: media/mse_comparison_exact_paths_n2_2.png Graphic file (type png)
-<use media/mse_comparison_exact_paths_n2_2.png>
-Package pdftex.def Info: media/mse_comparison_exact_paths_n2_2.png  used on input line 467.
+Package pdftex.def Info: media/mse_comparison_exact_paths.png  used on input line 382.
 (pdftex.def)             Requested size: 318.66948pt x 212.44257pt.
- [21 <./media/mse_comparison_exact_paths_n2_2.png>]
-<media/3dprint2.jpeg, id=471, 971.3088pt x 728.4816pt>
+ [16 <./media/timing_comparison.png>] [17 <./media/mse_comparison_exact_paths.png>] [18]
+<media/mse_comparison_exact_paths_n2_2.png, id=484, 867.24pt x 578.16pt>
+File: media/mse_comparison_exact_paths_n2_2.png Graphic file (type png)
+<use media/mse_comparison_exact_paths_n2_2.png>
+Package pdftex.def Info: media/mse_comparison_exact_paths_n2_2.png  used on input line 493.
+(pdftex.def)             Requested size: 318.66948pt x 212.44257pt.
+ [19] [20 <./media/mse_comparison_exact_paths_n2_2.png>]
+<media/3dprint2.jpeg, id=503, 971.3088pt x 728.4816pt>
 File: media/3dprint2.jpeg Graphic file (type jpg)
 <use media/3dprint2.jpeg>
-Package pdftex.def Info: media/3dprint2.jpeg  used on input line 493.
+Package pdftex.def Info: media/3dprint2.jpeg  used on input line 552.
 (pdftex.def)             Requested size: 223.07211pt x 167.30269pt.
-<media/Octoprint.png, id=472, 947.54pt x 701.62125pt>
+<media/Octoprint.png, id=504, 947.54pt x 701.62125pt>
 File: media/Octoprint.png Graphic file (type png)
 <use media/Octoprint.png>
-Package pdftex.def Info: media/Octoprint.png  used on input line 498.
+Package pdftex.def Info: media/Octoprint.png  used on input line 557.
 (pdftex.def)             Requested size: 223.07211pt x 165.17006pt.
-<media/prusa1.png, id=473, 1174.3875pt x 518.93875pt>
+<media/prusa1.png, id=505, 1170.87437pt x 457.71pt>
 File: media/prusa1.png Graphic file (type png)
 <use media/prusa1.png>
-Package pdftex.def Info: media/prusa1.png  used on input line 511.
-(pdftex.def)             Requested size: 223.07211pt x 98.5677pt.
-<media/prusa2.png, id=474, 1227.58624pt x 480.79625pt>
+Package pdftex.def Info: media/prusa1.png  used on input line 570.
+(pdftex.def)             Requested size: 223.07211pt x 87.19627pt.
+<media/prusa2.png, id=506, 1227.58624pt x 480.79625pt>
 File: media/prusa2.png Graphic file (type png)
 <use media/prusa2.png>
-Package pdftex.def Info: media/prusa2.png  used on input line 516.
+Package pdftex.def Info: media/prusa2.png  used on input line 575.
 (pdftex.def)             Requested size: 223.07211pt x 87.36859pt.
+ [21 <./media/3dprint2.jpeg> <./media/Octoprint.png>]
+<media/placeholder.jpg, id=522, 361.35pt x 361.35pt>
 File: media/placeholder.jpg Graphic file (type jpg)
 <use media/placeholder.jpg>
-Package pdftex.def Info: media/placeholder.jpg  used on input line 528.
+Package pdftex.def Info: media/placeholder.jpg  used on input line 604.
 (pdftex.def)             Requested size: 223.07211pt x 223.07529pt.
 File: media/placeholder.jpg Graphic file (type jpg)
 <use media/placeholder.jpg>
-Package pdftex.def Info: media/placeholder.jpg  used on input line 533.
+Package pdftex.def Info: media/placeholder.jpg  used on input line 609.
 (pdftex.def)             Requested size: 223.07211pt x 223.07529pt.
-) (./sections/4_evaluation.tex [22 <./media/3dprint2.jpeg> <./media/Octoprint.png> <./media/prusa1.png> <./media/prusa2.png>] [23]
+) (./sections/4_evaluation.tex [22 <./media/prusa1.png> <./media/prusa2.png> <./media/placeholder.jpg>]
 Chapter 4.
-<media/scraped_k3_nDeltaEChart.png, id=499, 722.7pt x 433.62pt>
-File: media/scraped_k3_nDeltaEChart.png Graphic file (type png)
-<use media/scraped_k3_nDeltaEChart.png>
-Package pdftex.def Info: media/scraped_k3_nDeltaEChart.png  used on input line 21.
-(pdftex.def)             Requested size: 223.07211pt x 133.84517pt.
-<media/scraped_k3_front_page_right.png, id=500, 550.9383pt x 412.1799pt>
+<media/scraped_k4_nDeltaEChart.png, id=535, 867.24pt x 722.7pt>
+File: media/scraped_k4_nDeltaEChart.png Graphic file (type png)
+<use media/scraped_k4_nDeltaEChart.png>
+Package pdftex.def Info: media/scraped_k4_nDeltaEChart.png  used on input line 22.
+(pdftex.def)             Requested size: 223.07211pt x 185.89056pt.
+<media/scraped_k3_front_page_right.png, id=536, 550.9383pt x 412.1799pt>
 File: media/scraped_k3_front_page_right.png Graphic file (type png)
 <use media/scraped_k3_front_page_right.png>
-Package pdftex.def Info: media/scraped_k3_front_page_right.png  used on input line 26.
+Package pdftex.def Info: media/scraped_k3_front_page_right.png  used on input line 27.
 (pdftex.def)             Requested size: 223.07211pt x 166.88791pt.
-[24
+[23
 
- <./media/scraped_k3_nDeltaEChart.png> <./media/scraped_k3_front_page_right.png>]
-<media/scraped_k3_spectra.png, id=511, 875.4306pt x 730.8906pt>
+]
+<media/scraped_k3_spectra.png, id=543, 875.4306pt x 730.8906pt>
 File: media/scraped_k3_spectra.png Graphic file (type png)
 <use media/scraped_k3_spectra.png>
-Package pdftex.def Info: media/scraped_k3_spectra.png  used on input line 42.
-(pdftex.def)             Requested size: 223.07211pt x 186.23523pt.
-<media/scraped_gamut_k3.png, id=512, 355.3275pt x 359.6637pt>
+Package pdftex.def Info: media/scraped_k3_spectra.png  used on input line 43.
+(pdftex.def)             Requested size: 250.38564pt x 209.04204pt.
+<media/scraped_gamut_k3.png, id=544, 355.3275pt x 359.6637pt>
 File: media/scraped_gamut_k3.png Graphic file (type png)
 <use media/scraped_gamut_k3.png>
-Package pdftex.def Info: media/scraped_gamut_k3.png  used on input line 47.
-(pdftex.def)             Requested size: 223.07211pt x 225.79904pt.
-<media/scraped_k3_macbeth.png, id=513, 701.7417pt x 468.3096pt>
+Package pdftex.def Info: media/scraped_gamut_k3.png  used on input line 48.
+(pdftex.def)             Requested size: 200.30852pt x 202.76035pt.
+ [24 <./media/scraped_k4_nDeltaEChart.png> <./media/scraped_k3_front_page_right.png> <./media/scraped_k3_spectra.png> <./media/scraped_gamut_k3.png>]
+<media/scraped_k3_macbeth.png, id=556, 701.7417pt x 468.3096pt>
 File: media/scraped_k3_macbeth.png Graphic file (type png)
 <use media/scraped_k3_macbeth.png>
-Package pdftex.def Info: media/scraped_k3_macbeth.png  used on input line 63.
-(pdftex.def)             Requested size: 223.07211pt x 148.86887pt.
-<media/scraped_k1scaled_deltaE.png, id=514, 867.24pt x 722.7pt>
+Package pdftex.def Info: media/scraped_k3_macbeth.png  used on input line 64.
+(pdftex.def)             Requested size: 182.09486pt x 121.5218pt.
+<media/scraped_k1scaled_deltaE.png, id=557, 867.24pt x 722.7pt>
 File: media/scraped_k1scaled_deltaE.png Graphic file (type png)
 <use media/scraped_k1scaled_deltaE.png>
-Package pdftex.def Info: media/scraped_k1scaled_deltaE.png  used on input line 68.
-(pdftex.def)             Requested size: 223.07211pt x 185.89056pt.
- [25 <./media/scraped_k3_spectra.png> <./media/scraped_gamut_k3.png>]
-<media/scraped_cave.png, id=522, 1256.5344pt x 661.5114pt>
-File: media/scraped_cave.png Graphic file (type png)
-<use media/scraped_cave.png>
-Package pdftex.def Info: media/scraped_cave.png  used on input line 87.
+Package pdftex.def Info: media/scraped_k1scaled_deltaE.png  used on input line 69.
+(pdftex.def)             Requested size: 204.85846pt x 170.70569pt.
+<media/scraped_tiles_cave_k2.png, id=558, 1225.2174pt x 661.5114pt>
+File: media/scraped_tiles_cave_k2.png Graphic file (type png)
+<use media/scraped_tiles_cave_k2.png>
+Package pdftex.def Info: media/scraped_tiles_cave_k2.png  used on input line 89.
+(pdftex.def)             Requested size: 223.07211pt x 120.43967pt.
+<media/scraped_tiles_cave_k5.png, id=559, 1256.5344pt x 661.5114pt>
+File: media/scraped_tiles_cave_k5.png Graphic file (type png)
+<use media/scraped_tiles_cave_k5.png>
+Package pdftex.def Info: media/scraped_tiles_cave_k5.png  used on input line 94.
 (pdftex.def)             Requested size: 223.07211pt x 117.4317pt.
-<media/deltaE_vs_k_mse.png, id=523, 722.7pt x 433.62pt>
+ [25 <./media/scraped_k3_macbeth.png> <./media/scraped_k1scaled_deltaE.png> <./media/scraped_tiles_cave_k2.png> <./media/scraped_tiles_cave_k5.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 113.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Delta' on input line 113.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 113.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 113.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\in' on input line 113.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 113.
+
+<media/deltaE_vs_k_mse.png, id=571, 722.7pt x 433.62pt>
 File: media/deltaE_vs_k_mse.png Graphic file (type png)
 <use media/deltaE_vs_k_mse.png>
-Package pdftex.def Info: media/deltaE_vs_k_mse.png  used on input line 92.
-(pdftex.def)             Requested size: 223.07211pt x 133.84517pt.
+Package pdftex.def Info: media/deltaE_vs_k_mse.png  used on input line 124.
+(pdftex.def)             Requested size: 209.41534pt x 125.64732pt.
+<media/scraped_cave.png, id=572, 1256.5344pt x 661.5114pt>
+File: media/scraped_cave.png Graphic file (type png)
+<use media/scraped_cave.png>
+Package pdftex.def Info: media/scraped_cave.png  used on input line 129.
+(pdftex.def)             Requested size: 241.27881pt x 127.02086pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 136.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 100.
+(hyperref)                removing `math shift' on input line 136.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Delta' on input line 100.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 100.
-
-[26 <./media/scraped_k3_macbeth.png> <./media/scraped_k1scaled_deltaE.png> <./media/scraped_cave.png> <./media/deltaE_vs_k_mse.png>]
-<media/k3top1_spectra.png, id=536, 875.4306pt x 730.8906pt>
+<media/k3top1_spectra.png, id=575, 875.4306pt x 730.8906pt>
 File: media/k3top1_spectra.png Graphic file (type png)
 <use media/k3top1_spectra.png>
-Package pdftex.def Info: media/k3top1_spectra.png  used on input line 116.
+Package pdftex.def Info: media/k3top1_spectra.png  used on input line 145.
 (pdftex.def)             Requested size: 223.07211pt x 186.23523pt.
-<media/n3MSEMacbeth.png, id=537, 701.7417pt x 468.3096pt>
+<media/n3MSEMacbeth.png, id=576, 701.7417pt x 468.3096pt>
 File: media/n3MSEMacbeth.png Graphic file (type png)
 <use media/n3MSEMacbeth.png>
-Package pdftex.def Info: media/n3MSEMacbeth.png  used on input line 121.
+Package pdftex.def Info: media/n3MSEMacbeth.png  used on input line 150.
 (pdftex.def)             Requested size: 223.07211pt x 148.86887pt.
-<media/k4top1_spectra.png, id=540, 875.4306pt x 730.8906pt>
-File: media/k4top1_spectra.png Graphic file (type png)
-<use media/k4top1_spectra.png>
-Package pdftex.def Info: media/k4top1_spectra.png  used on input line 142.
-(pdftex.def)             Requested size: 223.07211pt x 186.23523pt.
-<media/k5top1_spectra.png, id=541, 875.4306pt x 730.8906pt>
-File: media/k5top1_spectra.png Graphic file (type png)
-<use media/k5top1_spectra.png>
-Package pdftex.def Info: media/k5top1_spectra.png  used on input line 147.
-(pdftex.def)             Requested size: 223.07211pt x 186.23523pt.
-<media/k6top1_spectra.png, id=542, 875.4306pt x 730.8906pt>
-File: media/k6top1_spectra.png Graphic file (type png)
-<use media/k6top1_spectra.png>
-Package pdftex.def Info: media/k6top1_spectra.png  used on input line 160.
-(pdftex.def)             Requested size: 223.07211pt x 186.23523pt.
-<media/k5Macbeth_render_rank_0.png, id=543, 701.7417pt x 468.3096pt>
-File: media/k5Macbeth_render_rank_0.png Graphic file (type png)
-<use media/k5Macbeth_render_rank_0.png>
-Package pdftex.def Info: media/k5Macbeth_render_rank_0.png  used on input line 165.
-(pdftex.def)             Requested size: 223.07211pt x 148.86887pt.
- [27 <./media/k3top1_spectra.png> <./media/n3MSEMacbeth.png> <./media/k4top1_spectra.png> <./media/k5top1_spectra.png>]
-<media/photons_sweep_deltaE_20260528_210811.png, id=554, 722.7pt x 433.62pt>
-File: media/photons_sweep_deltaE_20260528_210811.png Graphic file (type png)
-<use media/photons_sweep_deltaE_20260528_210811.png>
-Package pdftex.def Info: media/photons_sweep_deltaE_20260528_210811.png  used on input line 198.
-(pdftex.def)             Requested size: 341.43307pt x 204.86006pt.
- [28 <./media/k6top1_spectra.png> <./media/k5Macbeth_render_rank_0.png> <./media/photons_sweep_deltaE_20260528_210811.png>]
-<media/Lab00.jpg, id=564, 963.6pt x 542.025pt>
-File: media/Lab00.jpg Graphic file (type jpg)
-<use media/Lab00.jpg>
-Package pdftex.def Info: media/Lab00.jpg  used on input line 211.
-(pdftex.def)             Requested size: 223.07211pt x 125.47365pt.
-<media/Lab104.jpg, id=565, 963.6pt x 542.025pt>
-File: media/Lab104.jpg Graphic file (type jpg)
-<use media/Lab104.jpg>
-Package pdftex.def Info: media/Lab104.jpg  used on input line 216.
-(pdftex.def)             Requested size: 223.07211pt x 125.47365pt.
-<media/Lab47.jpg, id=566, 963.6pt x 542.025pt>
-File: media/Lab47.jpg Graphic file (type jpg)
-<use media/Lab47.jpg>
-Package pdftex.def Info: media/Lab47.jpg  used on input line 221.
-(pdftex.def)             Requested size: 223.07211pt x 125.47365pt.
-<media/Lab336.jpg, id=567, 963.6pt x 542.025pt>
-File: media/Lab336.jpg Graphic file (type jpg)
-<use media/Lab336.jpg>
-Package pdftex.def Info: media/Lab336.jpg  used on input line 226.
-(pdftex.def)             Requested size: 223.07211pt x 125.47365pt.
-<media/k1_4_recon.png, id=568, 1284.8pt x 913.4125pt>
-File: media/k1_4_recon.png Graphic file (type png)
-<use media/k1_4_recon.png>
-Package pdftex.def Info: media/k1_4_recon.png  used on input line 236.
-(pdftex.def)             Requested size: 341.43307pt x 242.7361pt.
- [29 <./media/Lab00.jpg> <./media/Lab104.jpg> <./media/Lab47.jpg> <./media/Lab336.jpg> <./media/k1_4_recon.png (PNG copy)>]
-<media/k1_5_recon.png, id=575, 1284.8pt x 877.2775pt>
-File: media/k1_5_recon.png Graphic file (type png)
-<use media/k1_5_recon.png>
-Package pdftex.def Info: media/k1_5_recon.png  used on input line 244.
-(pdftex.def)             Requested size: 341.43307pt x 233.13335pt.
-<media/k1_5_recon_badNOIR.png, id=576, 1284.8pt x 877.2775pt>
-File: media/k1_5_recon_badNOIR.png Graphic file (type png)
-<use media/k1_5_recon_badNOIR.png>
-Package pdftex.def Info: media/k1_5_recon_badNOIR.png  used on input line 253.
-(pdftex.def)             Requested size: 341.43307pt x 233.13335pt.
-<media/k5_noisy_render.png, id=577, 1284.8pt x 877.2775pt>
-File: media/k5_noisy_render.png Graphic file (type png)
-<use media/k5_noisy_render.png>
-Package pdftex.def Info: media/k5_noisy_render.png  used on input line 264.
-(pdftex.def)             Requested size: 223.07211pt x 152.30772pt.
-<media/k5_noisy_spectra.png, id=578, 875.4306pt x 730.8906pt>
-File: media/k5_noisy_spectra.png Graphic file (type png)
-<use media/k5_noisy_spectra.png>
-Package pdftex.def Info: media/k5_noisy_spectra.png  used on input line 269.
-(pdftex.def)             Requested size: 223.07211pt x 186.23523pt.
-) (./sections/5_conclusion.tex [30 <./media/k1_5_recon.png (PNG copy)> <./media/k1_5_recon_badNOIR.png (PNG copy)>] [31 <./media/k5_noisy_render.png (PNG copy)> <./media/k5_noisy_spectra.png>]
-Chapter 5.
-) [32
-
-]
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 34.
-
-(./main.bbl [33
-
-]
-Underfull \hbox (badness 3375) in paragraph at lines 54--56
-[]\OT1/cmr/m/n/10.95 (+20) U.S. Ge-o-log-i-cal Sur-vey, ``Land-sat 1.'' []$\OT1/cmtt/m/n/10.95 https : / / www . usgs . gov / landsat-[]missions /
- []
-
-[34] [35]
-Underfull \hbox (badness 10000) in paragraph at lines 182--184
-\OT1/cmtt/m/n/10.95 printables . com / model / 141039-[]arducam-[]case-[]and-[]mount-[]for-[]usb-[]camera-[]module$[]\OT1/cmr/m/n/10.95 (+20) ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--188
-[]\OT1/cmr/m/n/10.95 (+20) Stamos, ``Rasp-berry Pi 5 case.'' []$\OT1/cmtt/m/n/10.95 https : / / www . printables . com / model /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 190--192
-[]\OT1/cmr/m/n/10.95 (+20) Baxcor, ``MG996R servo model.'' []$\OT1/cmtt/m/n/10.95 https : / / www . printables . com / model /
- []
-
-) [36] (./sections/6_appendix.tex
-Chapter 7.
-[37
-
-])
-
-Package glossaries Warning: No \printglossary or \printglossaries found. 
-(Remove \makeglossaries if you don't want any glossaries.) 
-This document will not have a glossary.
-
-[38] (./main.aux)
- ***********
-LaTeX2e <2025-11-01>
-L3 programming layer <2026-01-19>
- ***********
-
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.88pt have occurred.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A6792D3260E7E5896A2725617A504363;5763.
- ) 
-Here is how much of TeX's memory you used:
- 23850 strings out of 467525
- 436768 string characters out of 5418983
- 929309 words of memory out of 5000000
- 52043 multiletter control sequences out of 15000+600000
- 649251 words of font info for 206 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 93i,15n,117p,2580b,713s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (40 pages, 42671922 bytes).
-PDF statistics:
- 776 PDF objects out of 1000 (max. 8388607)
- 604 compressed objects within 7 object streams
- 185 named destinations out of 1000 (max. 500000)
- 48163 words of extra memory for PDF output out of 51595 (max. 10000000)
-
+<media/measured_k3_errors.png, id=577, 867.24pt x 433.62pt>
+File: media/measured_k3_errors.png Graphic file (type png)
+<use media/measured_k3_errors.png>
+Package pdftex.def Info: media/measured_k3_errors.png  used on input line 155.
+(pdftex.def)             Requested size: 223.07211pt x 111.53433pt.
+<media/measured_k3_cave.png, id=578, 1225.2174pt x 661.5114pt>
+File: media/measured_k3_cave.png Graphic file (type png)
+<use media/measured_k3_cave.png>
+Package pdftex.def Info: media/measured_k3_cave.png  used on input line 160.
+(pdftex.def)             Requested size: 223.07211pt x 120.43967pt.
+[26 <./media/deltaE_vs_k_mse.pn

@@ -4,20 +4,6 @@ The camera pipeline is first developed in a simulated environment, with spectral
 Thus, a full simulation of our camera can be deployed on multispectral image sets and tested in our filter selection harness.
 Later, measurements of a subset of filters are taken in the lab, a measurement of camera spectral sensitivity function is also done in the same controlled lighting environment as the filter measurements, and captures are taken of a Preferred Memory Color Chart (PMCC) for quantitative analysis. 
 
-\section{Mathematical Framework}
-In our model, we have a single grey-scale camera (only a brightness channel). Thus, our estimated new camera sensitivities are a function of the intrinsic sensitivities of this single-channel camera multiplied by the filter transmittance.
-Let $f_i(\lambda)$ respectively denote the $i$'th filter's spectral transmission function, and let $m_{c,i}$ denote the transformation weights for combining the $i$'th filter into color channel $c$ (e.g. to best approximate the XYZ color matching functions). 
-Then the effective spectral camera sensitivity function $\theta_c$ can be written as:
-\begin{equation}
-\theta_{c}(\lambda)= \sum_{i \in I} m_{c,i}{f}_i(\lambda)\sigma(\lambda)
-\end{equation}
-where $I$ denotes the set of $k$ indices from our set of $N$ filters and $\sigma(\lambda)$ denotes the sensor's spectral sensitivity function.
-
-In the optimizations that follow, we will solve for the R, G and B sensors that best approximate the actual X, Y and Z color matching function sensitivities, respectively referred to as $x_c \in \{X,Y,Z\}$.
-
-
-
-
 \section{Data Collection}
 The aim of our method is to capture multiple images through different color filters and then combine them to match the colors of an image of a scene captured with respect to the CIE XYZ color matching functions (CMFs). 
 We will choose filters drawn from a set of Rosco Supergel filters that we measure in our lab. 
@@ -38,7 +24,7 @@ Rosco provides a specification sheet and spectral response function for each fil
 \begin{subfigure}{.49\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/RaspberryPi_trans.png}
-    \caption{Monochrome camera transmission function for $\lambda \in [400,1000]$}
+    \caption{Camera sensitivity function for $\lambda \in [400,1000]$}
 \end{subfigure}
 \caption{Scraped and measured spectral transmission functions}
 %TOO SMALL???
@@ -53,15 +39,15 @@ We use a dark room, Lilliput lamp \cite{UtopiaCamLiliput}, and a spectrophotomet
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}{.45\linewidth}[H]
+\begin{subfigure}{.45\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/Gels.jpeg}
     \caption{Set of 119 Supergel filters with \#02 on stage}
 \end{subfigure}%
-\begin{subfigure}{.45\linewidth}[H]
+\begin{subfigure}{.45\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/measure2labeled.jpeg}
-    \caption{Filter measurement setup with spectrophotometer and Supergel filters}
+    \caption{Spectrophotometer and Supergel filters}
 \end{subfigure}%
 \caption{Filter set, Spectrophotometer setup and measurement workflow}
 \end{figure}
@@ -93,15 +79,16 @@ For a demonstration of color reconstruction across scenes, we utilize the CAVE d
 
 \begin{subfigure}{.49\linewidth}
     \centering
+    \label{ref:spectrophotometer}
     \includegraphics[width=\linewidth]{media/Spectrophotometer2.jpeg}
     \caption{Items staged for color capture, including a PMCC}
 \end{subfigure}%
 \begin{subfigure}{.49\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/spectralLab.jpeg}
-    \caption{Lab setup for multispectral imaging with illuminant}
+    \caption{Lab setup for multispectral imaging}
 \end{subfigure}
-\caption{Simulation dataset and laboratory replication setup.}
+\caption{Spectrophotometer and laboratory scene setup.}
 \end{figure}
 
 Next, we replicate the above simulated spectral reconstruction in the lab, capturing a scene including one Preferred Memory Color Chart \cite{ThouslitePMCC} under the same Lilliput illuminant \cite{UtopiaCamLiliput}.
@@ -115,7 +102,7 @@ The camera was kept in place such that we could pick one pixel per capture for w
 \begin{subfigure}{.49\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/398.jpg}
-    \caption{Capture of filter \#398, including PMCC in the foreground}
+    \caption{Capture of filter \#398, including PMCC}
 \end{subfigure}%
 \begin{subfigure}{.49\linewidth}
     \centering
@@ -153,6 +140,17 @@ We plot the color patches on the standard 1931 XYZ color gamut for illustration.
 \includegraphics[width=.6\linewidth]{media/colorcheck_chromacity.png}
 \caption{Distribution of patch locations on the CIE 1931 color gamut}
 \end{figure}
+
+\section{Mathematical Background}
+In our model, we have a single grey-scale camera (only a brightness channel). Thus, our estimated new camera sensitivities are a function of the intrinsic sensitivities of this single-channel camera multiplied by the filter transmittance.
+Let $f_i(\lambda)$ respectively denote the $i$'th filter's spectral transmission function, and let $m_{c,i}$ denote the transformation weights for combining the $i$'th filter into color channel $c$ (e.g. to best approximate the XYZ color matching functions). 
+Then the effective spectral camera sensitivity function $\theta_c$ can be written as:
+\begin{equation}
+\theta_{c}(\lambda)= \sum_{i \in I} m_{c,i}{f}_i(\lambda)\sigma(\lambda)
+\end{equation}
+where $I$ denotes the set of $k$ indices from our set of $N$ filters and $\sigma(\lambda)$ denotes the sensor's spectral sensitivity function.
+
+In the optimizations that follow, we will solve for the R, G and B sensors that best approximate the actual X, Y and Z color matching function sensitivities, respectively referred to as $x_c \in \{X,Y,Z\}$.
 
 
 \section{Problem Formulation}
@@ -210,6 +208,38 @@ Then, with gain $g$ and exposure time $t$, he expected scene radiance and varian
 Thus, our photonic camera noise, V(R(p)) is a linear function of exposure time. 
 We provide a study in reconstruction quality as a function of 'shutter speed,' which refers to the duration of capture per filter. 
 This is again implemented by defining $L = MSE + V(R(p))$, which can be achieved with a few steps of gradient descent from the MSE pseudoinverse solution. 
+
+We enumerate the loss functions supported below. Our implementation uses \codeword{pyTorch} operations in order to effectively step our gradient descent algorithm for non-MSE loss functions, as well as semaless integration into our parallelization and gradient descent pipeline for MSE loss (where no descent steps are needed from pseudoinverse solution).
+\begingroup
+\setlength{\textfloatsep}{6pt}
+\setlength{\floatsep}{6pt}
+\setlength{\intextsep}{6pt}
+\begin{algorithm}[H]
+\caption{Loss Computation with Noise-Weighting Options}
+\label{alg:compute-loss-table}
+\begin{algorithmic}[1]
+\Require Reconstructed sensitivities $\theta_c[\lambda]$, Target CMFs $x_c[\lambda]$ (for $c \in \{R,G,B\}$ and $\lambda \in \omega_d$); Loss function metric ${L}$; Transformation weights $m_{c,i}$ ($\boldsymbol{M}$); Filter-sensor matrix rows $f_i[\lambda]\sigma[\lambda]$ ($\boldsymbol{F}$); Photon budget limit $P$; Noise penalty weight $w_{\text{noise}}$.
+\Ensure Computed scalar loss value $L$.
+\State Set $\epsilon \leftarrow 10^{-6}$.
+\If{${loss} = \text{'smape'}$}
+    \State ${L} \leftarrow \sum_{c} \sum_{\lambda \in \omega_d} \frac{|\theta_c[\lambda] - x_c[\lambda]|}{|\theta_c[\lambda]| + |x_c[\lambda]| + \epsilon}$
+\ElsIf{${loss} = \text{'log'}$}
+    \State ${L} \leftarrow \sum_{c} \sum_{\lambda \in \omega_d} \left( \frac{\log(\theta_c[\lambda] + \epsilon)}{\log(x_c[\lambda] + \epsilon)} - 1 \right)^2$
+\ElsIf{${loss} = \text{'mse'}$}
+    \State ${L} \leftarrow \sum_{c} \sum_{\lambda \in \omega_d} (\theta_c[\lambda] - x_c[\lambda])^2$
+\ElsIf{${loss} = \text{'mse\_noisy'}$}
+    \State ${L}_{\text{base}} \leftarrow \sum_{c} \sum_{\lambda \in \omega_d} (\theta_c[\lambda] - x_c[\lambda])^2$
+    \If{$\boldsymbol{F}$ is $\text{None}$ \textbf{or} $\boldsymbol{M}$ is $\text{None}$}
+        \State \Return ${L}_{\text{base}}$
+    \EndIf
+    \State ${L}_{\text{penalty}} \leftarrow  \sum_{c} \sum_{\lambda \in \omega_d} \sum_{i \in I} \left( m_{c,i}^2 \cdot \frac{\max(f_i[\lambda]\sigma[\lambda], 0)}{P} \right)$
+    \State ${L} \leftarrow {L}_{\text{base}} + w_{\text{noise}} \cdot {L}_{\text{penalty}}$
+\EndIf
+\State \Return ${L}$
+\end{algorithmic}
+\end{algorithm}
+\endgroup
+
 
 \section{Mathematical Terms}
 
@@ -342,14 +372,14 @@ This method also scales well, with $k=8$ runtime at only 20 seconds.
 We show the relative timings for Brute Force and PCA algorithms below. 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{media/timing_comparison.png}
+\includegraphics[width=.5\linewidth]{media/timing_comparison.png}
 \caption{Timing comparison between PCA and brute force selection methods}
 \end{figure}
 
 However, we note the improved MSE result for the brute force selection methodology.
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{media/mse_comparison_exact_paths.png}
+\includegraphics[width=.7\linewidth]{media/mse_comparison_exact_paths.png}
 \caption{MSE comparison between PCA and brute force selection methods ($k_2=0$)}
 \end{figure}
 
@@ -399,11 +429,11 @@ Using this methodology, we define a higher-dimensional space and thus a lower in
 However, we will observe that this technique only accurately reproduces human eye color matching functions such as the CIE XYZ family of functions, and fails to generalize to other applications. 
 That being understood, this method is able to achieve better metrics at high $k$. 
 For practical purposes, the difference is immaterial due to the cost of increasing $k$ above 10 or so, in terms of size of components and the capture time increase inherent to adding additional filters. 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{media/placeholder.jpg}
-\caption{Placeholder: comparison of MSE/$\Delta E$ at high $k$}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=.5\linewidth]{media/placeholder.jpg}
+%\caption{Placeholder: comparison of MSE/$\Delta E$ at high $k$}
+%\end{figure}
 
 \subsection{LASSO Selection}
 To obtain a sparse (small-$k$) filter set without explicitly searching combinations, we also evaluate a LASSO-style selection procedure. Here we optimize a full weight matrix over the entire candidate set and use an $\ell_{2,1}$-type regularizer (group sparsity) to drive many filter-columns to near-zero magnitude.
@@ -440,11 +470,11 @@ After optimization, we rank filters by their column norms $\|\boldsymbol{m}_{:,j
 \end{algorithm}
 \endgroup
 
-\begin{center}
-    \centering
-    \includegraphics[width=1\linewidth]{media/placeholder.jpg}
-    \captionof{figure}{Placeholder for LASSO}
-\end{center}
+%\begin{center}
+%    \centering
+%    \includegraphics[width=.5\linewidth]{media/placeholder.jpg}
+%    \captionof{figure}{Placeholder for LASSO}
+%\end{center}
 
 \subsection{Brute Force Search Augmented PCA} 
 
@@ -455,13 +485,9 @@ To address this problem, we use a blended method which finds a PCA solution for 
 This provides a middle ground to the performance-accuracy tradeoff.
 There is negligible MSE difference between brute force and PCA methods at $k_2>1$ for all $k_1$.
 Further, for $k_2<4$, the added time from the exhaustive search step is between 5-20 seconds on the 8 aforementioned L4 GPUs.
-%We note here that the MSE shortfall observed above has mostly disappeared, with PCA having a significant performance improvement over Brute Force.
-%A full performance overview is included in the Appendix (\ref{tab:timing_comparison}).
-\begin{center}
-    \centering
-    \includegraphics[width=.5\linewidth]{media/mse_comparison_exact_paths_n2_2.png}
-    \captionof{figure}{MSE Comparison between PCA and Brute Force Selection Methods, $k_2=2$}
-\end{center}
+
+We note here that the MSE shortfall observed above has mostly disappeared, with PCA having a significant performance improvement over Brute Force.
+A full performance overview is included in the Appendix (\ref{tab:timing_comparison}).
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\linewidth]{media/mse_comparison_exact_paths_n2_2.png}
@@ -477,6 +503,39 @@ Presumably a brute force algorithm would necessarily find the global minimum MSE
 Therefore, any brute force solution with $k_2>0$ should be considered with caution. 
 There is value in augmenting a brute force solution, as runtime is greatly reduced, but we find that the effect of mixing search algorithms at an intermediate value provides an efficient yet accurate middle ground for practical values of $k$.
 
+\section{ Computation}
+
+For our simulated camera, we utilize the python \codeword{color} and \codeword{colour-science} libraries, with the the CIE 1931 or 2015 2 Degree Standard Observer respectively, depending on whether we utilize the CIE 1931 or CIE 2006 XYZ functions. 
+We use a D65 illuminant and ColorChecker N Ohta reflectance patches. XYZ responses were converted to CIELAB using the \codeword{color.xyz2lab} function to convert XYZ signals to lab before $\Delta E_{00}$ computation.
+
+The specific algorithm is below, including the result for the best \codeword{top_m} filter combinations, for $N$ patches in a color checker:
+
+\begingroup
+\setlength{\textfloatsep}{6pt}
+\setlength{\floatsep}{6pt}
+\setlength{\intextsep}{6pt}
+\begin{algorithm}[H]
+\caption{Evaluation Pipeline: $\Delta E_{00}$ Computation}
+\label{alg:mse-de00-eval}
+\begin{algorithmic}[1]
+\Require Original values $\mathbf{Y}\in\mathbb{R}^{N\times d}$; Reconstructed values $\widehat{\mathbf{Y}}\in\mathbb{R}^{N\times d}$; white point $\mathbf{W}_{\text{ref}}$.
+\Ensure Average Mean Squared Error ($\text{MSE}_{\text{avg}}$) and Average CIEDE2000 ($\Delta E_{00,\text{avg}}$).
+\State Initialize sum of MSE $E_{\text{MSE}} \leftarrow 0$.
+\State Initialize sum of color differences $E_{\Delta00} \leftarrow 0$.
+\For{$i=1$ to N}
+    \State Convert $\mathbf{Y}_{i,:}$ to CIELAB color space: $(L_i, a_i, b_i)$ using $\mathbf{W}_{\text{ref}}$.
+    \State Convert $\widehat{\mathbf{Y}}_{i,:}$ to CIELAB color space: $(\widehat{L}_i, \widehat{a}_i, \widehat{b}_i)$ using $\mathbf{W}_{\text{ref}}$.
+    \State Compute perceptual differences: $\Delta L', \Delta C', \Delta H'$ from CIELAB pairs.
+    \State Calculate weighting functions $S_L, S_C, S_H$ and rotation term $R_T$.
+    \State Compute sample CIEDE2000 distance:
+    \Statex \qquad $\Delta E_{00}^{(i)} \leftarrow \sqrt{ \left( \frac{\Delta L'}{k_L S_L} \right)^2 \!\!+\! \left( \frac{\Delta C'}{k_C S_C} \right)^2 \!\!+\! \left( \frac{\Delta H'}{k_H S_H} \right)^2 \!\!+\! R_T \left( \frac{\Delta C'}{k_C S_C} \right) \!\left( \frac{\Delta H'}{k_H S_H} \right) }$
+    \State $E_{\Delta00} \leftarrow E_{\Delta00} + \Delta E_{00}^{(i)}$.
+\EndFor
+\State $\Delta E_{00,\text{avg}} \leftarrow E_{\Delta00} / N$.
+\State \Return $\Delta E_{00,\text{avg}}$
+\end{algorithmic}
+\end{algorithm}
+\endgroup
 
 \section{Physical Camera}
 
@@ -514,12 +573,29 @@ The software proceeds to optimize the print for structural stability while minim
 \begin{subfigure}{.49\linewidth}
     \centering
     \includegraphics[width=\linewidth]{media/prusa2.png}
+    \caption{Servo Motor Housing}
 \end{subfigure}
 \caption{3D Print Model (Screenshots of PrusaSlicer software)}
 \end{figure}
 
 The final product contains a central housing to contain the RaspberryPi microcontroller, with a camera stand atop facing the servo motor with attached filter wheel. 
-When capturing photos, we 
+When capturing photos, we ensure stable lighting and subject immobility while placing the camera on a flat surface.
+Capture is controlled by a computer connected to the same WiFi network as the pi, wherein one can send commands to the device for photo capture and servo motor adjustment.
+
+\begingroup
+\begin{algorithm}[H]
+\caption{CAMERA SHUTTER}
+\label{alg:camera control}
+\begin{algorithmic}[1]
+\Require PLACEHOLDER
+\Ensure PLACEHOLDER
+\State PLACEHOLDER
+\end{algorithmic}
+\end{algorithm}
+\endgroup
+
+Below, we show the camera setup to take photos of a stationary subject. 
+Note the removable camera mount, enabling filter wheel reaplcement for increasing or decreasing $k$ and implementation of different Color Matching Function reconstructions. 
 
 \begin{figure}[H]
 \centering
