@@ -1,21 +1,21 @@
 \chapter{Introduction}
-Multispectral image acquisition systems have uses ranging from agricultural monitoring to fine art analysis to medical scanning \cite{peyghambari2021lithological, ortega2019gastroenterology, mariotti2023forensics, qin2013foodsafety, wu2013foodfundamentals, lee2020colorluminance, wu2024headneckcancer, lu2020agriculture}{\color{red} .}
+Multispectral image acquisition systems have uses ranging from agricultural monitoring to fine art analysis to medical scanning \cite{peyghambari2021lithological, ortega2019gastroenterology, mariotti2023forensics, qin2013foodsafety, wu2013foodfundamentals, lee2020colorluminance, wu2024headneckcancer, lu2020agriculture}.
 State of the art systems are prohibitively costly \cite{SCUTELNIC2024e00596}, and are generally only suitable for their specialized purpose.
 A comparatively cheaper and more flexible solution lies in the filter wheel, notably employed in terrestrial and geological analysis as early as 1972 \cite{mannheimer1977landsat}, and now provides a useful framework for
 %all uses of 
 multispectral imaging. 
 In this paper, we construct an effective system using simple 3D-printed components, microcontrollers such as the Raspberry Pi, and a set of inexpensive gel filters such as those used for stage lights. 
 
-However, our aim is to improve upon the classic apriori fixed filter wheel used with a monochromatic camera.
-Here, we simulate image capture through a set of colored filters and then combine these to best approximate the desired XYZ colorimetric values, effectively solving for a new color wheel.
+However, our aim is to improve upon the classic a priori fixed filter wheel used with a monochromatic camera.
+Here, we simulate image capture through a set of colored filters and then combine these to best approximate the desired XYZ colorimetric values, effectively solving for a new filter wheel.
 
 Prior work has been limited by computational resources, and generally relies on heuristic measures to select filters \cite{Filterselection, vrhel1994filter}.
 We provide a minimal error reconstruction for the set of Rosco Supergel \cite{rosco_mycolor} filters.
 
 We construct a simulated camera using a Python-based infrastructure. 
-This consists of an image input, a transmission function, and a luminance, which produces an output as if our RaspberryPi camera captured the image.
+This consists of an image input, a transmission function, and a luminance, which produces an output as if our Raspberry Pi camera captured the image.
 Additionally, the simulation includes modules to perform the filter selection task under different conditions and compare results of filter selection methodologies.
-This comparison relies upon a loss metric defined to guide the filter selection, and a $\Delta E_{00}$ (CIEDE2000) measure to compare reconstruction results of filter selection. 
+This comparison relies upon a loss metric defined to guide the filter selection, and a $\dE$ (CIEDE2000) measure to compare reconstruction results of filter selection. 
 Additionally, we output spectral image simulations for a qualitative comparison of our images. 
 
 We are able to consider a larger set of filters as well as a layering of multiple filters in series by deploying our filter selection method and simulated camera on multiple GPUs and parallelizing our search. 
@@ -26,19 +26,21 @@ By generalizing our target function, we allow for applications beyond RGB recons
 Additionally, we explore the performance of our system under different human eye color matching functions, such as CIE 1931 \cite{1931TrOS...33...73S} and CIE 2006 LMS functions \cite{STOCKMAN201987}. %$V^{*}(\lambda)$ \cite{sharpe2005luminous}. 
 In the analysis of human eye color matching functions, we approach Luther Condition Compliance, which is the condition that a camera's spectral sensitivity functions are a linear transformation of the human eye's color matching functions \cite{von1927gebiet}.
 
-We show that our methodology provides accurate reconstruction by evaluating the 24 Macbeth Color Checker patches and computing $\Delta E_{00}$ under standard illuminant for the CIE 2006 XYZ target functions. 
-We compute the relationship between number of filters $k$ and minimum $\Delta E_{00}$.
+We show that our methodology provides accurate reconstruction by evaluating the 24 Macbeth Color Checker patches and computing $\dE$ under standard illuminant for the CIE 2006 XYZ target functions. 
+We compute the relationship between number of filters $k$ and minimum $\dE$.
 
 % IF COMPLETE: Real Camera section
-We capture images in a controlled luminance setting using the RaspberryPi camera and report on the results of different $k$ number of filters. 
-We are able to evaluate the simulated selections in a real world environment, albeit a controlled lighting environment, again providing a comprable evaluation versus our simulated spectral dataset provided by the CAVE dataset. 
+We capture images in a controlled luminance setting using the Raspberry Pi camera and report on the results of different $k$ number of filters. 
+We are able to evaluate the simulated selections in a real world environment, albeit a controlled lighting environment, again providing a comparable evaluation versus our simulated spectral dataset provided by the CAVE dataset. 
 The camera captures a scene including a Preferred Memory Color Chart Reader, an improvement on the Macbeth color checker patches, and we use this as a baseline to evaluate the quality of our deployed system. 
 %INCLUDE BIT ABOUT ACTUALLY USING THE CAMERA, IF DONE 
 
 Understanding that camera capture varies significantly in differing lighting conditions, we incorporate a noise model in our framework.
 We develop an addendum to our loss function framework which incorporates camera noise in the reconstruction quality and allows us to vary the filter set based on expected capture noisiness.
-Conceptually, this noise is a function of photonic arrival into our camera sensor, motivating our analysis over varying brightness setups, or equivalently, exposure times. 
+Conceptually, this noise is a function of photonic arrival into our camera sensor, motivating our analysis over varying brightness setups, or equivalently, exposure times.
 
-
-
-
+In the remaining sections of this paper, we describe our methodology, from data collection to mathematical formalization to designing an optimized filter selection procedure.
+Next, we evaluate the performance of our procedure in context of our loss function as well as $\dE$, for the CIE 1931 and CIE 2006 XYZ standard observers.
+We examine our fully simulated framework, as well as piecewise introducing real-world components, starting with the Rosco Supergel filter set and then moving to cameras and then evaluating the entire physical camera stack.
+We introduce a noise term to our loss function in order to model the tradeoff between exposure time and capture quality as well as to conceptualize the effect of scene luminance on capture quality.
+We conclude our filter selection section with a discussion on the tradeoff between timing and performance for various use cases.
