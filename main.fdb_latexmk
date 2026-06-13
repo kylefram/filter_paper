@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex main"] 1781367560.53389 "main.aux" "main.bbl" "main" 1781367585.06461 0
+["bibtex main"] 1781369809.67546 "main.aux" "main.bbl" "main" 1781369833.35602 0
   "./document.bib" 1781118169.1353 38010 63a5700f6b3228449fc008ce7c433228 ""
   "/usr/local/texlive/2026/texmf-dist/bibtex/bst/base/ieeetr.bst" 1292289607 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "main.aux" 1781367584.82711 22685 ebe54aa6a21e5c9c4c843552e7f59fdd "pdflatex"
+  "main.aux" 1781369833.13939 22709 a5c7ce66795e8db3554fb3e76fc48018 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["makeindex main.idx"] 1781363791.77142 "main.idx" "main.ind" "main" 1781367585.06452 0
-  "main.idx" 1781367573.17288 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex main.idx"] 1781363791.77142 "main.idx" "main.ind" "main" 1781369833.35594 0
+  "main.idx" 1781369821.79293 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "main.ilg"
   "main.ind"
   (rewritten before read)
-["pdflatex"] 1781367572.96932 "/Users/kylefram/Desktop/Cambridge/ACS/Project/filter_paper/main.tex" "main.pdf" "main" 1781367585.06471 0
+["pdflatex"] 1781369821.61024 "/Users/kylefram/Desktop/Cambridge/ACS/Project/filter_paper/main.tex" "main.pdf" "main" 1781369833.3561 0
   "/Users/kylefram/Desktop/Cambridge/ACS/Project/filter_paper/main.tex" 1781364712.19753 1022 9d17759bf701fa7929454514401b5d2d ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -176,10 +176,10 @@
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1772409757 3636768 9f94d239f422c02416e379a36a852ffd ""
   "/usr/local/texlive/2026/texmf.cnf" 1772409725 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
   "cam-thesis.cls" 1778021180.42755 16923 dca8c9b5d4f3605c002f74c68cd4d489 ""
-  "main.aux" 1781367584.82711 22685 ebe54aa6a21e5c9c4c843552e7f59fdd "pdflatex"
-  "main.bbl" 1781367560.62517 13525 9975c1bd71c29745c6dbf5a4e373e89f "bibtex main"
+  "main.aux" 1781369833.13939 22709 a5c7ce66795e8db3554fb3e76fc48018 "pdflatex"
+  "main.bbl" 1781369809.74839 13525 9975c1bd71c29745c6dbf5a4e373e89f "bibtex main"
   "main.ind" 1781363791.86821 0 d41d8cd98f00b204e9800998ecf8427e "makeindex main.idx"
-  "main.out" 1781367584.82834 7408 51920fe829539966a771de987c965de2 "pdflatex"
+  "main.out" 1781369833.14039 7408 51920fe829539966a771de987c965de2 "pdflatex"
   "main.tex" 1781364712.19753 1022 9d17759bf701fa7929454514401b5d2d ""
   "media/398.jpg" 1778778300.81994 140321 a865985375b39f173304c79214d852a9 ""
   "media/3dprint2.jpeg" 1780047536.22321 2712881 26958eb7af51d1b0716c958af13de08e ""
@@ -240,10 +240,10 @@
   "media/mse_comparison_exact_paths_n2_2.png" 1778007539.00473 152814 fe2e4e1a9652c129becfddf82677ed6e ""
   "media/n3MSEMacbeth.png" 1778007539.00652 67535 4cb716d2b09a50a379e90930d476d013 ""
   "media/photons_sweep_deltaE_20260528_210811.png" 1779998964.48576 116194 109a61cade21e84caefdfdebd302698d ""
-  "media/placeholder.jpg" 1778545674.22781 5546 68fd0317d20bfcf8d510cd2155e08f02 ""
   "media/prusa1.png" 1780311472.5864 611335 5af4439215b81d097dcc42153b4fe835 ""
   "media/prusa2.png" 1780051294.2902 630740 7ddd4db378c57e507bd690f0816c70a7 ""
   "media/rear3.jpeg" 1781363960.49461 2638387 4e82610c1968a1cc91a9f252f98f5c61 ""
+  "media/rear4.jpeg" 1781369797.11253 2196815 25fce1f090816f1d692bf6939571def8 ""
   "media/scraped_cave.png" 1779466601.60789 2226484 b7caf732276a48b0c8dc15cc51a44c1b ""
   "media/scraped_gamut_k3.png" 1779453451.64649 303422 a549741648707873af85cb685c053f9c ""
   "media/scraped_k1scaled_deltaE.png" 1780312843.19226 354729 411d9ee203c7347eb670832306c250f5 ""
@@ -256,6 +256,7 @@
   "media/spectralLab.jpeg" 1778865433.8813 2853061 dd2c5fa3d14b64f2ff81c697786d1825 ""
   "media/spectralLabMarkup.jpeg" 1780229313.6266 360274 1fcb0d77d675d5ecf258ee812bd5fed1 ""
   "media/spectralLabMarkupStage.jpeg" 1780331782.33416 3231493 b1add3d251177f4a36ff660da6641b98 ""
+  "media/test_capture.jpg" 1781368871.40857 79376 a5ddfd8d7881a3ec07ab297215e6d9ea ""
   "media/timing_comparison.png" 1778007539.01257 109674 41889bfa32e958db9240ea94203d6298 ""
   "media/top1.jpeg" 1781364022.84509 2670800 c185990b432836917425fdfe7387ec05 ""
   "media/top1_spectra_10d.png" 1781004918.99805 319093 e7fa3116d034bd5f602c5196fc2fc56e ""
@@ -264,7 +265,7 @@
   "sections/2_related_work.tex" 1781367159.2897 10516 2abd2eb046068cc15624ceded62c02b9 ""
   "sections/3_method.tex" 1781367548.23977 39405 589f2ec49d4f2358e44758d65944932a ""
   "sections/4_evaluation.tex" 1781366475.35998 22872 db41938716199f04b015e121ffb634ad ""
-  "sections/5_conclusion.tex" 1781366416.68962 2001 6c1d7bedbeafb4b990b01e0626040d1b ""
+  "sections/5_conclusion.tex" 1781369832.56585 1992 62ca38a0876d0e99e93e4c7205b12089 ""
   "sections/6_appendix.tex" 1781366496.45723 10581 53825c5c001d324ac876b56996e23d30 ""
   (generated)
   "main.aux"
